@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <projectUrl>http://help.usis-software.com/BITS/</projectUrl>
+    <iconUrl>http://www.usis-software.com/images/usis.icon.64x64.png</iconUrl>
+    <licenseUrl>https://help.usis-software.com/BITS/media/MIT-License.md</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <summary>
+      The usis Background Intelligent Transfer Service Class Library provides .NET wrapper types for the BITS API which is exposed by Microsoft through the Component Object Model (COM).
+    </summary>
+    <releaseNotes>
+      Version 1.1.2 contains the following changes: .NET Framework 4.5 target; Obsolete members removed; BackgroundCopyManager.EnumerateJobs override.
+    </releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>usis BITS Interop HTTP Background Transfer upload download</tags>
+  </metadata>
+</package>
