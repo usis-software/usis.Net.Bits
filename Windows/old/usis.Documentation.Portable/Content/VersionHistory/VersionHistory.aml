@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="b9291287-4fab-4b87-8c8d-4e91dc1ddbbf" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>
+        The topics in this section describe the various changes made to the <legacyBold>usis Portable Platform and Framework Class Library</legacyBold> over the
+        life of the project.
+      </para>
+    </introduction>
+
+    <section>
+      <title>Version History</title>
+      <content>
+        <para>Select a version below to see a description of its changes.</para>
+
+        <list class="bullet">
+          <listItem>
+            <para>
+              <link xlink:href="c9149a4c-cbcf-4cd9-99a3-0ac1273cdf57" />
+            </para>
+          </listItem>
+        </list>
+
+      </content>
+    </section>
+
+    <relatedTopics>
+      <link xlink:href="6cccdae2-b461-45cc-9011-84174d9c5959" />
+    </relatedTopics>
+
+  </developerConceptualDocument>
+</topic>

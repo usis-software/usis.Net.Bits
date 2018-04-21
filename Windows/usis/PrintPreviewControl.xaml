@@ -1,0 +1,34 @@
+﻿<UserControl
+    x:Class="usis.Windows.Controls.PrintPreviewControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    mc:Ignorable="d"
+    d:DesignHeight="400" d:DesignWidth="400"
+    Background="{DynamicResource {x:Static SystemColors.ScrollBarBrushKey}}">
+    <Grid Margin="24">
+        <Grid x:Name="PreviewArea" x:FieldModifier="private" SizeChanged="PreviewArea_SizeChanged">
+            <Border x:Name="Border" x:FieldModifier="private" BorderThickness="1" BorderBrush="Black">
+                <Grid
+                    x:Name="Paper"
+                    x:FieldModifier="private"
+                    Width="{Binding PaperSize.Width, ElementName=userControl}"
+                    Height="{Binding PaperSize.Height, ElementName=userControl}"
+                    Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{Binding PrintMargins.Top, ElementName=userControl}"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="{Binding PrintMargins.Bottom, ElementName=userControl}"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{Binding PrintMargins.Left, ElementName=userControl}"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="{Binding PrintMargins.Right, ElementName=userControl}"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid x:Name="PrintableArea" x:FieldModifier="private" Grid.Row="1" Grid.Column="1"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

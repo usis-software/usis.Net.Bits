@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?><RequestViewModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Url>http://localhost/APNsRouter/SendNotification</Url><Method>POST</Method><Headers><string>Content-Type: application/json</string></Headers><Body>{&#xD;
+  "hexDeviceToken":"CF3C5684AF65D8E456FE54155137F7C26999FFF2DA77D54796DD33291B7E3CA3",&#xD;
+  "payload":"{\"aps\":{\"alert\":\"Hello World!\",\"badge\":1,\"sound\":\"sound.caf\"}}"&#xD;
+}</Body></RequestViewModel>

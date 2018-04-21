@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="c2104512-e0a0-4f11-9368-b8aab6c40ac8" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>
+        Version 1.0.2 was released on October 13, 2017.
+      </para>
+    </introduction>
+
+    <section>
+      <title>Changes in This Release</title>
+      <content>
+
+        <list class="bullet">
+          <listItem>
+            <para>
+              <codeEntityReference qualifyHint="true">M:usis.Net.Bits.BackgroundCopyManager.GetJob(System.Guid,System.Boolean)</codeEntityReference> method overload added.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <codeEntityReference qualifyHint="true">P:usis.Net.Bits.BackgroundCopyManager.Version</codeEntityReference> property added.
+            </para> 
+          </listItem>
+        </list>
+
+      </content>
+    </section>
+
+    <relatedTopics>
+      <link xlink:href="ece7a028-920a-469c-8965-a176f3f20ac0" />
+    </relatedTopics>
+
+  </developerConceptualDocument>
+</topic>

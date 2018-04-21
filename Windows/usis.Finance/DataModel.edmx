@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FinanceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Portfolio">
+          <Key>
+            <PropertyRef Name="PortfolioId" />
+          </Key>
+          <Property Name="PortfolioId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Created" Type="smalldatetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Changed" Type="smalldatetime" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateCount" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Price">
+          <Key>
+            <PropertyRef Name="PriceId" />
+          </Key>
+          <Property Name="PriceId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SecurityId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Date" Type="smalldatetime" Nullable="false" />
+          <Property Name="Last" Type="money" Nullable="false" />
+          <Property Name="Created" Type="smalldatetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Changed" Type="smalldatetime" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateCount" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Security">
+          <Key>
+            <PropertyRef Name="SecurityId" />
+          </Key>
+          <Property Name="SecurityId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ISIN" Type="char" MaxLength="12" />
+          <Property Name="TradeableUnits" Type="int" Nullable="false" />
+          <Property Name="Created" Type="smalldatetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Changed" Type="smalldatetime" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateCount" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SecurityDE">
+          <Key>
+            <PropertyRef Name="SecurityId" />
+          </Key>
+          <Property Name="SecurityId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WKN" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Created" Type="smalldatetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Changed" Type="smalldatetime" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateCount" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+          </Key>
+          <Property Name="TransactionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PortfolioId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SecurityId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="5" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="5" Nullable="false" />
+          <Property Name="Fees" Type="money" />
+          <Property Name="CurrencyISO" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Created" Type="smalldatetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Changed" Type="smalldatetime" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateCount" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Price_Security">
+          <End Role="Security" Type="Self.Security" Multiplicity="1" />
+          <End Role="Price" Type="Self.Price" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Security">
+              <PropertyRef Name="SecurityId" />
+            </Principal>
+            <Dependent Role="Price">
+              <PropertyRef Name="SecurityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecurityDE_Security">
+          <End Role="Security" Type="Self.Security" Multiplicity="1" />
+          <End Role="SecurityDE" Type="Self.SecurityDE" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Security">
+              <PropertyRef Name="SecurityId" />
+            </Principal>
+            <Dependent Role="SecurityDE">
+              <PropertyRef Name="SecurityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_Portfolio">
+          <End Role="Portfolio" Type="Self.Portfolio" Multiplicity="1" />
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Portfolio">
+              <PropertyRef Name="PortfolioId" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="PortfolioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_Security">
+          <End Role="Security" Type="Self.Security" Multiplicity="1" />
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Security">
+              <PropertyRef Name="SecurityId" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="SecurityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FinanceModelStoreContainer">
+          <EntitySet Name="Portfolio" EntityType="Self.Portfolio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Price" EntityType="Self.Price" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Security" EntityType="Self.Security" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SecurityDE" EntityType="Self.SecurityDE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Price_Security" Association="Self.FK_Price_Security">
+            <End Role="Security" EntitySet="Security" />
+            <End Role="Price" EntitySet="Price" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecurityDE_Security" Association="Self.FK_SecurityDE_Security">
+            <End Role="Security" EntitySet="Security" />
+            <End Role="SecurityDE" EntitySet="SecurityDE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_Portfolio" Association="Self.FK_Transaction_Portfolio">
+            <End Role="Portfolio" EntitySet="Portfolio" />
+            <End Role="Transaction" EntitySet="Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_Security" Association="Self.FK_Transaction_Security">
+            <End Role="Security" EntitySet="Security" />
+            <End Role="Transaction" EntitySet="Transaction" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FinanceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Portfolio">
+          <Key>
+            <PropertyRef Name="PortfolioId" />
+          </Key>
+          <Property Name="PortfolioId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Changed" Type="DateTime" Precision="0" />
+          <Property Name="ChangedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateCount" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_Portfolio" FromRole="Portfolio" ToRole="Transaction" />
+        </EntityType>
+        <EntityType Name="Price">
+          <Key>
+            <PropertyRef Name="PriceId" />
+          </Key>
+          <Property Name="PriceId" Type="Guid" Nullable="false" />
+          <Property Name="SecurityId" Type="Guid" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Last" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Changed" Type="DateTime" Precision="0" />
+          <Property Name="ChangedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateCount" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Security" Relationship="Self.FK_Price_Security" FromRole="Price" ToRole="Security" />
+        </EntityType>
+        <EntityType Name="Security">
+          <Key>
+            <PropertyRef Name="SecurityId" />
+          </Key>
+          <Property Name="SecurityId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ISIN" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="TradeableUnits" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Changed" Type="DateTime" Precision="0" />
+          <Property Name="ChangedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateCount" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Prices" Relationship="Self.FK_Price_Security" FromRole="Security" ToRole="Price" />
+          <NavigationProperty Name="SecurityDE" Relationship="Self.FK_SecurityDE_Security" FromRole="Security" ToRole="SecurityDE" />
+          <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_Security" FromRole="Security" ToRole="Transaction" />
+        </EntityType>
+        <EntityType Name="SecurityDE">
+          <Key>
+            <PropertyRef Name="SecurityId" />
+          </Key>
+          <Property Name="SecurityId" Type="Guid" Nullable="false" />
+          <Property Name="WKN" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Changed" Type="DateTime" Precision="0" />
+          <Property Name="ChangedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateCount" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Security" Relationship="Self.FK_SecurityDE_Security" FromRole="SecurityDE" ToRole="Security" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+          </Key>
+          <Property Name="TransactionId" Type="Guid" Nullable="false" />
+          <Property Name="PortfolioId" Type="Guid" Nullable="false" />
+          <Property Name="SecurityId" Type="Guid" Nullable="false" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="5" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="5" Nullable="false" />
+          <Property Name="Fees" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CurrencyISO" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Created" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Changed" Type="DateTime" Precision="0" />
+          <Property Name="ChangedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateCount" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Portfolio" Relationship="Self.FK_Transaction_Portfolio" FromRole="Transaction" ToRole="Portfolio" />
+          <NavigationProperty Name="Security" Relationship="Self.FK_Transaction_Security" FromRole="Transaction" ToRole="Security" />
+        </EntityType>
+        <Association Name="FK_Transaction_Portfolio">
+          <End Role="Portfolio" Type="Self.Portfolio" Multiplicity="1" />
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Portfolio">
+              <PropertyRef Name="PortfolioId" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="PortfolioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Price_Security">
+          <End Role="Security" Type="Self.Security" Multiplicity="1" />
+          <End Role="Price" Type="Self.Price" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Security">
+              <PropertyRef Name="SecurityId" />
+            </Principal>
+            <Dependent Role="Price">
+              <PropertyRef Name="SecurityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SecurityDE_Security">
+          <End Role="Security" Type="Self.Security" Multiplicity="1" />
+          <End Role="SecurityDE" Type="Self.SecurityDE" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Security">
+              <PropertyRef Name="SecurityId" />
+            </Principal>
+            <Dependent Role="SecurityDE">
+              <PropertyRef Name="SecurityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_Security">
+          <End Role="Security" Type="Self.Security" Multiplicity="1" />
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Security">
+              <PropertyRef Name="SecurityId" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="SecurityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DataContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Portfolios" EntityType="Self.Portfolio" />
+          <EntitySet Name="Prices" EntityType="Self.Price" />
+          <EntitySet Name="Securities" EntityType="Self.Security" />
+          <EntitySet Name="SecurityDEs" EntityType="Self.SecurityDE" />
+          <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+          <AssociationSet Name="FK_Transaction_Portfolio" Association="Self.FK_Transaction_Portfolio">
+            <End Role="Portfolio" EntitySet="Portfolios" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Price_Security" Association="Self.FK_Price_Security">
+            <End Role="Security" EntitySet="Securities" />
+            <End Role="Price" EntitySet="Prices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SecurityDE_Security" Association="Self.FK_SecurityDE_Security">
+            <End Role="Security" EntitySet="Securities" />
+            <End Role="SecurityDE" EntitySet="SecurityDEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_Security" Association="Self.FK_Transaction_Security">
+            <End Role="Security" EntitySet="Securities" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FinanceModelStoreContainer" CdmEntityContainer="DataContext">
+          <EntitySetMapping Name="Portfolios">
+            <EntityTypeMapping TypeName="FinanceModel.Portfolio">
+              <MappingFragment StoreEntitySet="Portfolio">
+                <ScalarProperty Name="PortfolioId" ColumnName="PortfolioId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Changed" ColumnName="Changed" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="UpdateCount" ColumnName="UpdateCount" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prices">
+            <EntityTypeMapping TypeName="FinanceModel.Price">
+              <MappingFragment StoreEntitySet="Price">
+                <ScalarProperty Name="PriceId" ColumnName="PriceId" />
+                <ScalarProperty Name="SecurityId" ColumnName="SecurityId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Last" ColumnName="Last" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Changed" ColumnName="Changed" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="UpdateCount" ColumnName="UpdateCount" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Securities">
+            <EntityTypeMapping TypeName="FinanceModel.Security">
+              <MappingFragment StoreEntitySet="Security">
+                <ScalarProperty Name="SecurityId" ColumnName="SecurityId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="ISIN" ColumnName="ISIN" />
+                <ScalarProperty Name="TradeableUnits" ColumnName="TradeableUnits" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Changed" ColumnName="Changed" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="UpdateCount" ColumnName="UpdateCount" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecurityDEs">
+            <EntityTypeMapping TypeName="FinanceModel.SecurityDE">
+              <MappingFragment StoreEntitySet="SecurityDE">
+                <ScalarProperty Name="SecurityId" ColumnName="SecurityId" />
+                <ScalarProperty Name="WKN" ColumnName="WKN" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Changed" ColumnName="Changed" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="UpdateCount" ColumnName="UpdateCount" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transactions">
+            <EntityTypeMapping TypeName="FinanceModel.Transaction">
+              <MappingFragment StoreEntitySet="Transaction">
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="PortfolioId" ColumnName="PortfolioId" />
+                <ScalarProperty Name="SecurityId" ColumnName="SecurityId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Fees" ColumnName="Fees" />
+                <ScalarProperty Name="CurrencyISO" ColumnName="CurrencyISO" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Changed" ColumnName="Changed" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="UpdateCount" ColumnName="UpdateCount" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

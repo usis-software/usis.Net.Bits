@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<usis xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <application
+    name="usis Workflow Engine"
+    id="be1459aa-a8ab-4ce4-8da5-cd626272e3d9"
+    domain="usis.Workflow.Engine"
+    _applicationBase="C:\Development\usis\Workflow\usis.Workflow.Engine\bin\Debug"
+    startType="Manual">
+    <snapIn
+      type="usis.Workflow.Engine.SnapIn, usis.Workflow.Engine" />
+    <snapIn
+      type="usis.Workflow.Engine.WapiSnapIn, usis.Workflow.Engine" />
+  </application>
+</usis>

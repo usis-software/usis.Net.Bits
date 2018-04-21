@@ -1,0 +1,59 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxd="http://schemas.devexpress.com/winfx/2008/xaml/docking"
+    xmlns:local="clr-namespace:usis.Windows"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+    x:Class="usis.Windows.OldMainWindow"
+    Title="MainWindow" Height="480" Width="640">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local:MyDocumentViewModel}">
+            <ContentPresenter Content="{Binding View}"/>
+        </DataTemplate>
+        <Style TargetType="{x:Type dxd:DocumentPanel}">
+            <Setter Property="Caption" Value="{Binding Document.Title}"/>
+            <Setter Property="IsActive" Value="True"/>
+            <Setter Property="MDILocation" Value="{Binding MDILocation}"/>
+            <Setter Property="MDIState" Value="{Binding MDIState}"/>
+            <Setter Property="MDISize" Value="300,250"/>
+        </Style>
+    </Window.Resources>
+    <Window.DataContext>
+        <local:MyWorkspaceViewModel/>
+    </Window.DataContext>
+    <DockPanel>
+        <dxb:BarManager
+            DockPanel.Dock="Top">
+            <dxb:BarManager.Bars>
+                <dxb:Bar x:Name="mainMenuBar" Caption="Main Menu" IsMainMenu="True">
+                    <dxb:Bar.DockInfo>
+                        <dxb:BarDockInfo ContainerType="Top"/>
+                    </dxb:Bar.DockInfo>
+                    <dxb:BarSubItem Name="mFile" Content="_File">
+                        <dxb:BarButtonItem Name="bOpen" Content="_Open..." KeyGesture="Ctrl+O" Command="{Binding OpenDocumentCommand, Mode=OneWay}" MergeOrder="100"/>
+                        <dxb:BarItemSeparator MergeOrder="200"/>
+                        <dxb:BarButtonItem Name="bExit" Content="E_xit" KeyGesture="Alt+F4" Command="{Binding ExitCommand, Mode=OneWay}" MergeOrder="999"/>
+                    </dxb:BarSubItem>
+                </dxb:Bar>
+                <dxb:Bar x:Name="toolBar" Caption="Tool Bar" Visible="False">
+                    <dxb:Bar.DockInfo>
+                        <dxb:BarDockInfo ContainerType="Top"/>
+                    </dxb:Bar.DockInfo>
+                    <dxb:BarButtonItem x:Name="tool0" Content="Tool 0" MergeType="Default" MergeOrder="999" CategoryName="Tools"/>
+                </dxb:Bar>
+                <dxb:Bar x:Name="statusBar" Caption="Status Bar" IsStatusBar="True">
+                    <dxb:Bar.DockInfo>
+                        <dxb:BarDockInfo ContainerType="Bottom"/>
+                    </dxb:Bar.DockInfo>
+                </dxb:Bar>
+            </dxb:BarManager.Bars>
+            <dxd:DockLayoutManager ItemsSource="{Binding Documents}" DockItemClosed="DockLayoutManager_DockItemClosed" MDIItemActivated="DockLayoutManager_MDIItemActivated" Merge="DockLayoutManager_Merge" UnMerge="DockLayoutManager_UnMerge">
+                <dxd:LayoutGroup>
+                    <dxd:DocumentGroup x:Name="PanelHost" MDIStyle="MDI" DestroyOnClosingChildren="False"/>
+                </dxd:LayoutGroup>
+            </dxd:DockLayoutManager>
+        </dxb:BarManager>
+    </DockPanel>
+</Window>

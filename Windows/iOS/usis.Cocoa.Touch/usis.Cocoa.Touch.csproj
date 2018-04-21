@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D53B70EE-C4F8-4C34-8163-38AEB52A3B2A}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>usis.Cocoa.Touch</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>usis.Cocoa.Touch</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\..\shared\iOS.AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\usis.Cocoa.Touch.xml</DocumentationFile>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\..\shared\iOS.AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Release\usis.Cocoa.Touch.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'AppStore|AnyCPU'">
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\..\shared\iOS.AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\AppStore\usis.Cocoa.Touch.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\shared\usis.dev.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\shared\AssemblyProductInfo.cs">
+      <Link>Properties\AssemblyProductInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared\AssemblyVersionInfo.cs">
+      <Link>Properties\AssemblyVersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="AppLayoutSnapIn.cs" />
+    <Compile Include="Net\HttpNetworkOperation.cs" />
+    <Compile Include="UIKit\DetailViewController.cs" />
+    <Compile Include="UIKit\DetailViewLayout.cs" />
+    <Compile Include="UIKit\DetailViewTextRow.cs" />
+    <Compile Include="Framework\Application.cs" />
+    <Compile Include="Framework\USApplicationDelegate.cs" />
+    <Compile Include="UIKit\FullScreenLabelViewController.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Net\HttpNetworkTask.cs" />
+    <Compile Include="Net\HttpNetworkTaskApplicationExtension.cs" />
+    <Compile Include="Net\HttpResponse.cs" />
+    <Compile Include="Net\NetworkOperationPool.cs" />
+    <Compile Include="Net\UrlConnectionNetworkTask.cs" />
+    <Compile Include="Foundation\FoundationExtensions.cs" />
+    <Compile Include="Foundation\NSErrorException.cs" />
+    <Compile Include="Net\JsonWebServiceNetworkOperation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PushNotification\RegisterForRemoteNotificationNetworkOperation.cs" />
+    <Compile Include="Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Framework\UIApplicationExtensions.cs" />
+    <Compile Include="UIKit\ListViewController.cs" />
+    <Compile Include="UIKit\PushViewCommand.cs" />
+    <Compile Include="UIKit\TableViewController.cs" />
+    <Compile Include="UIKit\TableViewSource.cs" />
+    <Compile Include="UIKit\UIApplicationExtensions.cs" />
+    <Compile Include="UIKit\UIViewControllerExtensions.cs" />
+    <Compile Include="UIKit\ViewCommand.cs" />
+    <Compile Include="UIKit\ViewControllerAttributeName.cs" />
+    <Compile Include="USApplicationDelegate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\shared\usis.dev.snk">
+      <Link>usis.dev.snk</Link>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Strings.de.resx">
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PushNotification\usis.PushNotification.Portable\usis.PushNotification.Portable.csproj">
+      <Project>{aab2273e-ad0d-4f9f-aec1-f9076d20edb6}</Project>
+      <Name>usis.PushNotification.Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\usis.Framework.iOS\usis.Framework.iOS.csproj">
+      <Project>{e20573b4-1bb7-407a-a6f8-814472945f75}</Project>
+      <Name>usis.Framework.iOS</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
+    <ProjectReference Include="..\usis.Mobile.iOS\usis.Mobile.iOS.csproj">
+      <Project>{2ba9a99d-8382-4621-9f25-eecbf6e25d2e}</Project>
+      <Name>usis.Mobile.iOS</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
+    <ProjectReference Include="..\usis.Platform.iOS\usis.Platform.iOS.csproj">
+      <Project>{07cd8bd8-c014-4952-955b-9d8f9352b75a}</Project>
+      <Name>usis.Platform.iOS</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\..\shared\CustomDictionary.xml">
+      <Link>CustomDictionary.xml</Link>
+    </CodeAnalysisDictionary>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+</Project>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="ece7a028-920a-469c-8965-a176f3f20ac0" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>
+        The topics in this section describe the various changes made to the <legacyBold>usis BITS Class Library</legacyBold>
+        over the life of the project.
+      </para>
+    </introduction>
+
+    <section>
+      <title>Version History</title>
+      <content>
+        <para>Select a version below to see a description of its changes.</para>
+
+        <list class="bullet">
+          <listItem>
+            <para>
+              <link xlink:href="46be5e3d-c1ac-4210-bb07-2a5775645b2c" />
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <link xlink:href="e9a087fb-0d68-4612-a94e-560a92593b22" />
+              (first public release to NuGet)
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <link xlink:href="26e45697-fade-4942-884d-e2ab801e6303" />
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <link xlink:href="c2104512-e0a0-4f11-9368-b8aab6c40ac8" />
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <link xlink:href="9b3315d1-23e9-4d66-8bfc-aa9eb642d1bc" />
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <link xlink:href="58ebf97f-001c-4b15-a6e6-2521086171e0" />
+            </para>
+          </listItem>
+        </list>
+
+      </content>
+    </section>
+
+    <relatedTopics>
+      <link xlink:href="a058822e-56e4-43b5-a242-d446e2dc3946" />
+    </relatedTopics>
+
+  </developerConceptualDocument>
+</topic>

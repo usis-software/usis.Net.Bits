@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?><RequestViewModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Url>http://usis-push.com/WNSRouter/SendNotification</Url><Method>POST</Method><Headers><string>Content-Type: application/json</string><string>Authorization: Basic QWRtaW5pc3RyYXRvcjpjYSw5Mzk1MA==</string></Headers><Body>{&#xD;
+  "deviceIdentifier": "30e6f006-bc69-47aa-9048-32297209526f",&#xD;
+  "payload": "&lt;toast&gt;&lt;visual&gt;&lt;binding template='ToastText01'&gt;&lt;text id='1'&gt;Hello World!&lt;/text&gt;&lt;/binding&gt;&lt;/visual&gt;&lt;/toast&gt;"&#xD;
+}</Body></RequestViewModel>

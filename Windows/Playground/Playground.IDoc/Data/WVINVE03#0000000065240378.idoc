@@ -1,0 +1,22 @@
+﻿EDI_DC40  1000000000065240378731 3012  WVINVE03                                                    WVINVE                                     WVINVESAPA51    LS  A51CLNT100                                                                                           A000000059KU  0000205566                                                                                           20170904113236                                                                                                                20170904113236
+E2WVINH001                    1000000000065240378000001000000027559      0100284922          2017 20170802                                                                     Siebert, Ronny                      0160      WMF GmbH Kaffeemasch.KDT           Kundendiensttechniker
+E2WVINI001                    100000000006524037800000200000103001      006 000000003315795000       ROH-FREMD      1                    PCE                                        EUR                  Lager               PTC-HEIZUNG
+E2WVI01                       1000000000065240378000003000002044050982139546            HEXPCE
+E2WVINI001                    100000000006524037800000400000103002      006 000000003315905000       ROH-FREMD      1                    PCE                                        EUR                  Lager               TRANSFORMATOR 20V/120VA
+E2WVI01                       1000000000065240378000005000004044050982139744            HEXPCE
+E2WVINI001                    100000000006524037800000600000103003      006 000000003315927000       ROH-FREMD      1                    PCE                                        EUR                  Lager               TRAFO
+E2WVI01                       1000000000065240378000007000006044050982139843            HEXPCE
+E2WVINI001                    100000000006524037800000800000103004      006 000000003315930000       ROH-FREMD      1                    PCE                                        EUR                  Lager               SCHLüSSELSCHALTER 4-STUFIG
+E2WVI01                       1000000000065240378000009000008044050982139867            HEXPCE
+E2WVINI001                    100000000006524037800001000000103005      006 000000003315930100       ROH-FREMD      1                    PCE                                        EUR                  Lager               HAUPTSCHLUESSEL, ERSATZ
+E2WVI01                       1000000000065240378000011000010044050982139874            HEXPCE
+E2WVINI001                    100000000006524037800001200000103006      006 000000003315930200       ROH-FREMD      1                    PCE                                        EUR                  Lager               NEBENSCHLUESSEL, ERSATZ
+E2WVI01                       1000000000065240378000013000012044050982139881            HEXPCE
+E2WVINI001                    100000000006524037800001400000103007      006 000000003315931000       ROH-FREMD      1                    PCE                                        EUR                  Lager               BRUEHER-ENDSCHALTER ESP
+E2WVI01                       1000000000065240378000015000014044050982139898            HEXPCE
+E2WVINI001                    100000000006524037800001600000103008      006 000000003315933000       ROH-FREMD      1                    PCE                                        EUR                  Lager               HEIZKOERPER 6KW-400V ESP
+E2WVI01                       1000000000065240378000017000016044050982139928            HEXPCE
+E2WVINI001                    100000000006524037800001800000103009      006 000000003315934000       ROH-FREMD      1                    PCE                                        EUR                  Lager               SCHALTER HANDEINWURF ESP.
+E2WVI01                       1000000000065240378000019000018044050982140016            HEXPCE
+E2WVINI001                    100000000006524037800002000000103010      006 000000003315937099       HALB-EIGEN     1                    PCE                                        EUR                  Lager               LEISTUNGSSTUFE ESPR. EINGRUPPIG
+E2WVI01                       1000000000065240378000021000020044050982140054            HEXPCE

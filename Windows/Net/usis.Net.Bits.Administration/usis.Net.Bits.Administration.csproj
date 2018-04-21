@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DB15D195-28E8-456F-BB3E-07BCB8268197}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>usis.Net.Bits.Administration</RootNamespace>
+    <AssemblyName>usis.Net.Bits.Administration</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\..\shared\usis.AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\..\shared\usis.AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\shared\usis.dev.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Dialogs\AddFileDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\AddFileDialog.Designer.cs">
+      <DependentUpon>AddFileDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\CreateJobDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\CreateJobDialog.Designer.cs">
+      <DependentUpon>CreateJobDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EnumerableInterfaceExtensions.cs" />
+    <Compile Include="FileListView.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Icons.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Icons.resx</DependentUpon>
+    </Compile>
+    <Compile Include="JobListView.cs" />
+    <Compile Include="JobNode.cs" />
+    <Compile Include="Dialogs\JobProgressControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dialogs\JobProgressControl.Designer.cs">
+      <DependentUpon>JobProgressControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\JobPropertiesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dialogs\JobPropertiesControl.Designer.cs">
+      <DependentUpon>JobPropertiesControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JobPropertyPages.cs" />
+    <Compile Include="ManagementConsole\PropertyPage.cs" />
+    <Compile Include="Properties\AssemblyVersionInfo.cs" />
+    <Compile Include="RootNode.cs" />
+    <Compile Include="SnapIn.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SnapInInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\shared\usis.dev.snk">
+      <Link>usis.dev.snk</Link>
+    </None>
+    <None Include="usisBITSAdmin.msc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ManagementConsole, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.ManagementConsole\3.0.0.0__31bf3856ad364e35\Microsoft.ManagementConsole.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Platform\usis.Platform.Windows\usis.Platform.Windows.csproj">
+      <Project>{9f09855d-ef9a-4807-9dd6-58acec55128a}</Project>
+      <Name>usis.Platform.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\usis.ManagementConsole\usis.ManagementConsole.csproj">
+      <Project>{8f5a8c68-9107-4fa3-be87-c6dc4597de47}</Project>
+      <Name>usis.ManagementConsole</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\usis.Windows.Forms\usis.Windows.Forms.csproj">
+      <Project>{092dbc20-59ad-4c0d-80a8-65a156a25c2f}</Project>
+      <Name>usis.Windows.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\usis.Net.Bits\usis.Net.Bits.csproj">
+      <Project>{3933777a-ede6-4b05-8907-ba51cc92be37}</Project>
+      <Name>usis.Net.Bits</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Dialogs\AddFileDialog.resx">
+      <DependentUpon>AddFileDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\CreateJobDialog.resx">
+      <DependentUpon>CreateJobDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Icons.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Icons.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\JobProgressControl.resx">
+      <DependentUpon>JobProgressControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\JobPropertiesControl.resx">
+      <DependentUpon>JobPropertiesControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\..\shared\CustomDictionary.xml">
+      <Link>CustomDictionary.xml</Link>
+    </CodeAnalysisDictionary>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico\server_client_exchange.ico" />
+    <None Include="Resources\ico\server_from_client.ico" />
+    <None Include="Resources\ico\server_to_client.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\ico\data_add.ico" />
+    <Content Include="Resources\ico\data_copy.ico" />
+    <Content Include="Resources\ico\data_delete.ico" />
+    <Content Include="Resources\ico\data_down.ico" />
+    <Content Include="Resources\ico\data_new.ico" />
+    <Content Include="Resources\ico\data_ok.ico" />
+    <Content Include="Resources\ico\data_up.ico" />
+    <Content Include="Resources\ico\document_add.ico" />
+    <Content Include="Resources\ico\document_down.ico" />
+    <Content Include="Resources\ico\document_up.ico" />
+    <Content Include="Resources\ico\element_down.ico" />
+    <Content Include="Resources\ico\element_up.ico" />
+    <Content Include="Resources\ico\media_pause.ico" />
+    <Content Include="Resources\ico\media_play.ico" />
+    <Content Include="Resources\ico\user1_back.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>echo $(FrameworkDir)\InstallUtil /LogToConsole=true /LogFile= $(TargetPath)</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>xcopy /d /y $(SolutionDir)$(ConfigurationName)\$(ProjectName).About.dll $(TargetDir)</PreBuildEvent>
+  </PropertyGroup>
+</Project>

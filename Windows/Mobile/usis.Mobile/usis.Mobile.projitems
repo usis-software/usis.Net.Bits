@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>6d2eb96c-817e-46ba-aee0-6e9f33b24b51</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>usis.Mobile</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AppLayout.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AppLayoutExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AppModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ICommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewDescription.cs" />
+  </ItemGroup>
+</Project>

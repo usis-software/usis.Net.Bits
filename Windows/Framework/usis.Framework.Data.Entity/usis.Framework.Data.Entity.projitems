@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>c27fbb01-dfe9-48fe-8cb8-b2acb19ca50a</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>usis.Framework.Entity</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)DBContextBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DBContextModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EntityBase.cs" />
+  </ItemGroup>
+</Project>

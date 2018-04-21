@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1AAA73FA-854A-426D-BAEA-855270DAB6D7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>usis.Platform</RootNamespace>
+    <AssemblyName>usis.Platform</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\usis.AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\usis.Platform.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>
+    </NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\usis.AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <DocumentationFile>bin\Release\usis.Platform.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\usis.dev.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="ArgumentNullOrEmptyException.cs" />
+    <Compile Include="ArgumentNullOrWhiteSpaceException.cs" />
+    <Compile Include="InstallerExtensions.cs" />
+    <Compile Include="Properties\AssemblyProductInfo.cs" />
+    <Compile Include="Properties\AssemblyVersionInfo.cs" />
+    <Compile Include="AssemblyExtensions.cs" />
+    <Compile Include="CommandLine.cs" />
+    <Compile Include="Interop\HResult.cs" />
+    <Compile Include="Interop\IEnumSTATPROPSETSTG.cs" />
+    <Compile Include="Interop\IEnumSTATPROPSTG.cs" />
+    <Compile Include="Interop\IEnumSTATSTG.cs" />
+    <Compile Include="Interop\IID.cs" />
+    <Compile Include="Interop\IPropertySetStorage.cs" />
+    <Compile Include="Interop\IPropertyStorage.cs" />
+    <Compile Include="Interop\IRootStorage.cs" />
+    <Compile Include="Interop\IStorage.cs" />
+    <Compile Include="Interop\NativeMethods.cs" />
+    <Compile Include="Interop\PROPSPEC.cs" />
+    <Compile Include="Interop\PROPVARIANT.cs" />
+    <Compile Include="Interop\STATPROPSETSTG.cs" />
+    <Compile Include="Interop\STATPROPSTG.cs" />
+    <Compile Include="Interop\STGOPTIONS.cs" />
+    <Compile Include="SerializationInfoExtensions.cs" />
+    <Compile Include="Windows\EventLogExtension.cs" />
+    <Compile Include="Windows\HttpServer.cs" />
+    <Compile Include="Windows\RegistryKeyExtensions.cs" />
+    <Compile Include="Windows\RegistryValueStore.cs" />
+    <Compile Include="StructuredStorage\ElementStatistics.cs" />
+    <Compile Include="StructuredStorage\Enumerations.cs" />
+    <Compile Include="StructuredStorage\PropertySet.cs" />
+    <Compile Include="StructuredStorage\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StructuredStorage\Storage.cs" />
+    <Compile Include="StructuredStorage\StorageStream.cs" />
+    <Compile Include="StructuredStorage\Extensions.cs" />
+    <Compile Include="TempFile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ExceptionMessage.Designer.cs">
+      <DependentUpon>ExceptionMessage.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Windows\ServiceStatusMonitor.cs" />
+    <Compile Include="Windows\Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ExceptionMessage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionMessage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StructuredStorage\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\usis.dev.snk">
+      <Link>usis.dev.snk</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\CustomDictionary.xml">
+      <Link>Properties\CustomDictionary.xml</Link>
+      <SubType>Designer</SubType>
+    </CodeAnalysisDictionary>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.ServiceProcess" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\usis.Platform.Portable\usis.Platform.Portable.csproj">
+      <Project>{3a4bf168-e6a4-45d5-aa69-ce4fc42e9f2e}</Project>
+      <Name>usis.Platform.Portable</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Better service shutdown when running a ServicesHost in console mode.</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>usis Platform Windows Services Host Library</tags>
+    <dependencies>
+      <dependency id="usis.Platform.Windows" version="4.0.1" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D13F37DE-F6F2-4F8A-BAC7-DDD0B7B040F0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>usis.Framework</RootNamespace>
+    <AssemblyName>usis.Framework</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\usis.AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\usis.Framework.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\usis.AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Release\usis.Framework.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\usis.dev.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\usis.Platform\Properties\AssemblyProductInfo.cs">
+      <Link>Properties\AssemblyProductInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\usis.Platform\Properties\AssemblyVersionInfo.cs">
+      <Link>Properties\AssemblyVersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="Application.cs" />
+    <None Include="ApplicationInstanceInfo.cs" />
+    <Compile Include="ApplicationInterfaceExtensions.cs" />
+    <Compile Include="Configuration\PropertyConfigurationElement.cs" />
+    <Compile Include="Configuration\SnapInConfigurationElement.cs" />
+    <Compile Include="Data\DataSourceModel.cs" />
+    <None Include="Data\Entity\DbContextModel.cs" />
+    <None Include="Data\Entity\EntityBase.cs" />
+    <Compile Include="Configuration\ApplicationConfigurationElement.cs" />
+    <Compile Include="Configuration\ApplicationConfigurationSection.cs" />
+    <Compile Include="Configuration\ConfigurationRoot.cs" />
+    <Compile Include="Data\DataSourceApplicationExtension.cs" />
+    <None Include="Data\DataSourceRepositoryExtension.cs" />
+    <Compile Include="ExtensionSnapIn.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="HostedApplicationProxy.cs" />
+    <Compile Include="ServiceModel\ServiceBase.cs" />
+    <Compile Include="Windows\RegistrySettings.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceModel\NamedPipeClientBase.cs" />
+    <Compile Include="ServiceModel\NamedPipeServiceHostSnapIn.cs" />
+    <Compile Include="ServiceModel\ServiceHostBaseSnapIn.cs" />
+    <Compile Include="ServiceModel\ServiceHostConfigurator.cs" />
+    <Compile Include="ServiceModel\Web\WebServiceHostSnapIn.cs" />
+    <Compile Include="ServiceSnapIn.cs" />
+    <Compile Include="SnapInActivator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\usis.Data\usis.Data.csproj">
+      <Project>{f7af70e5-c056-4be4-a75f-0b41e0a503a0}</Project>
+      <Name>usis.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\usis.Framework.Portable\usis.Framework.Portable.csproj">
+      <Project>{2bc0b1e5-3424-4bba-bc65-27e621308ba6}</Project>
+      <Name>usis.Framework.Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\usis.Platform.Portable\usis.Platform.Portable.csproj">
+      <Project>{3a4bf168-e6a4-45d5-aa69-ce4fc42e9f2e}</Project>
+      <Name>usis.Platform.Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\usis.Platform\usis.Platform.csproj">
+      <Project>{1aaa73fa-854a-426d-baea-855270dab6d7}</Project>
+      <Name>usis.Platform</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\usis.dev.snk">
+      <Link>usis.dev.snk</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\CustomDictionary.xml">
+      <Link>Properties\CustomDictionary.xml</Link>
+    </CodeAnalysisDictionary>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

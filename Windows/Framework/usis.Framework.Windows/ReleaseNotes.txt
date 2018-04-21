@@ -1,0 +1,74 @@
+﻿====================================
+usis.Framework.Windows Release Notes
+====================================
+
+Version 4.0.5
+=============
+
+- usis.Framework.Configuration.ApplicationConfiguration.AppBasePath property depricated.
+- usis.Framework.Configuration.ApplicationConfiguration.ConfigurationFile property added.
+- usis.Framework.Configuration.ApplicationConfiguration.ApplicationBase property added.
+- usis.Framework.Data.ApplicationInterfaceExtensions.AddDataSourceExtensionFromConnectionStrings method added.
+
+Version 4.0.4 - 2017-12-20
+==========================
+
+- IJob.RemoveWhenCompleted property added.
+- JobEngineExtensions.RunAsJob overload added.
+- Breaking change: WcfServiceHostFactory does no longer create a working service endpoint without a configuration file.
+- JobEngine exception handling: report exception to event log.
+- IJob.Token property added: provides the ability to cancel a job.
+- JobEngine: jobs are requested to cancel on shutdown.
+- IJobEngineMgmt interface added.
+- JobEngineMgmt class added.
+
+Dependencies
+------------
+usis.Platform.Windows (4.0.4)
+
+
+Version 4.0.3 - 2017-11-04
+==========================
+
+- JobProgress class added.
+- JobEngineExtensions.RunAsJob(this IContextInjectable<IApplication>, Action<IJob>) method added.
+- JobEngine.GetProgress(Guid) returns a JobProgress object.
+- JobStatus.Failed added.
+- JobEngine.GetProgress(Guid, bool) method added.
+
+NuGet
+-----
+JobEngine/Job enhancments.
+
+Dependencies
+------------
+usis.Platform.Windows (4.0.3)
+
+
+Version 4.0.2 - 2017-10-25
+==========================
+
+- If an application extension implements IDisposable the extension is disposed after detaching.
+- ApplicationInterfaceExtensions.With method added.
+- ApplicationInterfaceExtensions.With(bool) method added.
+- ApplicationInterfaceExtensions.Find method marked as obsolete.
+- ApplicationInterfaceExtensions.Use method marked as obsolete.
+- JobEngine class added.
+- IJob interface added.
+- Job<TResult> class added.
+- JobResult<TResult> class added.
+- JobEngineExtensions class added.
+
+NuGet
+-----
+JobEngine framework added.
+
+Dependencies
+------------
+usis.Platform.Windows (4.0.2)
+
+
+Version 4.0.1 - 2017-10-11
+==========================
+
+This is the initial release.

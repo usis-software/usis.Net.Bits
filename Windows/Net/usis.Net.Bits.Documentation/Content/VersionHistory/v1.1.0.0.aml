@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="26e45697-fade-4942-884d-e2ab801e6303" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>
+        Version 1.1.0 was released on November 11, 2017.
+      </para>
+    </introduction>
+
+    <section>
+      <title>Changes in This Release</title>
+      <content>
+
+        <list class="bullet">
+          <listItem>
+            <para>
+              <codeEntityReference qualifyHint="true">T:usis.Net.Bits.BackgroundCopyNotifyCommandLine</codeEntityReference> class added.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <codeEntityReference qualifyHint="true">P:usis.Net.Bits.BackgroundCopyJob.NotifyCommandLine</codeEntityReference> property added.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <codeEntityReference qualifyHint="true">P:usis.Net.Bits.BackgroundCopyJob.ReplyFileName</codeEntityReference> property added.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <codeEntityReference qualifyHint="true">T:usis.Net.Bits.BackgroundCopyJobReplyProgress</codeEntityReference> class added.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <codeEntityReference qualifyHint="true">M:usis.Net.Bits.BackgroundCopyJob.RetrieveReplyProgress</codeEntityReference> method added.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <codeEntityReference qualifyHint="true">P:usis.Net.Bits.BackgroundCopyJob.ReplyFileName</codeEntityReference> getter throws no exception for other job types that <codeEntityReference qualifyHint="true">F:usis.Net.Bits.BackgroundCopyJobType.UploadReply</codeEntityReference>
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <codeEntityReference qualifyHint="true">M:usis.Net.Bits.BackgroundCopyJob.RetrieveReplyData</codeEntityReference> method added.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <codeEntityReference qualifyHint="true">T:usis.Net.Bits.BackgroundCopyAuthenticationTarget</codeEntityReference> enumeration added.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <codeEntityReference qualifyHint="true">T:usis.Net.Bits.BackgroundCopyAuthenticationScheme</codeEntityReference> enumeration added.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Even dispose objects when methods returning RPC_E_DISCONNECTED.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <codeEntityReference qualifyHint="true">M:usis.Net.Bits.BackgroundCopyJob.SetCredentials(usis.Net.Bits.BackgroundCopyAuthenticationTarget,usis.Net.Bits.BackgroundCopyAuthenticationScheme,System.String,System.String)</codeEntityReference> method added.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <codeEntityReference qualifyHint="true">M:usis.Net.Bits.BackgroundCopyJob.RemoveCredentials(usis.Net.Bits.BackgroundCopyAuthenticationTarget,usis.Net.Bits.BackgroundCopyAuthenticationScheme)</codeEntityReference> method added.
+            </para>
+          </listItem>
+        </list>
+
+      </content>
+    </section>
+
+    <relatedTopics>
+      <link xlink:href="ece7a028-920a-469c-8965-a176f3f20ac0" />
+    </relatedTopics>
+
+  </developerConceptualDocument>
+</topic>

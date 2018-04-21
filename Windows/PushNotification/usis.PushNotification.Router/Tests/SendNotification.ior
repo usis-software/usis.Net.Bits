@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?><RequestViewModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Url>http://localhost/APNsRouter/SendNotification</Url><Method>POST</Method><Headers><string>Content-Type: application/json</string></Headers><Body>{&#xD;
+  "x_deviceToken":"y6OKihslK3BYwTjVdvL27Fj2sYa9lXni7oFJl5LoJIk=",&#xD;
+  "_deviceToken":"Yd4UvA5YOwMDgwlc+sNPTC25MbknSnf5jqPzczIOgNo=",&#xD;
+  "__deviceToken":"yIWCodhzfYD++bRjdVBn3mdPyA9ae1ew7INBSiMgf4I=",&#xD;
+  "___deviceToken":"x9QOZGy20Je3tzyRtWJEoII3zakoLcxz8icx6cdC77g=",&#xD;
+  "____deviceToken":"+BpD78NdcVbUHHjImZHUl6+08ChtweXNcPTvMQNtmaU=",&#xD;
+  "hexDeviceToken":"7799906F7212B667C421BBB4D83F616556B872E329DCD976FA6D2F3113D79104",&#xD;
+  "payload":"{\"aps\":{\"alert\":\"Hello World!\",\"badge\":1,\"sound\":\"sound.caf\"}}"&#xD;
+}</Body></RequestViewModel>

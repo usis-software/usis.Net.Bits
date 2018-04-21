@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{47DD216C-5561-4DCD-A9E0-839FE8C38A73}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>usis.PushNotification.Administration</RootNamespace>
+    <AssemblyName>usis.PushNotification.Administration</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\..\shared\usis.AllRules.ruleset</CodeAnalysisRuleSet>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\..\shared\usis.AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\shared\usis.dev.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\usis.icon.32x32.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\usis.PushNotification.Router\Properties\AssemblyProductInfo.cs">
+      <Link>Properties\AssemblyProductInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\usis.PushNotification.Router\Properties\AssemblyVersionInfo.cs">
+      <Link>Properties\AssemblyVersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="APNs\ApnsChannelListNode.cs" />
+    <Compile Include="APNs\ApnsChannelListView.cs" />
+    <Compile Include="APNs\ApnsChannelNode.cs" />
+    <Compile Include="APNs\ApnsDeviceListView.cs" />
+    <Compile Include="Dialogs\ApnsChannelPropertiesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ApnsChannelPropertiesControl.Designer.cs">
+      <DependentUpon>ApnsChannelPropertiesControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\WnsNewChannelDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\WnsNewChannelDialog.Designer.cs">
+      <DependentUpon>WnsNewChannelDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ChannelPropertyPage.cs" />
+    <Compile Include="Dialogs\EnterPasswordDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\EnterPasswordDialog.Designer.cs">
+      <DependentUpon>EnterPasswordDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ApnsSendNotificationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ApnsSendNotificationDialog.Designer.cs">
+      <DependentUpon>ApnsSendNotificationDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\WnsChannelPropertiesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dialogs\WnsChannelPropertiesControl.Designer.cs">
+      <DependentUpon>WnsChannelPropertiesControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Images32x32.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Images32x32.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ApnsNewChannelDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ApnsNewChannelDialog.Designer.cs">
+      <DependentUpon>ApnsNewChannelDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Images16x16.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Images16x16.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ModalDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalDialog.Designer.cs">
+      <DependentUpon>ModalDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RouterNode.cs" />
+    <Compile Include="Router.cs" />
+    <Compile Include="SnapIn.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SnapInInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StartView.cs" />
+    <Compile Include="StartViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StartViewControl.Designer.cs">
+      <DependentUpon>StartViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="WNS\WnsChannelListNode.cs" />
+    <Compile Include="WNS\WnsChannelListView.cs" />
+    <Compile Include="WNS\WnsChannelNode.cs" />
+    <Compile Include="WNS\WnsDeviceListView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\shared\usis.dev.snk">
+      <Link>usis.dev.snk</Link>
+    </None>
+    <None Include="usisPNRouter.msc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Dialogs\ApnsChannelPropertiesControl.resx">
+      <DependentUpon>ApnsChannelPropertiesControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\WnsNewChannelDialog.de.resx">
+      <DependentUpon>WnsNewChannelDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\WnsNewChannelDialog.resx">
+      <DependentUpon>WnsNewChannelDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\EnterPasswordDialog.resx">
+      <DependentUpon>EnterPasswordDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ApnsSendNotificationDialog.resx">
+      <DependentUpon>ApnsSendNotificationDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\WnsChannelPropertiesControl.resx">
+      <DependentUpon>WnsChannelPropertiesControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images32x32.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Images32x32.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ApnsNewChannelDialog.de.resx">
+      <DependentUpon>ApnsNewChannelDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ApnsNewChannelDialog.resx">
+      <DependentUpon>ApnsNewChannelDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images16x16.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Images16x16.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModalDialog.resx">
+      <DependentUpon>ModalDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartViewControl.resx">
+      <DependentUpon>StartViewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\32x32\gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\32x32\gear_error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\..\shared\CustomDictionary.xml">
+      <Link>CustomDictionary.xml</Link>
+    </CodeAnalysisDictionary>
+    <Content Include="Resources\16x16\certificate_add.png" />
+    <Content Include="Resources\16x16\certificate_delete.png" />
+    <Content Include="Resources\16x16\certificate_error.png" />
+    <Content Include="Resources\16x16\certificate_ok.png" />
+    <Content Include="Resources\16x16\gear.png" />
+    <Content Include="Resources\16x16\gear_error.png" />
+    <Content Include="Resources\16x16\gear_run.png" />
+    <Content Include="Resources\16x16\gear_stop.png" />
+    <Content Include="Resources\16x16\message.png" />
+    <Content Include="Resources\16x16\restart.png" />
+    <Content Include="Resources\16x16\satellite_dish.png" />
+    <Content Include="Resources\16x16\satellite_dish_add.png" />
+    <Content Include="Resources\16x16\start.png" />
+    <Content Include="Resources\16x16\stop.png" />
+    <Content Include="Resources\16x16\usis_icon.png" />
+    <Content Include="Resources\32x32\certificate_add.png" />
+    <Content Include="Resources\32x32\certificate_delete.png" />
+    <Content Include="Resources\32x32\certificate_error.png" />
+    <Content Include="Resources\32x32\certificate_ok.png" />
+    <Content Include="Resources\32x32\satellite_dish.png" />
+    <Content Include="Resources\32x32\iPhone.png" />
+    <Content Include="Resources\16x16\iPhone.png" />
+    <Content Include="Resources\32x32\gear_run.png" />
+    <Content Include="Resources\32x32\gear_stop.png" />
+    <Content Include="Resources\32x32\message.png" />
+    <Content Include="Resources\32x32\satellite_dish_add.png" />
+    <Content Include="Resources\32x32\usis_icon.png" />
+    <Content Include="Resources\usis.icon.32x32.ico" />
+    <Content Include="Resources\usis.icon.64x64.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ManagementConsole, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\MMC\v3.0\Microsoft.ManagementConsole.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\usis.Framework.ManagementConsole\usis.Framework.ManagementConsole.csproj">
+      <Project>{fce894a6-1143-4b70-b58b-f23b4c290cc5}</Project>
+      <Name>usis.Framework.ManagementConsole</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\usis.Framework.Windows\usis.Framework.Windows.csproj">
+      <Project>{e541f9cd-208c-4602-a3d7-de2e4535f6f5}</Project>
+      <Name>usis.Framework.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Platform\usis.Platform.Windows\usis.Platform.Windows.csproj">
+      <Project>{9f09855d-ef9a-4807-9dd6-58acec55128a}</Project>
+      <Name>usis.Platform.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\usis.ManagementConsole\usis.ManagementConsole.csproj">
+      <Project>{8f5a8c68-9107-4fa3-be87-c6dc4597de47}</Project>
+      <Name>usis.ManagementConsole</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\usis.PushNotification.Interfaces\usis.PushNotification.Interfaces.csproj">
+      <Project>{bfb0ebb7-8006-4c98-9c4c-e415309bb7d6}</Project>
+      <Name>usis.PushNotification.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\usis.PushNotification.Portable\usis.PushNotification.Portable.csproj">
+      <Project>{aab2273e-ad0d-4f9f-aec1-f9076d20edb6}</Project>
+      <Name>usis.PushNotification.Portable</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>echo $(FrameworkDir)\InstallUtil /LogToConsole=true /LogFile= $(TargetPath)</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>xcopy /d /y $(SolutionDir)$(ConfigurationName)\$(ProjectName).About.dll $(TargetDir)
+xcopy /d /y $(SolutionDir)PushNotification\usis.PushNotification.Documentation\Help\usisPNRouter.chm $(TargetDir)
+exit 0</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

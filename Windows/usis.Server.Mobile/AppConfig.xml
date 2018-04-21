@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<application name="usis Mobile" appDomain="usis.Mobile">
+  <snapIn type="usis.Server.Mobile.SnapIn, usis.Server.Mobile"/>
+</application>

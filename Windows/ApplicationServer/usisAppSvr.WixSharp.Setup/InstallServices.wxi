@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Include>
+
+  <ServiceInstall
+    Id="usisAppSvr"
+    Name="usisAppSvr"
+    DisplayName="usis Application Server"
+    Description="Provides services to host modular applications that consists of loadable components that are called snap-ins."
+    Type="shareProcess"
+    Start="auto"
+    ErrorControl="normal"
+    Arguments="-service">
+    <ServiceConfig DelayedAutoStart="yes" OnInstall="yes" OnReinstall="no" OnUninstall="no" />
+  </ServiceInstall>
+  <ServiceControl Id="StopusisAppSvr" Name="usisAppSvr" Stop="both" Wait="yes" />
+  <ServiceControl Id="StartusisAppSvr" Name="usisAppSvr" Start="install" Wait="no" />
+  <ServiceControl Id="RemoveusisAppSvr" Name="usisAppSvr" Remove="uninstall" Wait="yes" />
+
+  <ServiceInstall
+    Id="usisAppSvrAdmin"
+    Name="usisAppSvrAdmin"
+    DisplayName="usis Application Server Administration Service"
+    Description="Provides services to administrate an usis Application Server."
+    Type="shareProcess"
+    Start="demand"
+    ErrorControl="normal"
+    Arguments="-service">
+    <ServiceConfig DelayedAutoStart="yes" OnInstall="yes" OnReinstall="no" OnUninstall="no" />
+  </ServiceInstall>
+  <ServiceControl Id="StopusisAppSvrAdmin" Name="usisAppSvrAdmin" Stop="both" Wait="yes" />
+  <ServiceControl Id="StartusisAppSvrAdmin" Name="usisAppSvrAdmin" Start="install" Wait="no" />
+  <ServiceControl Id="RemoveusisAppSvrAdmin" Name="usisAppSvrAdmin" Remove="uninstall" Wait="yes" />
+
+</Include>

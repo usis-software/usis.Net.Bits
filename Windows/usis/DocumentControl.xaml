@@ -1,0 +1,35 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             xmlns:local="clr-namespace:usis.Windows" x:Class="usis.Windows.DocumentControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <dxb:BarManager>
+        <dxb:BarManager.Bars>
+            <dxb:Bar x:Name="mainMenuBar" Caption="Main Menu" IsMainMenu="True">
+                <dxb:Bar.DockInfo>
+                    <dxb:BarDockInfo ContainerType="Top"/>
+                </dxb:Bar.DockInfo>
+                <dxb:BarSubItem Name="mFile" Content="_File" MergeType="MergeItems">
+                    <dxb:BarButtonItem x:Name="bClose" Content="_Close" KeyGesture="Ctrl+F4" Command="{Binding CloseCommand, Mode=OneWay}" MergeOrder="150"/>
+                    <dxb:BarItemLinkSeparator MergeOrder="150" BarItemName=""/>
+                    <dxb:BarButtonItem x:Name="bSaveAs" Content="Save As..." MergeOrder="150" Command="{Binding SaveAsCommand, Mode=OneWay}"/>
+                </dxb:BarSubItem>
+            </dxb:Bar>
+            <dxb:Bar
+				x:Name="toolBar">
+                <dxb:BarButtonItem x:Name="tool1" Content="Tool 1" MergeType="Default" MergeOrder="1" CategoryName="Tools"/>
+                <dxb:BarButtonItem x:Name="tool2" Content="Tool 2" MergeType="Default" MergeOrder="2" CategoryName="Tools"/>
+                <dxb:BarButtonItem x:Name="tool3" Content="Tool 3" MergeType="Default" MergeOrder="3" CategoryName="Tools"/>
+                <dxb:BarButtonItem x:Name="tool4" Content="Tool 4" MergeType="Default" MergeOrder="4" CategoryName="Tools"/>
+                <dxb:BarButtonItem x:Name="tool5" Content="Tool 5" MergeType="Default" MergeOrder="5" CategoryName="Tools"/>
+                <dxb:BarButtonItem x:Name="tool6" Content="Tool 6" MergeType="Default" MergeOrder="6" CategoryName="Tools"/>
+                <dxb:BarButtonItem x:Name="tool7" Content="Tool 7" MergeType="Default" MergeOrder="7" CategoryName="Tools"/>
+            </dxb:Bar>
+        </dxb:BarManager.Bars>
+        <DocumentViewer/>
+    </dxb:BarManager>
+</UserControl>

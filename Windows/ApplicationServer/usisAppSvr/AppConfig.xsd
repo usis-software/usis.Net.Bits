@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xsd:element name="application">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" name="property">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="value" type="xsd:anySimpleType" />
+            </xsd:sequence>
+            <xsd:attribute name="name" type="xsd:string" use="required" />
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" name="snapIn">
+          <xsd:complexType>
+            <xsd:attribute name="type" type="xsd:string" use="required" />
+            <xsd:attribute name="assemblyFile" type="xsd:string" use="optional" />
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string" use="optional" />
+      <xsd:attribute name="appDomain" type="xsd:string" use="optional" />
+      <xsd:attribute name="disabled" type="xsd:boolean" use="optional" />
+      <xsd:attribute name="appBasePath" type="xsd:string" use="optional" />
+      <xsd:attribute name="appConfigFile" type="xsd:string" use="optional" />
+    </xsd:complexType>
+  </xsd:element>
+</xs:schema>

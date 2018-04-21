@@ -1,0 +1,1 @@
+IF OBJECT_ID('dbo.vw_audiusGuV', 'V') IS NOT NULL DROP VIEW [dbo].[vw_audiusGuV]

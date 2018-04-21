@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<namespace name="usis">
+  <entity name="EntityBase" abstract="True">
+    <attribute name="Created" dataType="DateTime" nullable="False" />
+    <attribute name="Changed" dataType="DateTime" nullable="True" />
+    <attribute name="Deleted" dataType="Boolean" nullable="False" />
+  </entity>
+  <entity name="Activity" id="85810107-4b14-466c-b5f8-808bef684a09" base="usis.EntityBase">
+    <attribute name="Id" dataType="Id" nullable="False" />
+    <attribute name="Subject" dataType="String" nullable="False" />
+  </entity>
+  <entity name="Contact" />
+  <entity name="User">
+    <attribute name="Id" dataType="Id" />
+  </entity>
+  <entity name="Device" />
+</namespace>

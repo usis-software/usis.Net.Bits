@@ -1,0 +1,34 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:usis.Windows.Controls" x:Name="userControl"
+    x:Class="usis.Windows.Controls.PrintPreviewControl"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="300"
+    Width="480"
+    Height="320">
+    <Canvas>
+        <local:PagePreviewControl
+            x:Name="pagePreview"
+            x:FieldModifier="private"
+            Canvas.Left="0"
+            Canvas.Top="0"
+            Width="{Binding ActualWidth, ElementName=userControl, Mode=OneWay}"
+            Height="{Binding ActualHeight, ElementName=userControl, Mode=OneWay}"
+            PrintMargins="{Binding PrintMargins, ElementName=printMargins, Mode=TwoWay}"
+            />
+        <local:PrintMarginsControl
+            x:Name="printMargins"
+            x:FieldModifier="private"
+            Canvas.Left="{Binding PaperBorderRect.Left, ElementName=pagePreview, Mode=OneWay}"
+            Canvas.Top="{Binding PaperBorderRect.Top, ElementName=pagePreview, Mode=OneWay}"
+            Height="{Binding PaperBorderRect.Height, ElementName=pagePreview, Mode=OneWay}"
+            Width="{Binding PaperBorderRect.Width, ElementName=pagePreview, Mode=OneWay}"
+            ZoomFactor="{Binding ZoomFactor, ElementName=pagePreview, Mode=OneWay}"
+            PrintMargins="{Binding PrintMargins, ElementName=pagePreview, Mode=OneWay}"
+            />
+    </Canvas>
+</UserControl>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>1b0eac36-23fa-4250-8362-a4fe43ed5a1b</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>usis.Platform</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ArgumentNullOrEmptyException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ArgumentNullOrWhiteSpaceException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calendar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CollectionInterfaceExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CommandLine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContextInjectable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\BindingExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\BindingProperty.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DataSource.cs" />
+    <None Include="$(MSBuildThisFileDirectory)EnumerableInterfaceExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TypeExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IHierarchicalValueStorage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Progress.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProgressMonitor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)XmlExtensions.cs" />
+    <None Include="$(MSBuildThisFileDirectory)Data\DataSourceAdministration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\IBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\IBindingProperty.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\IBindingTarget.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExceptionEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SerializationInfoExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GuidExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HexString.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IInjectable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)INamedValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IReloadable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IValueStorage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ListInterfaceExtensions.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<topic id="b3a5d7a6-be61-46f6-a344-0626d792f076" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>
+        The usis Push Notification Router provides services to send push notifications to mobile devices
+        without the need to deal with the complexity of the underlying technology and infrastructure.
+      </para>
+    </introduction>
+
+    <section>
+      <title>About usis Push Notification Router</title>
+      <content>
+        <para>
+          <legacyBold>usisPNRouter</legacyBold> is Windows service application that can operate on-premises or in the cloud on a Windows server.
+          It provides an API as a web service for devices to register themselves to receive push notifications.
+        </para>
+        <para>
+          On the server side a Microsoft Management Console snap-in allows the administration of push notification channels.
+          These channels are responsible to dispatch and forward notifications to the appropriate platform-specific notification service
+          (i.e. APNs - Apple Push Notification service).
+          The configuration of these channels include the necessary certificates to authenticate with the notification services.
+          These certificates are stored in a local database on the server and are installed in the local certificate store.
+        </para>
+        <para>
+          The API to send notifications is a web service that can be easily used by any application back-end.
+          It allows sending notification to a single device or broadcast notifications to all registered devices.
+        </para>
+        <para>
+          All notification are stored in a database and then send to the platform notification service.
+          The API provides methods to retrieve the state of the notification that indicates whether the notification was sent or an error occurred.
+        </para>
+      </content>
+    </section>
+    <section>
+      <title>Requirements</title>
+      <content>
+        <list class="bullet">
+          <listItem>
+            <para>
+              Windows Server 2012 R2 or later
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              .NET Framework 4.6 or higher
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Supported database provider: Microsoft SQL Server or MySQL
+            </para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+
+    <!--
+    <section>
+      <title>Getting Started</title>
+      <content>
+        <para>
+          To get started, add a documentation source to the project (a Visual Studio solution, project, or
+          assembly and XML comments file).  See the <legacyBold>Getting Started</legacyBold> topics in the Sandcastle Help
+          File Builder's help file for more information.  The following default items are included in this project:
+        </para>
+
+        <list class="bullet">
+          <listItem>
+            <para>
+              <localUri>ContentLayout.content</localUri> - Use the content layout file to manage the
+              conceptual content in the project and define its layout in the table of contents.
+            </para>
+          </listItem>
+
+          <listItem>
+            <para>
+              The <localUri>.\media</localUri> folder - Place images in this folder that you will reference
+              from conceptual content using <codeInline>medialLink</codeInline> or <codeInline>mediaLinkInline</codeInline>
+              elements.  If you will not have any images in the file, you may remove this folder.
+            </para>
+          </listItem>
+
+          <listItem>
+            <para>
+              The <localUri>.\icons</localUri> folder - This contains a default logo for the help file.  You
+              may replace it or remove it and the folder if not wanted.  If removed or if you change the file name, update
+              the <ui>Transform Args</ui> project properties page by removing or changing the filename in the
+              <codeInline>logoFile</codeInline> transform argument.  Note that unlike images referenced from conceptual topics,
+              the logo file should have its <legacyBold>BuildAction</legacyBold> property set to <codeInline>Content</codeInline>.
+            </para>
+          </listItem>
+
+          <listItem>
+            <para>
+              The <localUri>.\Content</localUri> folder - Use this to store your conceptual topics.  You may
+              name the files and organize them however you like.  One suggestion is to lay the files out on disk as you have
+              them in the content layout file as shown in this project but the choice is yours.  Files can be added via the
+              Solution Explorer or from within the content layout file editor.  Files must appear in the content layout file
+              in order to be compiled into the help file.
+            </para>
+          </listItem>
+        </list>
+
+        <para>
+          See the <legacyBold>Conceptual Content</legacyBold> topics in the Sandcastle Help File Builder's
+          help file for more information.  See the <legacyBold> Sandcastle MAML Guide</legacyBold> for details on Microsoft
+          Assistance Markup Language (MAML) which is used to create these topics.
+        </para>
+      </content>
+    </section>
+    -->
+
+    <relatedTopics>
+      <link xlink:href="a8fb9bde-c8a9-49ec-b8cf-7ff376a55382" />
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

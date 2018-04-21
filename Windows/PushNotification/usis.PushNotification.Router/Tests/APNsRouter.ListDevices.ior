@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?><RequestViewModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Url>http://localhost/APNsRouter/ListDevices</Url><Method>POST</Method><Headers><string>Content-Type: application/json</string><string>Authorization: Basic QWRtaW5pc3RyYXRvcjpjYSw5Mzk1MA==</string></Headers><Body>{&#xD;
+    "bundleId": "de.usis.PNRouter",&#xD;
+    "environment": 0,&#xD;
+    "_firstRegistration": "2016-07-01T00:00:00+02:00"&#xD;
+}</Body></RequestViewModel>

@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?><RequestViewModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Url>http://localhost/APNsRouter.web/SendNotification</Url><Method>POST</Method><Headers><string>Content-Type: application/json</string><string>Authorization: Basic QWRtaW5pc3RyYXRvcjpjYSw5Mzk1MA==</string></Headers><Body>{&#xD;
+  "hexDeviceToken": "22C192D4CC2E90FDB3F47D0DB9B0B6659F7D5B070ECFB915357A31489AE372FF",&#xD;
+  "payload": "{\"aps\":{\"alert\":\"Answer to the Ultimate Question of Life, the Universe, and Everything!\",\"badge\":42,\"sound\":\"sound.caf\"}}"&#xD;
+}</Body></RequestViewModel>

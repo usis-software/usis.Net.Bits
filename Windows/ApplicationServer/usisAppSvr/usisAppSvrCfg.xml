@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<usis xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <application
+    name="usis Object Broker"
+    id="5e5b378e-a64f-45c4-a9ef-a790c69315d1"
+    domain="usis.ObjectBroker"
+    applicationBase="C:\Development\usis\usis.Server.ObjectBroker\bin\Debug"
+    appConfigFile="AppConfig.xml"
+    startType="Disabled">
+    <property
+      name="usis.Framework.Test">
+      <value
+        xsi:type="xsd:string">
+        TestProperty
+      </value>
+    </property>
+  </application>
+  <application
+    name="usis Mobile"
+    id="b16e1547-d108-41b8-a2b7-fe9428af0ea3"
+    domain="usis.Mobile"
+    applicationBase="C:\Development\usis\usis.Server.Mobile\bin\Debug"
+    appConfigFile="AppConfig.xml"
+    startType="Disabled" />
+  <application
+    name="usis Field Service"
+    id="00bb7384-6e15-4a53-b087-f66cf35a1a33"
+    domain="usis.FieldService"
+    configurationFile="usis.FieldService.Server.dll.config"
+    applicationBase="..\..\..\..\FieldService\usis.FieldService.Server\bin\Debug"
+    appConfigFile="AppConfig.xml"
+    startType="Disabled" />
+  <application
+    name="usis Push Notification Router"
+    id="9be4ae43-7260-462c-8259-c02e187d522f"
+    domain="usis.PNRouter"
+    applicationBase="C:\Development\usis\usis.Server.PushNotification\bin\Debug"
+    startType="Disabled">
+    <snapIn
+      type="usis.Server.PushNotification.SnapIn, usis.Server.PushNotification" />
+  </application>
+  <application
+    name="usis Workflow Engine"
+    id="be1459aa-a8ab-4ce4-8da5-cd626272e3d9"
+    domain="usis.Workflow.Engine"
+    applicationBase="C:\Development\usis\Workflow\usis.Workflow.Engine\bin\Debug"
+    startType="Automatic">
+    <snapIn
+      type="usis.Workflow.Engine.SnapIn, usis.Workflow.Engine" />
+    <snapIn
+      type="usis.Workflow.Engine.WapiSnapIn, usis.Workflow.Engine" />
+  </application>
+  <application
+    name="usis User Management"
+    id="9b66c7e3-7d2a-4957-ace6-2ddbff3639ff"
+    domain="usis.Basis.UserManagement"
+    applicationBase="C:\Development\usis\usis.Basis.UserManagement\bin\Debug"
+    startType="Disabled">
+    <snapIn
+      type="usis.Basis.UserManagement.SnapIn, usis.Basis.UserManagement" />
+    <snapIn
+      type="usis.Basis.UserManagement.SignupSnapIn, usis.Basis.UserManagement" />
+  </application>
+  <application
+    name="usis Cloud App Directory"
+    id="ac395727-6d4f-4389-984d-91aa338f9b69"
+    domain="usis.CloudApp.Directory"
+    startType="Disabled">
+    <property
+      name="usis.Framework.EventLogSource">
+      <value
+        xsi:type="xsd:string">
+        usis.CloudApp.Directory
+      </value>
+    </property>
+  </application>
+  <application
+    id="355ddca5-456e-41e5-a92d-55fcc8660dea"
+    domain="usis.Finance"
+    applicationBase="C:\Development\usis\Finance\usis.Finance\bin\Debug"
+    startType="Disabled">
+    <snapIn
+      type="usis.Finance.SnapIn, usis.Finance" />
+  </application>
+  <application
+    name="Playground.JobEngine"
+    id="a3b278de-298b-4b3c-a88a-ed6c0c659d93"
+    domain="Playground.JobEngine"
+    applicationBase="C:\Development\usis\Playground\Playground.JobEngine\bin\Debug\"
+    startType="Disabled">
+    <snapIn
+      type="Playground.JobEngine.SnapIn, Playground.JobEngine" />
+  </application>
+</usis>

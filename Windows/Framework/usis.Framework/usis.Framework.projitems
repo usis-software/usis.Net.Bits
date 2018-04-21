@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>54ee076a-2b38-4ba5-9447-b984fbe8006c</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>usis.Framework</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ApplicationExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApplicationInterfaceExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExtensionSnapIn.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JobEngine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Net\HttpException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Net\HttpRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Net\Interfaces.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Net\NetworkOperation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Net\NetworkOperationPool.cs" />
+    <None Include="$(MSBuildThisFileDirectory)Data\ApplicationInterfaceExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DataSourceApplicationExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DataSourceModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\ApplicationConfiguration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\ConfigurationProperty.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\IApplicationConfiguration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\IConfigurationProperty.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\ISnapInConfiguration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\SnapInConfiguration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExtensionCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IApplication.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IServiceSnapIn.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ISnapIn.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OperationResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SnapIn.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SnapInActivator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SnapInHost.cs" />
+  </ItemGroup>
+</Project>

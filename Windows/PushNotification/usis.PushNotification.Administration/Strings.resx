@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CertificateStateInstalled" xml:space="preserve">
+    <value>Installed</value>
+  </data>
+  <data name="CertificateStateUploaded" xml:space="preserve">
+    <value>Uploaded</value>
+  </data>
+  <data name="Channel" xml:space="preserve">
+    <value>Channel</value>
+  </data>
+  <data name="ChannelExists" xml:space="preserve">
+    <value>The push notification channel '{0} ({1})' already exists.</value>
+  </data>
+  <data name="Channels" xml:space="preserve">
+    <value>Channels</value>
+  </data>
+  <data name="ChannelScopeNodeFormat" xml:space="preserve">
+    <value>{0} {1}</value>
+  </data>
+  <data name="ColumnAccount" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="ColumnDeviceToken" xml:space="preserve">
+    <value>Device Token (hex)</value>
+  </data>
+  <data name="ColumnExpired" xml:space="preserve">
+    <value>Expired</value>
+  </data>
+  <data name="ColumnFirstRegistration" xml:space="preserve">
+    <value>First Registration</value>
+  </data>
+  <data name="ColumnGroups" xml:space="preserve">
+    <value>Groups</value>
+  </data>
+  <data name="ColumnInfo" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="ActionInstallCertificate" xml:space="preserve">
+    <value>Install Certificate...</value>
+  </data>
+  <data name="ColumnLastRegistration" xml:space="preserve">
+    <value>Last Registration</value>
+  </data>
+  <data name="DeleteChannel" xml:space="preserve">
+    <value>Delete Push Notification Channel</value>
+  </data>
+  <data name="DeleteChannelQuestion" xml:space="preserve">
+    <value>Do you want to delete this push notification channel?</value>
+  </data>
+  <data name="Devices" xml:space="preserve">
+    <value>Devices</value>
+  </data>
+  <data name="NewChannel" xml:space="preserve">
+    <value>New Channel...</value>
+  </data>
+  <data name="NewChannelDescription" xml:space="preserve">
+    <value>Creates a new channel to send push notifications.</value>
+  </data>
+  <data name="NewChannelDialogTitle" xml:space="preserve">
+    <value>New Push Notification Channel</value>
+  </data>
+  <data name="RootNodeDisplayName" xml:space="preserve">
+    <value>usis Push Notification Router</value>
+  </data>
+  <data name="SendNotification" xml:space="preserve">
+    <value>Send Notification...</value>
+  </data>
+  <data name="SendNotificationDescription" xml:space="preserve">
+    <value>Sends a push notification to the selected device.</value>
+  </data>
+  <data name="ShowExpiredDevices" xml:space="preserve">
+    <value>Show Expired Devices</value>
+  </data>
+  <data name="SnapInDescription" xml:space="preserve">
+    <value>The usis Push Notification Router snap-in allows you to manage channels for sending push notifications to mobile devices.</value>
+  </data>
+  <data name="SnapInDisplayName" xml:space="preserve">
+    <value>usis Push Notification Router</value>
+  </data>
+  <data name="UploadCertifiateFilter" xml:space="preserve">
+    <value>Personal Information Exchange (*.p12)|*.p12</value>
+  </data>
+  <data name="ActionUploadCertificate" xml:space="preserve">
+    <value>Upload Certificate...</value>
+  </data>
+  <data name="ActionDeleteCertificate" xml:space="preserve">
+    <value>Delete Certificate</value>
+  </data>
+  <data name="ActionUninstallCertificate" xml:space="preserve">
+    <value>Uninstall Certificate</value>
+  </data>
+  <data name="APNs" xml:space="preserve">
+    <value>APNs</value>
+  </data>
+  <data name="ColumnBundleID" xml:space="preserve">
+    <value>Bundle ID</value>
+  </data>
+  <data name="ColumnCertificate" xml:space="preserve">
+    <value>Certificate</value>
+  </data>
+  <data name="ColumnDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ColumnEnvironment" xml:space="preserve">
+    <value>Environment</value>
+  </data>
+  <data name="ColumnPackageName" xml:space="preserve">
+    <value>Package Name</value>
+  </data>
+  <data name="ColumnPackageSid" xml:space="preserve">
+    <value>Package SID</value>
+  </data>
+  <data name="WNS" xml:space="preserve">
+    <value>WNS</value>
+  </data>
+  <data name="ActionGoToDevices" xml:space="preserve">
+    <value>Go to Devices</value>
+  </data>
+  <data name="ActionGoToDevicesDescription" xml:space="preserve">
+    <value>Shows the device list view of the selected channel.</value>
+  </data>
+  <data name="ActionRestartService" xml:space="preserve">
+    <value>Restart</value>
+  </data>
+  <data name="ActionStartService" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="ActionStopService" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="ActionBackup" xml:space="preserve">
+    <value>Backup...</value>
+  </data>
+  <data name="BackupCompleted" xml:space="preserve">
+    <value>Backup completed.</value>
+  </data>
+  <data name="BackupFilter" xml:space="preserve">
+    <value>Zip Archive (*.zip)|*.zip</value>
+  </data>
+  <data name="PerformingBackup" xml:space="preserve">
+    <value>Performing backup...</value>
+  </data>
+  <data name="ActionRestore" xml:space="preserve">
+    <value>Restore...</value>
+  </data>
+  <data name="TitleBackup" xml:space="preserve">
+    <value>Backup</value>
+  </data>
+  <data name="TitleRestore" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="BackupFileName" xml:space="preserve">
+    <value>usisPNRouter.Backup.zip</value>
+  </data>
+  <data name="PerformingRestore" xml:space="preserve">
+    <value>Performing restore...</value>
+  </data>
+  <data name="StartViewDisplayName" xml:space="preserve">
+    <value>State</value>
+  </data>
+</root>

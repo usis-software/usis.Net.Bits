@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aGuV", "audius\aGuV\aGuV.csproj", "{D738C4C7-719B-49E1-93B3-AAB300527AB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "usis.Windows.Forms", "usis.Windows.Forms\usis.Windows.Forms.csproj", "{092DBC20-59AD-4C0D-80A8-65A156A25C2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "usis.Platform.Windows", "Platform\usis.Platform.Windows\usis.Platform.Windows.csproj", "{9F09855D-EF9A-4807-9DD6-58ACEC55128A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "usis.Platform.Resources", "Platform\usis.Platform.Resources\usis.Platform.Resources.csproj", "{6D7A356A-6A1C-4106-A63E-82068CF29463}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "usis.Platform", "Platform\usis.Platform\usis.Platform.shproj", "{1B0EAC36-23FA-4250-8362-A4FE43ED5A1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CA9B1747-D7F9-4A7E-94ED-A6083CA07C85}"
+	ProjectSection(SolutionItems) = preProject
+		shared\AssemblyProductInfo.cs = shared\AssemblyProductInfo.cs
+		shared\AssemblyVersionInfo.cs = shared\AssemblyVersionInfo.cs
+		shared\CustomDictionary.xml = shared\CustomDictionary.xml
+		shared\usis.AllRules.ruleset = shared\usis.AllRules.ruleset
+		shared\usis.dev.snk = shared\usis.dev.snk
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Platform\usis.Platform\usis.Platform.projitems*{1b0eac36-23fa-4250-8362-a4fe43ed5a1b}*SharedItemsImports = 13
+		Platform\usis.Platform\usis.Platform.projitems*{9f09855d-ef9a-4807-9dd6-58acec55128a}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D738C4C7-719B-49E1-93B3-AAB300527AB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D738C4C7-719B-49E1-93B3-AAB300527AB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D738C4C7-719B-49E1-93B3-AAB300527AB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D738C4C7-719B-49E1-93B3-AAB300527AB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{092DBC20-59AD-4C0D-80A8-65A156A25C2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{092DBC20-59AD-4C0D-80A8-65A156A25C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{092DBC20-59AD-4C0D-80A8-65A156A25C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{092DBC20-59AD-4C0D-80A8-65A156A25C2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F09855D-EF9A-4807-9DD6-58ACEC55128A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F09855D-EF9A-4807-9DD6-58ACEC55128A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F09855D-EF9A-4807-9DD6-58ACEC55128A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F09855D-EF9A-4807-9DD6-58ACEC55128A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D7A356A-6A1C-4106-A63E-82068CF29463}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D7A356A-6A1C-4106-A63E-82068CF29463}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D7A356A-6A1C-4106-A63E-82068CF29463}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D7A356A-6A1C-4106-A63E-82068CF29463}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9EA7E0FF-4CDF-4134-9D71-1A4904281D5D}
+	EndGlobalSection
+EndGlobal

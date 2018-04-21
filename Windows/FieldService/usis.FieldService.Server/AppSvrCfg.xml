@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<usis xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <application
+    name="usis Field Service"
+    id="00bb7384-6e15-4a53-b087-f66cf35a1a33"
+    domain="usis.FieldService"
+    configurationFile="usis.FieldService.Server.dll.config"
+    appConfigFile="AppConfig.xml"
+    startType="Disabled" />
+</usis>

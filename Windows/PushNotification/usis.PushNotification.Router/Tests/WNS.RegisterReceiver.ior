@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?><RequestViewModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Url>http://localhost/WNS/RegisterReceiver</Url><Method>POST</Method><Headers><string>Content-Type: application/json</string></Headers><Body>{&#xD;
+  "packageSid":"ms-app://s-1-15-2-2330821867-3091615676-1651023030-1159020504-3290260056-884500778-4015813124",&#xD;
+  "deviceIdentifier":"88b07a7b-41c5-4dcd-ac33-897cb48bad23",&#xD;
+  "channelUri":"https://db5.notify.windows.com/?token=AwYAAAB6wLDdLRuyKdqXArRdbLcArpjnzvbw7WKuAaqjnKbnVBsuu0tmPLlK3r3maxtdjKAPlmslKYeCUuCDp1Eu9YSZOlNw3A3npvmJSj4xRGQbqXiTfurmbiuSlSrx%2fkN8S2A%3d"&#xD;
+}</Body></RequestViewModel>

@@ -1,0 +1,3 @@
+﻿<?xml version="1.0" encoding="utf-8"?><RequestViewModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Url>http://localhost/WNSRouter/GetNotificationState</Url><Method>POST</Method><Headers><string>Content-Type: application/json</string><string>Authorization: Basic QWRtaW5pc3RyYXRvcjpjYSw5Mzk1MA==</string></Headers><Body>{&#xD;
+  "id":"21c05bee-6adb-41ec-b013-c8de1b2daa03",&#xD;
+}</Body></RequestViewModel>

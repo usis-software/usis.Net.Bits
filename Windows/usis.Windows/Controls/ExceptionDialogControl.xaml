@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="usis.Windows.Controls.ExceptionDialogControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:usis.Windows.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300"
+             d:DesignWidth="300"
+             Width="400"
+             Height="300">
+    <TabControl Margin="8">
+        <TabItem Header="Fehler">
+            <Grid Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}">
+                <TextBlock x:Name="textBlock" Margin="8" TextWrapping="Wrap"><Run/><LineBreak/><Run/><LineBreak/><Run Text="In der Anwendung ist leider ein Fehler aufgetreten."/><LineBreak/><Run Text="Bitte wenden Sie sich an den Support."/><LineBreak/><Run/><LineBreak/><Run Text="Bitte schliessen Sie den Dialog nicht,"/><LineBreak/><Run Text="um die Informationen dem Support zur Verfügung zu stellen."/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run Text="Tel.: 04534 23432423"/></TextBlock>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Details">
+            <Grid Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}">
+                <TextBox x:Name="textBoxDetails" Margin="8" TextWrapping="Wrap" IsReadOnly="True" VerticalScrollBarVisibility="Auto"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</UserControl>

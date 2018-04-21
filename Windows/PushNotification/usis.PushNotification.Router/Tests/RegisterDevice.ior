@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?><RequestViewModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Url>https://localhost:44300/APNs/RegisterDevice</Url><Method>POST</Method><Headers><string>Content-Type: application/json</string></Headers><Body>{&#xD;
+  "deviceToken":"NTQmCiPDKaU2tNmlw4HosxDwDv+zYn87NsJLuXoJLSA=",&#xD;
+  "appId":"de.usis.Demo",&#xD;
+  "environment":0&#xD;
+}</Body></RequestViewModel>

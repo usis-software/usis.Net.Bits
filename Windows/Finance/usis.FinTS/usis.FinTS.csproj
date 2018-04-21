@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AD3BFE54-7E6F-4B56-A495-D67445EEA7F1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>usis.FinTS</RootNamespace>
+    <AssemblyName>usis.FinTS</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\..\shared\usis.AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\usis.FinTS.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\..\shared\usis.AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Release\usis.FinTS.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\shared\usis.dev.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BankAccess.cs" />
+    <Compile Include="Base\DataElement.cs" />
+    <Compile Include="Base\DataElementGroup.cs" />
+    <Compile Include="Base\DataElementType.cs" />
+    <Compile Include="Base\Segment.cs" />
+    <Compile Include="CustomerSystem.cs" />
+    <Compile Include="DataElementGroups\BankIdentifier.cs" />
+    <None Include="DataElementGroups\Feedback.cs" />
+    <Compile Include="DataElementGroups\MessageReference.cs" />
+    <Compile Include="DataElementGroups\SegmentHeader.cs" />
+    <Compile Include="DataElements\AlphanumericDataElement.cs" />
+    <Compile Include="DataElements\CountryCodeDataElement.cs" />
+    <Compile Include="DataElements\DigitsDataElement.cs" />
+    <Compile Include="DataElements\IdentifierDataElement.cs" />
+    <Compile Include="DataElements\NumericDataElement.cs" />
+    <Compile Include="DataElements\CodeDataElement.cs" />
+    <Compile Include="Enumerations.cs" />
+    <Compile Include="etc.cs" />
+    <Compile Include="Exceptions.cs" />
+    <Compile Include="MessageFactory.cs" />
+    <Compile Include="MessageParser.cs" />
+    <Compile Include="Messages\DialogCancelation.cs" />
+    <Compile Include="SegmentFactory.cs" />
+    <Compile Include="SegmentParser.cs" />
+    <Compile Include="SegmentReader.cs" />
+    <Compile Include="Segments\BankMessageHeader.cs" />
+    <Compile Include="Segments\DialogEnd.cs" />
+    <Compile Include="Segments\Identification.cs" />
+    <Compile Include="Segments\MessageFeedback.cs" />
+    <Compile Include="Segments\MessageFooter.cs" />
+    <Compile Include="Segments\MessageHeader.cs" />
+    <Compile Include="Segments\ProcessingPreparation.cs" />
+    <Compile Include="Segments\UnknownSegment.cs" />
+    <Compile Include="Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TcpTransport.cs" />
+    <Compile Include="ITransport.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Dialog.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="Messages\DialogInitialization.cs" />
+    <Compile Include="Messages\DialogTermination.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\..\shared\CustomDictionary.xml">
+      <Link>CustomDictionary.xml</Link>
+    </CodeAnalysisDictionary>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\shared\usis.dev.snk">
+      <Link>usis.dev.snk</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,7 @@
+﻿Features
+========
+- Control Panel icon (Setup)
+
+Done
+====
+- ServerEngine(s) with "params IWindowsService[] services"

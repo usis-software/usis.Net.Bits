@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<application>
+  <snapIn type="usis.Server.FieldService.SnapIn, usis.Server.FieldService"/>
+</application>

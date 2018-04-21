@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EEE6F96C-B3AF-4509-9082-9C249350EDE9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Playground</RootNamespace>
+    <AssemblyName>Playground</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Properties\Playground.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <NoWarn>
+    </NoWarn>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>Properties\Playground.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Playground.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\shared\usis.dev.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\shared\usis.dev.snk">
+      <Link>usis.dev.snk</Link>
+    </None>
+    <EmbeddedResource Include="HolidaysData.plist">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="old\CsvBackup.cs" />
+    <None Include="HttpServer.cs" />
+    <None Include="old\AppDomain.cs" />
+    <None Include="old\Binding.cs" />
+    <None Include="old\Certificates.cs" />
+    <None Include="old\CompoundFile.cs" />
+    <None Include="old\Compression.cs" />
+    <Compile Include="..\Playground.JobEngine\ITestJob.cs">
+      <Link>ITestJob.cs</Link>
+    </Compile>
+    <Compile Include="ConsoleTool.cs" />
+    <None Include="old\Crypto.cs" />
+    <None Include="old\Csv.cs" />
+    <None Include="old\DataAccess.cs" />
+    <None Include="old\Framework.Data.cs" />
+    <None Include="old\IDoc.cs" />
+    <None Include="old\Machine.cs" />
+    <None Include="old\NamedValue.cs" />
+    <CodeAnalysisDictionary Include="..\..\shared\CustomDictionary.xml">
+      <Link>CustomDictionary.xml</Link>
+    </CodeAnalysisDictionary>
+    <Content Include="etc\Entities.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="etc\IDoc\COND_A_25392084.txt" />
+    <Content Include="etc\IDoc\COND_A_25392086.txt" />
+    <Content Include="etc\IDoc\Empty.txt" />
+    <None Include="etc\IDoc\DEBMAS_01083802" />
+    <None Include="etc\IDoc\DEBMAS_01083817" />
+    <None Include="etc\IDoc\DEBMAS_01083832" />
+    <None Include="etc\IDoc\DEBMAS_01083847" />
+    <None Include="etc\IDoc\DEBMAS_01083862" />
+    <None Include="etc\IDoc\DEBMAS_01083877" />
+    <None Include="etc\IDoc\DEBMAS_01083892" />
+    <None Include="etc\IDoc\DEBMAS_01083907" />
+    <None Include="etc\IDoc\DEBMAS_01083922" />
+    <None Include="etc\IDoc\DEBMAS_01083965" />
+    <None Include="etc\IDoc\DEBMAS_01083980" />
+    <None Include="etc\IDoc\DEBMAS_01084020" />
+    <None Include="etc\IDoc\DEBMAS_01084036" />
+    <None Include="etc\IDoc\DEBMAS_01084051" />
+    <None Include="etc\IDoc\DEBMAS_01084066" />
+    <None Include="etc\IDoc\DEBMAS_01084081" />
+    <None Include="etc\IDoc\_ARTMAS05.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="etc\IDoc\_DEBMAS07.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="old\PNRouter.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="old\PushNotification.cs" />
+    <None Include="old\RFC.cs" />
+    <None Include="old\StructuredStorage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Playground.ruleset" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="etc\IDoc\Artmas20140604-171832-755.txt" />
+    <Content Include="etc\IDoc\DEBMAS.txt" />
+    <Content Include="etc\IDoc\DEBMAS20140605-084250-228.txt" />
+    <Content Include="etc\IDoc\DEBMAS20140605-084250-266.txt" />
+    <Content Include="etc\IDoc\DEBMAS20140605-084250-302.txt" />
+    <Content Include="etc\IDoc\DEBMAS20140605-084250-339.txt" />
+    <Content Include="etc\IDoc\DEBMAS20140605-084250-375.txt" />
+    <Content Include="etc\IDoc\DEBMAS20140605-084251-008.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Platform\usis.Platform.Windows\usis.Platform.Windows.csproj">
+      <Project>{9f09855d-ef9a-4807-9dd6-58acec55128a}</Project>
+      <Name>usis.Platform.Windows</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="plist-cil, Version=1.16.0.0, Culture=neutral, PublicKeyToken=ec2cb9e1a719933d, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\plist-cil.1.16.0\lib\net45\plist-cil.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

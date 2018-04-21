@@ -1,0 +1,89 @@
+﻿===================================
+usis.Platform.Windows Release Notes
+===================================
+
+Version 4.0.5
+=============
+
+- usis.Platform.ValueStoreInterfaceExtensions renamed to usis.Platform.ValueStorageInterfaceExtensions.
+- usis.Platform.XmlExtensions refactored.
+- usis.Platform.XmlExtensions.ToXml method added.
+- IsOneOf method refactored and moved to usis.Platform.TypeExtensions.
+- usis.Platform.Calendar class added.
+
+Version 4.0.4 - 2017-12-20
+==========================
+
+- usis.Platform.Progress.Update method overloads.
+- usis.Platform.Windows.HttpServer.AddPrefixes method added.
+- usis.Platform.Windows.TcpServer class added.
+- usis.Platform.CommandLine.GetValue method added.
+- usis.Platform.XmlExtensions class added.
+- usis.Platform.ValueStoreInterfaceExtensions renamed to usis.Platform.ValueStorageInterfaceExtensions.
+
+Version 4.0.3 - 2017-11-04
+==========================
+
+- usis.Platform.ProgressInfo(ProgressInfo) constructor added.
+- usis.Platform.Progress.UpdateProgress methods deprecated.
+- usis.Platform.Progress.Update method added.
+- usis.Platform.IProgressUpdate.Update method deprecated.
+- usis.Platform.IProgressUpdate.UpdateProgress method added.
+- usis.Platform.IProgressUpdate.SetStep method deprecated.
+- usis.Platform.IProgressUpdate.SetProgressStep method added.
+- usis.Platform.ProgressUpdateInterfaceExtensions.Update methods deprecated.
+- usis.Platform.ProgressUpdateInterfaceExtensions.UpdateProgress methods added.
+
+NuGet
+-----
+
+Progress update refactored.
+
+Version 4.0.2 - 2017-10-24
+==========================
+
+- Fix: usis.Plaform.ProgressMonitor.SetStep resets Progress.MaxValue to Int64.MaxValue. 
+- usis.Platform.Progress class added.
+- usis.Platform.ProgressMonitor class deprecated.
+- usis.Platform.IProgressUpdate interface added.
+- usis.Platform.ProgressUpdateInterfaceExtensions class added.
+- usis.Platform.ServiceModel.NamedPipeServiceClient generic class removed.
+- usis.Platform.ServiceModel.ClientBase generic class removed.
+- usis.Platform.ServiceModel.NamedPipeClientBase generic class removed.
+- usis.Platform.ServiceModel.WcfClientBase generic class removed.
+
+NuGet
+-----
+Progress class, IProgressUpdate interface, ProgressUpdateInterfaceExtensions class added;
+ProgressMonitor class deprecated;
+ClientBase class and derived classes removed.
+
+Version 4.0.1 - 2017-10-10
+==========================
+
+- usis.Platform.Windows.HttpServer class added.
+- usis.Platform.ServiceModel.ServiceClient generic class added.
+- usis.Platform.ServiceModel.NamedPipeServiceClient generic class added.
+- usis.Platform.ServiceModel.ClientBase generic class deprecated.
+- usis.Platform.ServiceModel.NamedPipeClientBase generic class deprecated.
+- usis.Platform.ServiceModel.WcfClientBase generic class deprecated.
+- usis.Platform.Windows.HttpServer class changed:
+  The response output stream is no longer closed after invoking a handler action.
+  Handle processing exceptions with HTTP status code 500.
+- usis.Platform.Windows.HttpServer class default constructor added.
+- usis.Platform.Windows.HttpServer.AddPrefix method added.
+- usis.Platform.Windows.HttpServer.HandleException method added.
+- usis.Platform.Windows.HttpServer.Start parameterless method added.
+- usis.Platform.EnumExtensions class added.
+- usis.Platform.ProgressMonitor class added.
+
+NuGet
+-----
+
+HttpServer, ServiceClient, NamedPipeServiceClient, EnumExtensions adn ProgressMonitor classes added.
+ClientBase, NamedPipeClientBase, WcfClientBase classes deprecated.
+
+Version 4.0.0 - 2017-09-28
+==========================
+
+This is the initial release.

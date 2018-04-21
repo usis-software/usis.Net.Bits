@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<application
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  name="usis Object Broker"
+  appDomain="usis.ObjectBroker">
+  <property name="usis.Framework.EventLogSource">
+    <value xsi:type="xsd:string">usis.ObjectBroker</value>
+  </property>
+  <snapIn type="usis.Server.ObjectBroker.SnapIn, usis.Server.ObjectBroker"/>
+</application>

@@ -1,0 +1,15 @@
+﻿=========================
+usis.Server Release Notes
+=========================
+
+Version 4.0.2 - 2017-10-16
+==========================
+
+- Better service shutdown when running a ServicesHost in console mode.
+
+Version 4.0.1 - 2017-10-11
+==========================
+
+This is the initial release.
+
+Dependencies:	usis.Platform.Windows (4.0.1)

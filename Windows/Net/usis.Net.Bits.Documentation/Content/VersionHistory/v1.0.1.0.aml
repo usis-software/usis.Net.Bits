@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="9b3315d1-23e9-4d66-8bfc-aa9eb642d1bc" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>
+        Version 1.0.1 was released on October 10, 2017.
+      </para>
+    </introduction>
+
+    <section>
+      <title>Changes in This Release</title>
+      <content>
+
+        <list class="bullet">
+          <listItem>
+            <para>
+              <codeEntityReference qualifyHint="true">M:usis.Net.Bits.BackgroundCopyJob.AddFiles(usis.Net.Bits.BackgroundCopyFileInfo[])</codeEntityReference> method added.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <codeEntityReference qualifyHint="true">T:usis.Net.Bits.BackgroundCopyJobType</codeEntityReference>.UploadReply removed (not yet supported).
+            </para> 
+          </listItem>
+          <listItem>
+            <para>
+              <codeEntityReference qualifyHint="true">P:usis.Net.Bits.BackgroundCopyJob.ProxySettings</codeEntityReference> property added.
+            </para>
+          </listItem>
+
+        </list>
+
+      </content>
+    </section>
+
+    <relatedTopics>
+      <link xlink:href="ece7a028-920a-469c-8965-a176f3f20ac0" />
+    </relatedTopics>
+
+  </developerConceptualDocument>
+</topic>

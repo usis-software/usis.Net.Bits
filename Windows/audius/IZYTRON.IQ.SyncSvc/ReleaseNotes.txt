@@ -1,0 +1,8 @@
+﻿====================================
+usis.Framework.Windows Release Notes
+====================================
+
+Version 4.0.1
+=============
+
+This is the initial release.

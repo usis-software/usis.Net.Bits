@@ -1,0 +1,25 @@
+﻿===========================================
+usis.Framework.Entity.Windows Release Notes
+===========================================
+
+Version 4.0.5
+=============
+
+usis.Framework.Data.Entity.DBConfiguration.SetDataSourceConfiguration(DataSourceApplicationExtension) added.
+
+Version 4.0.2
+=============
+
+- usis.Framework.Entity.DBContextModel(Action) constructor added.
+- References updated to EF 6.2
+
+Version 4.0.1 - 2017-10-11
+==========================
+
+This is the initial release.
+
+Dependencies
+------------
+
+usis.Platform.Windows (4.0.1)
+usis.Framework.Windows (4.0.1)

@@ -1,0 +1,73 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:resx="clr-namespace:usis.Windows"
+    xmlns:usis="clr-namespace:usis.Windows"
+    x:Class="usis.Windows.ModalDialog"
+    Title="Modal Dialog"
+    Height="300" Width="240"
+    WindowStartupLocation="CenterOwner"
+    ShowInTaskbar="False"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+    ResizeMode="CanResizeWithGrip"
+    SizeToContent="WidthAndHeight"
+    usis:FocusBehavior.FocusFirst="true">
+    <DockPanel
+        x:Name="dialogContent"
+        x:FieldModifier="private">
+        <StackPanel
+            Orientation="Horizontal"
+            DockPanel.Dock="Bottom"
+            FlowDirection="RightToLeft"
+            Height="48">
+            <Button
+                x:Name="btnCancel"
+                x:FieldModifier="private"
+                Content="{x:Static resx:StringResources.CancelButtonCaption}"
+                IsCancel="True"
+                Height="21"
+                Margin="10,0,0,0"
+                Padding="4,1"
+                MinWidth="64"/>
+            <!--
+                Content="Cancel"
+                Content="{x:Static resx:Strings.CancelButtonCaption}"
+            -->
+            <Button
+                x:Name="btnOk"
+                x:FieldModifier="private"
+                Content="{x:Static resx:StringResources.OkButtonCaption}"
+                IsDefault="True"
+                Height="21"
+                Margin="10,0,0,0"
+                Padding="4,1"
+                MinWidth="64"
+                Click="btnOk_Click"/>
+            <!--
+                Content="OK"
+                Content="{x:Static resx:Strings.OkButtonCaption}"
+            -->
+            <Button
+                x:Name="btnClose"
+                x:FieldModifier="private"
+                Content="{x:Static resx:StringResources.CloseButtonCaption}"
+                IsDefault="True"
+                Height="21"
+                Margin="10,0,0,0"
+                Padding="4,1"
+                MinWidth="64"
+                Click="btnClose_Click"
+                Visibility="Collapsed"/>
+            <!--
+                IsCancel="True"
+                Content="Close"
+                Content="{x:Static resx:Strings.CloseButtonCaption}"
+            -->
+        </StackPanel>
+        <Canvas
+            x:Name="dummy"
+            x:FieldModifier="private"
+            Width="180"
+            Height="180"/>
+    </DockPanel>
+</Window>

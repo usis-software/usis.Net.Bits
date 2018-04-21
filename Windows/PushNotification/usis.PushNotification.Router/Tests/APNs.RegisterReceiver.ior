@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?><RequestViewModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Url>http://localhost/Apns.web/RegisterReceiver</Url><Method>POST</Method><Headers><string>Content-Type: application/json</string></Headers><Body>{&#xD;
+  "hexDeviceToken":"7650B9FFCE508F0902F459ABB791AA41870A48AC103BD8946311A5CFB4802267",&#xD;
+  "bundleId":"de.usis.PNRouter",&#xD;
+  "environment":0,&#xD;
+  "name":"Test Receiver"&#xD;
+}</Body></RequestViewModel>

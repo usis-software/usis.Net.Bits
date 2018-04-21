@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Topics>
+  <Topic id="6cccdae2-b461-45cc-9011-84174d9c5959" visible="True" isDefault="true" title="Welcome to the usis Portable Class Library">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="Welcome" />
+    </HelpKeywords>
+  </Topic>
+  <Topic id="b9291287-4fab-4b87-8c8d-4e91dc1ddbbf" visible="True" isSelected="true" title="Version History">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="version, history" />
+    </HelpKeywords>
+    <Topic id="c9149a4c-cbcf-4cd9-99a3-0ac1273cdf57" visible="True" title="Version 3.2.0.0">
+      <HelpKeywords>
+        <HelpKeyword index="K" term="version, 3.2.0.0" />
+      </HelpKeywords>
+    </Topic>
+  </Topic>
+</Topics>

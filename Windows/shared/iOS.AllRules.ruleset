@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="All Rules for iOS" Description="This rule set contains all rules. Running this rule set may result in a large number of warnings being reported. Use this rule set to get a comprehensive picture of all issues in your code. This can help you decide which of the more focused rule sets are most appropriate to run for your projects." ToolsVersion="15.0">
+  <IncludeAll Action="Warning" />
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="CA2123" Action="None" />
+    <Rule Id="CA2134" Action="None" />
+    <Rule Id="CA2140" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp" RuleNamespace="Microsoft.CodeAnalysis.CSharp">
+    <Rule Id="CS8019" Action="Info" />
+    <Rule Id="CS8020" Action="Info" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.EditorFeatures" RuleNamespace="Microsoft.CodeAnalysis.CSharp.EditorFeatures">
+    <Rule Id="IDE0032" Action="Info" />
+    <Rule Id="IDE0032WithoutSuggestion" Action="Info" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Features" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Features">
+    <Rule Id="IDE0001" Action="Info" />
+    <Rule Id="IDE0002" Action="Info" />
+    <Rule Id="IDE0003" Action="Info" />
+    <Rule Id="IDE0004" Action="Info" />
+    <Rule Id="IDE0005" Action="Info" />
+    <Rule Id="IDE0007" Action="Info" />
+    <Rule Id="IDE0007WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0008" Action="Info" />
+    <Rule Id="IDE0008WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0009" Action="Info" />
+    <Rule Id="IDE0009WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0011" Action="None" />
+    <Rule Id="IDE0011WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0012" Action="Info" />
+    <Rule Id="IDE0013" Action="Info" />
+    <Rule Id="IDE0014" Action="Info" />
+    <Rule Id="IDE0015" Action="Info" />
+    <Rule Id="IDE0016" Action="Info" />
+    <Rule Id="IDE0016WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0017" Action="Info" />
+    <Rule Id="IDE0017WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0018" Action="Info" />
+    <Rule Id="IDE0018WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0019" Action="Info" />
+    <Rule Id="IDE0019WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0020" Action="Info" />
+    <Rule Id="IDE0020WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0021" Action="Info" />
+    <Rule Id="IDE0021WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0022" Action="Info" />
+    <Rule Id="IDE0022WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0023" Action="Info" />
+    <Rule Id="IDE0023WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0024" Action="Info" />
+    <Rule Id="IDE0024WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0025" Action="Info" />
+    <Rule Id="IDE0025WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0026" Action="Info" />
+    <Rule Id="IDE0026WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0027" Action="Info" />
+    <Rule Id="IDE0027WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0028" Action="Info" />
+    <Rule Id="IDE0028WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0029" Action="Info" />
+    <Rule Id="IDE0029WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0030" Action="Info" />
+    <Rule Id="IDE0030WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0031" Action="Info" />
+    <Rule Id="IDE0031WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE1005" Action="Info" />
+    <Rule Id="IDE1005WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE1006" Action="Info" />
+    <Rule Id="IDE1006WithoutSuggestion" Action="Info" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.Features" RuleNamespace="Microsoft.CodeAnalysis.Features">
+    <Rule Id="IDE0010" Action="Info" />
+    <Rule Id="IDE0010WithoutSuggestion" Action="Info" />
+    <Rule Id="IDE0033" Action="Info" />
+    <Rule Id="IDE0033WithoutSuggestion" Action="Info" />
+  </Rules>
+</RuleSet>

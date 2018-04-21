@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<idoc
+  documentType="WVINVE03">
+  <segment
+    type="E1WVINH"
+    definition="E2WVINH001"
+    maxOccurs="999">
+    <field
+      name="LGORT"
+      length="10" />
+    <field
+      name="IBLNR"
+      length="20" />
+    <field
+      name="GJAHR"
+      length="4" />
+    <field
+      name="SOBKZ"
+      length="1" />
+    <field
+      name="GIDAT"
+      length="8" />
+    <field
+      name="XBLNI"
+      length="35" />
+    <field
+      name="DNAME"
+      length="20" />
+    <field
+      name="DDATE"
+      length="8" />
+    <field
+      name="DTIME"
+      length="6" />
+    <field
+      name="LGOBE"
+      length="16" />
+    <field
+      name="SOTXT"
+      length="20" />
+    <field
+      name="FILIALE"
+      length="10" />
+    <field
+      name="NAME1"
+      length="35" />
+    <field
+      name="NAME2"
+      length="35" />
+    <field
+      name="VPDAT"
+      length="8" />
+    <field
+      name="KEORD"
+      length="4" />
+    <field
+      name="ORDNG"
+      length="20" />
+    <field
+      name="INVNU"
+      length="16" />
+    <segment
+      type="E1WVINI"
+      definition="E2WVINI001"
+      maxOccurs="999999">
+      <field
+        name="ZEILI"
+        length="9" />
+      <field
+        name="QUALARTNR"
+        length="4" />
+      <field
+        name="ARTNR"
+        length="25" />
+      <field
+        name="CHARG"
+        length="15" />
+      <field
+        name="BSTAR"
+        length="1" />
+      <field
+        name="ERFMG"
+        length="20" />
+      <field
+        name="ERFME"
+        length="3" />
+      <field
+        name="EXVKP"
+        length="20" />
+      <field
+        name="EXVKW"
+        length="20" />
+      <field
+        name="WAERS"
+        length="4" />
+      <field
+        name="LIFNR"
+        length="15" />
+      <field
+        name="XNULL"
+        length="1" />
+      <field
+        name="KWART"
+        length="1" />
+      <field
+        name="BTEXT"
+        length="20" />
+      <field
+        name="MAKTX"
+        length="40" />
+      <field
+        name="WWGPA"
+        length="25" />
+      <field
+        name="WWMAKTX"
+        length="40" />
+      <field
+        name="VPALT"
+        length="20" />
+      <field
+        name="PV_GRUND"
+        length="8" />
+      <field
+        name="VRKPE"
+        length="15" />
+      <field
+        name="ABTNR"
+        length="4" />
+      <field
+        name="ABTTXT"
+        length="20" />
+      <field
+        name="LAYVR"
+        length="10" />
+      <field
+        name="VTEXT"
+        length="20" />
+      <field
+        name="SORTF"
+        length="10" />
+      <field
+        name="LTEXT"
+        length="20" />
+      <field
+        name="SORF2"
+        length="10" />
+      <field
+        name="IBLNR"
+        length="20" />
+      <field
+        name="GJAHR"
+        length="4" />
+      <field
+        name="SOBKZ"
+        length="1" />
+      <field
+        name="SOTXT"
+        length="20" />
+      <field
+        name="GIDAT"
+        length="8" />
+      <field
+        name="SALES_ORDER"
+        length="10" />
+      <field
+        name="SALES_ORDER_ITEM"
+        length="6" />
+      <field
+        name="ITEM_SHORT_TEXT"
+        length="40" />
+      <field
+        name="SALES_PRICE"
+        length="20" />
+      <field
+        name="PDC_DATE"
+        length="8" />
+      <field
+        name="PDC_TIME"
+        length="6" />
+      <segment
+        type="E1WVI01"
+        definition="E2WVI01"
+        minOccurs="0"
+        maxOccurs="999">
+        <field
+          name="EAN11"
+          length="25" />
+        <field
+          name="NUMTP"
+          length="2" />
+        <field
+          name="HPEAN"
+          length="1" />
+        <field
+          name="MEINH"
+          length="3" />
+      </segment>
+      <segment
+        type="E1WVI03"
+        definition="E2WVI03000"
+        minOccurs="0"
+        maxOccurs="99999">
+        <field
+          name="UNIT_CODE"
+          length="5" />
+        <field
+          name="UNIT_ISOCODE"
+          length="5" />
+        <field
+          name="FLAG_BASE_UOM"
+          length="1" />
+        <field
+          name="FLAG_PO_UNIT"
+          length="1" />
+        <field
+          name="FLAG_SALES_UNIT"
+          length="1" />
+      </segment>
+      <segment
+        type="E1WVI04"
+        definition="E2WVI04000"
+        minOccurs="0"
+        maxOccurs="999999">
+        <field
+          name="TEXT_ID"
+          length="4" />
+        <field
+          name="LINE_CNT"
+          length="8" />
+        <field
+          name="LINE"
+          length="132" />
+        <field
+          name="FORMAT"
+          length="2" />
+        <field
+          name="LANGU_ISO"
+          length="2" />
+      </segment>
+      <segment
+        type="E1WXX01"
+        definition="E2WXX01"
+        minOccurs="0"
+        maxOccurs="99999">
+        <field
+          name="FLDGRP"
+          length="5" />
+        <field
+          name="FLDNAME"
+          length="10" />
+        <field
+          name="FLDVAL"
+          length="40" />
+      </segment>
+    </segment>
+  </segment>
+</idoc>

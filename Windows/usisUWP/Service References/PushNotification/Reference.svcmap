@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3524e7aa-6f9b-4aaf-ac3f-3c1eb308788b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://usis-svr06/Wns" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Wns.wsdl" MetadataType="Wsdl" ID="5a26c556-e680-4383-ae0e-4d91a5178f29" SourceId="1" SourceUrl="http://usis-svr06/Wns?wsdl" />
+    <MetadataFile FileName="Wns.xsd" MetadataType="Schema" ID="c23c17b7-ad9f-45f3-9d90-eea3a318203c" SourceId="1" SourceUrl="http://usis-svr06/Wns?xsd=xsd0" />
+    <MetadataFile FileName="Wns.disco" MetadataType="Disco" ID="6bbd55a2-1c67-4fc3-9ac3-24097ad651b0" SourceId="1" SourceUrl="http://usis-svr06/Wns?disco" />
+    <MetadataFile FileName="Wns1.xsd" MetadataType="Schema" ID="b7de7f93-6abd-479d-9ff8-6fba63845dae" SourceId="1" SourceUrl="http://usis-svr06/Wns?xsd=xsd1" />
+    <MetadataFile FileName="Wns2.xsd" MetadataType="Schema" ID="4215bdde-aa9d-45f7-b994-8cd8bab40fa5" SourceId="1" SourceUrl="http://usis-svr06/Wns?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

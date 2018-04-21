@@ -1,0 +1,15 @@
+﻿===========================
+usis.Net.Bits Release Notes
+===========================
+
+Version 1.1.0 - 2017-11-09
+==========================
+
+- Fix: Download of small data with without range request.
+- Fix: Download range requests that exceed data will get remaining data (upload-reply).
+- BackgroundCopyServer.GetUploadReplyUrl method added: Support of UploadReply jobs.
+
+Version 1.0.0 - 2017-10-11
+==========================
+
+This is the initial release.

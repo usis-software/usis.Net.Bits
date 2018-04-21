@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>
+      usis.Platform.Progress.Update method overloads;
+      usis.Platform.Windows.HttpServer.AddPrefixes method added;
+      usis.Platform.Windows.TcpServer class added;
+      usis.Platform.CommandLine.GetValue method added;
+      usis.Platform.XmlExtensions class added.
+    </releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>usis Platform Library Windows</tags>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\usis.Platform.Resources.dll" target="lib\net40" />
+  </files>
+</package>
