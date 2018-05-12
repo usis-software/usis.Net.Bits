@@ -42,7 +42,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\..\shared\usis.dev.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>usis.Net.Bits.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BackgroundCopyError.cs" />
@@ -80,17 +80,10 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <CodeAnalysisDictionary Include="..\..\shared\CustomDictionary.xml">
-      <Link>CustomDictionary.xml</Link>
-    </CodeAnalysisDictionary>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\shared\usis.dev.snk">
-      <Link>usis.dev.snk</Link>
-    </None>
     <None Include="usis.Net.Bits.nuspec">
       <SubType>Designer</SubType>
     </None>
+    <None Include="usis.Net.Bits.snk" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ReleaseNotes.txt" />
@@ -117,6 +110,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="MIT-License.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="CustomDictionary.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
