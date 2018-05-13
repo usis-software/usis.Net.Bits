@@ -95,20 +95,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Interop\Header\bits1_5.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Interop\Header\Bits.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Interop\Header\bits10_1.h" />
-    <None Include="Interop\Header\bits2_0.h" />
-    <None Include="Interop\Header\bits2_5.h" />
-    <None Include="Interop\Header\Bits3_0.h" />
-    <None Include="Interop\Header\bits4_0.h" />
-    <None Include="Interop\Header\bits5_0.h" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="MIT-License.md" />
   </ItemGroup>
   <ItemGroup>
