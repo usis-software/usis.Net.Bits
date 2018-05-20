@@ -370,11 +370,10 @@ namespace usis.Net.Bits
         //  CreateComObject method
         //  ----------------------
 
-        private static T CreateComObject<T>(Guid clsid) where T : class
+        private static TInterface CreateComObject<TInterface>(Guid clsid) where TInterface : class
         {
             var o = CreateComObject(clsid);
-            var i = o as T;
-            if (i == null)
+            if (!(o is TInterface i))
             {
                 Marshal.FinalReleaseComObject(o);
                 throw new InvalidCastException();

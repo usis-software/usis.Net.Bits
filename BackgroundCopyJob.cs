@@ -846,9 +846,8 @@ namespace usis.Net.Bits
 
         private TInterface GetJob<TInterface>() where TInterface : class
         {
-            var job2 = Job as TInterface;
-            if (job2 == null) throw new NotSupportedException();
-            return job2;
+            if (!(Job is TInterface j)) throw new NotSupportedException();
+            return j;
         }
 
         //  ---------------------
