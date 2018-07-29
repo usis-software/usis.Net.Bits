@@ -98,45 +98,34 @@ namespace usis.Net.Bits
         //  Dispose method
         //  --------------
 
-        private bool disposedValue = false; // to detect redundant calls
-
-        private void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    // TODO: dispose managed state (managed objects).
-                }
-
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                if (file != null) { Marshal.ReleaseComObject(file); file = null; }
-                // TODO: set large fields to null.
-
-                disposedValue = true;
-            }
-        }
-
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
 
         public void Dispose()
         {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(true);
+            Release();
             GC.SuppressFinalize(this);
         }
+
+        //  --------------
+        //  Release method
+        //  --------------
+
+        private void Release()
+        {
+            if (file != null) { Marshal.ReleaseComObject(file); file = null; }
+        }
+
+        //  ----------
+        //  finalizing
+        //  ----------
 
         /// <summary>
         /// Finalizes an instance of the <see cref="BackgroundCopyFile"/> class.
         /// </summary>
 
-        ~BackgroundCopyFile()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(false);
-        }
+        ~BackgroundCopyFile() { Release(); }
 
         #endregion IDisposable implementation
     }
