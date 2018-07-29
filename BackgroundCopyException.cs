@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2017
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017 usis GmbH. All rights reserved.
+//  Copyright (c) 2017,2018 usis GmbH. All rights reserved.
 
 using System;
 using System.Runtime.InteropServices;
@@ -82,15 +82,9 @@ namespace usis.Net.Bits
 
         internal BackgroundCopyException(BackgroundCopyManager manager, COMException inner) : base(manager.GetErrorDescription(inner), inner) { }
 
-        internal BackgroundCopyException(BackgroundCopyManager manager, uint hResult) : base(manager.GetErrorDescription(hResult))
-        {
-            HResult = (int)hResult;
-        }
+        internal BackgroundCopyException(BackgroundCopyManager manager, uint hResult) : base(manager.GetErrorDescription(hResult)) => HResult = (int)hResult;
 
-        internal BackgroundCopyException(string message, uint hResult) : base(message)
-        {
-            HResult = (int)hResult;
-        }
+        internal BackgroundCopyException(string message, uint hResult) : base(message) => HResult = (int)hResult;
 
         #endregion construction
     }

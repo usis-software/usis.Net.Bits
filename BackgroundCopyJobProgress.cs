@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2017
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017 usis GmbH. All rights reserved.
+//  Copyright (c) 2017,2018 usis GmbH. All rights reserved.
 
 using usis.Net.Bits.Interop;
 
@@ -34,7 +34,7 @@ namespace usis.Net.Bits
         //  construction
         //  ------------
 
-        internal BackgroundCopyJobProgress(BG_JOB_PROGRESS progress) { this.progress = progress; }
+        internal BackgroundCopyJobProgress(BG_JOB_PROGRESS progress) => this.progress = progress;
 
         #endregion construction
 
@@ -107,7 +107,7 @@ namespace usis.Net.Bits
         //  construction
         //  ------------
 
-        internal BackgroundCopyJobReplyProgress(BG_JOB_REPLY_PROGRESS progress) { this.progress = progress; }
+        internal BackgroundCopyJobReplyProgress(BG_JOB_REPLY_PROGRESS progress) => this.progress = progress;
 
         #endregion construction
 

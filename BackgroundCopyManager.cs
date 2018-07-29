@@ -43,7 +43,7 @@ namespace usis.Net.Bits
         //  construction
         //  ------------
 
-        private BackgroundCopyManager() { manager = CreateComObject<IBackgroundCopyManager>(new Guid(CLSID.BackgroundCopyManager)); }
+        private BackgroundCopyManager() => manager = CreateComObject<IBackgroundCopyManager>(new Guid(CLSID.BackgroundCopyManager));
 
         #endregion construction
 
@@ -89,7 +89,7 @@ namespace usis.Net.Bits
         /// Therefore you have to call <see cref="IDisposable.Dispose"/> to disconnect from the BITS service and to free all resources.
         /// </remarks>
 
-        public static BackgroundCopyManager Connect() { return new BackgroundCopyManager(); }
+        public static BackgroundCopyManager Connect() => new BackgroundCopyManager();
 
         //  ----------------
         //  CreateJob method
@@ -202,7 +202,7 @@ namespace usis.Net.Bits
         /// </returns>
         /// <seealso cref="EnumerateJobs(bool)"/>
 
-        public IEnumerable<BackgroundCopyJob> EnumerateJobs() { return EnumerateJobs(false); }
+        public IEnumerable<BackgroundCopyJob> EnumerateJobs() => EnumerateJobs(false);
 
         //  -------------
         //  GetJob method
@@ -243,10 +243,7 @@ namespace usis.Net.Bits
         /// <exception cref="ObjectDisposedException">The method was called after the object was disposed.</exception>
         /// <exception cref="BackgroundCopyException">An error occured during a BITS method call.</exception>
 
-        public BackgroundCopyJob GetJob(Guid jobId)
-        {
-            return GetJob(jobId, true);
-        }
+        public BackgroundCopyJob GetJob(Guid jobId) => GetJob(jobId, true);
 
         //  --------------------------
         //  GetErrorDescription method
@@ -261,10 +258,7 @@ namespace usis.Net.Bits
             else return exception.Message;
         }
 
-        internal string GetErrorDescription(uint hResult)
-        {
-            return GetErrorDescription(hResult, Thread.CurrentThread.CurrentCulture.LCID);
-        }
+        internal string GetErrorDescription(uint hResult) => GetErrorDescription(hResult, Thread.CurrentThread.CurrentCulture.LCID);
 
         //  ----------------------
         //  InvokeComMethod method
@@ -381,10 +375,7 @@ namespace usis.Net.Bits
             else return i;
         }
 
-        private static object CreateComObject(Guid clsid)
-        {
-            return CreateComObject(Type.GetTypeFromCLSID(clsid));
-        }
+        private static object CreateComObject(Guid clsid) => CreateComObject(Type.GetTypeFromCLSID(clsid));
 
         private static object CreateComObject(Type type)
         {

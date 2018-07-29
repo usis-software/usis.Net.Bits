@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2017
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017 usis GmbH. All rights reserved.
+//  Copyright (c) 2017,2018 usis GmbH. All rights reserved.
 
 using System;
 using usis.Net.Bits.Interop;
@@ -34,7 +34,7 @@ namespace usis.Net.Bits
         //  construction
         //  ------------
 
-        internal BackgroundCopyJobTimes(BG_JOB_TIMES times) { this.times = times; }
+        internal BackgroundCopyJobTimes(BG_JOB_TIMES times) => this.times = times;
 
         #endregion construction
 

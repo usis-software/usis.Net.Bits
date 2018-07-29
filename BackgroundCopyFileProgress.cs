@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2017
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017 usis GmbH. All rights reserved.
+//  Copyright (c) 2017,2018 usis GmbH. All rights reserved.
 
 using System.Globalization;
 using usis.Net.Bits.Interop;
@@ -35,7 +35,7 @@ namespace usis.Net.Bits
         //  construction
         //  ------------
 
-        internal BackgroundCopyFileProgress(BG_FILE_PROGRESS progress) { this.progress = progress; }
+        internal BackgroundCopyFileProgress(BG_FILE_PROGRESS progress) => this.progress = progress;
 
         #endregion construction
 
@@ -90,12 +90,7 @@ namespace usis.Net.Bits
         /// A <see cref="string" /> that represents this instance.
         /// </returns>
 
-        public override string ToString()
-        {
-            return string.Format(CultureInfo.InvariantCulture,
-                "{0}: {1} bytes of {2}; {3}completed.",
-                nameof(BackgroundCopyFileProgress), BytesTransferred, BytesTotal, Completed ? string.Empty : "not ");
-        }
+        public override string ToString() => string.Format(CultureInfo.InvariantCulture, "{0}: {1} bytes of {2}; {3}completed.", nameof(BackgroundCopyFileProgress), BytesTransferred, BytesTotal, Completed ? string.Empty : "not ");
 
         #endregion methods
     }

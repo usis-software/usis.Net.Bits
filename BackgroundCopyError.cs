@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2017
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017 usis GmbH. All rights reserved.
+//  Copyright (c) 2017,2018 usis GmbH. All rights reserved.
 
 using System;
 using System.Runtime.InteropServices;
@@ -42,7 +42,7 @@ namespace usis.Net.Bits
         //  construction
         //  ------------
 
-        internal BackgroundCopyError(IBackgroundCopyError error) { this.error = error; }
+        internal BackgroundCopyError(IBackgroundCopyError error) => this.error = error;
 
         #endregion construction
 
@@ -179,10 +179,7 @@ namespace usis.Net.Bits
         /// The file object associated with the error.
         /// </returns>
 
-        public BackgroundCopyFile RetrieveFile()
-        {
-            return new BackgroundCopyFile(error.GetFile());
-        }
+        public BackgroundCopyFile RetrieveFile() => new BackgroundCopyFile(error.GetFile());
 
         #endregion methods
 

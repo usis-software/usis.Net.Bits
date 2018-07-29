@@ -104,7 +104,7 @@ namespace usis.Net.Bits
         /// The identifier of the job in the queue.
         /// </value>
 
-        public Guid Id => Manager.InvokeComMethod(() => Job.GetId());
+        public Guid Id => Manager.InvokeComMethod(Job.GetId);
 
         //  --------------------
         //  DisplayName property
@@ -119,7 +119,7 @@ namespace usis.Net.Bits
 
         public string DisplayName
         {
-            get => Manager.InvokeComMethod(() => Job.GetDisplayName());
+            get => Manager.InvokeComMethod(Job.GetDisplayName);
             set => Manager.InvokeComMethod(() => Job.SetDisplayName(value));
         }
 
@@ -136,7 +136,7 @@ namespace usis.Net.Bits
 
         public string Description
         {
-            get => Manager.InvokeComMethod(() => Job.GetDescription());
+            get => Manager.InvokeComMethod(Job.GetDescription);
             set => Manager.InvokeComMethod(() => Job.SetDescription(value));
         }
 
@@ -151,7 +151,7 @@ namespace usis.Net.Bits
         /// The type of transfer being performed, such as a file download or upload.
         /// </value>
 
-        public BackgroundCopyJobType JobType => Manager.InvokeComMethod(() => Job.GetType());
+        public BackgroundCopyJobType JobType => Manager.InvokeComMethod(Job.GetType);
 
         //  -----------------
         //  Priority property
@@ -169,7 +169,7 @@ namespace usis.Net.Bits
 
         public BackgroundCopyJobPriority Priority
         {
-            get => Manager.InvokeComMethod(() => Job.GetPriority());
+            get => Manager.InvokeComMethod(Job.GetPriority);
             set => Manager.InvokeComMethod(() => Job.SetPriority(value));
         }
 
@@ -221,7 +221,7 @@ namespace usis.Net.Bits
 
         public int MinimumRetryDelay
         {
-            get => Manager.InvokeComMethod(() => Job.GetMinimumRetryDelay());
+            get => Manager.InvokeComMethod(Job.GetMinimumRetryDelay);
             set => Manager.InvokeComMethod(() => Job.SetMinimumRetryDelay(value));
         }
 
@@ -239,7 +239,7 @@ namespace usis.Net.Bits
 
         public int NoProgressTimeout
         {
-            get => Manager.InvokeComMethod(() => Job.GetNoProgressTimeout());
+            get => Manager.InvokeComMethod(Job.GetNoProgressTimeout);
             set => Manager.InvokeComMethod(() => Job.SetNoProgressTimeout(value));
         }
 
@@ -256,7 +256,7 @@ namespace usis.Net.Bits
 
         public BackgroundCopyJobNotifications Notifications
         {
-            get => Manager.InvokeComMethod(() => GetNotifyFlags());
+            get => Manager.InvokeComMethod(GetNotifyFlags);
             private set => Manager.InvokeComMethod(() => Job.SetNotifyFlags(value));
         }
 
@@ -271,7 +271,7 @@ namespace usis.Net.Bits
         /// The number of times BITS tried to transfer the job and an error occurred.
         /// </value>
 
-        public int ErrorCount => Manager.InvokeComMethod(() => Job.GetErrorCount());
+        public int ErrorCount => Manager.InvokeComMethod(Job.GetErrorCount);
 
         //  ----------------------
         //  ProxySettings property
@@ -344,20 +344,13 @@ namespace usis.Net.Bits
         //  Manager property
         //  ----------------
 
-        private BackgroundCopyManager Manager { get; set; }
+        private BackgroundCopyManager Manager { get; }
 
         //  ------------
         //  Job property
         //  ------------
 
-        private IBackgroundCopyJob Job
-        {
-            get
-            {
-                if (job == null) throw new ObjectDisposedException(nameof(BackgroundCopyJob));
-                return job;
-            }
-        }
+        private IBackgroundCopyJob Job => job ?? throw new ObjectDisposedException(nameof(BackgroundCopyJob));
 
         //  -------------
         //  Job2 property
@@ -403,7 +396,7 @@ namespace usis.Net.Bits
             }
         }
 
-        private uint OnFailed() { return InvokeHandler(failedHandler); }
+        private uint OnFailed() => InvokeHandler(failedHandler);
 
         #endregion Failed event
 
@@ -439,7 +432,7 @@ namespace usis.Net.Bits
             }
         }
 
-        private uint OnModified() { return InvokeHandler(modifiedHandler); }
+        private uint OnModified() => InvokeHandler(modifiedHandler);
 
         #endregion Modified event
 
@@ -475,7 +468,7 @@ namespace usis.Net.Bits
             }
         }
 
-        private uint OnTransferred() { return InvokeHandler(transferredHandler); }
+        private uint OnTransferred() => InvokeHandler(transferredHandler);
 
         #endregion Transferred event
 
@@ -494,7 +487,7 @@ namespace usis.Net.Bits
         /// from the client (downloads) and server (uploads).
         /// </summary>
 
-        public void Cancel() { Manager.InvokeComMethod(Job.Cancel); }
+        public void Cancel() => Manager.InvokeComMethod(Job.Cancel);
 
         //  ---------------
         //  Complete method
@@ -504,7 +497,7 @@ namespace usis.Net.Bits
         /// Ends the job and saves the transferred files on the client.
         /// </summary>
 
-        public void Complete() { Manager.InvokeComMethod(Job.Complete); }
+        public void Complete() => Manager.InvokeComMethod(Job.Complete);
 
         //  --------------
         //  Suspend method
@@ -515,7 +508,7 @@ namespace usis.Net.Bits
         /// and jobs that have finished transferring files are automatically suspended.
         /// </summary>
 
-        public void Suspend() { Manager.InvokeComMethod(Job.Suspend); }
+        public void Suspend() => Manager.InvokeComMethod(Job.Suspend);
 
         //  -------------
         //  Resume method
@@ -525,7 +518,7 @@ namespace usis.Net.Bits
         /// Activates a new job or restarts a job that has been suspended.
         /// </summary>
 
-        public void Resume() { Manager.InvokeComMethod(Job.Resume); }
+        public void Resume() => Manager.InvokeComMethod(Job.Resume);
 
         //  ---------------------
         //  EnumerateFiles method
@@ -567,10 +560,7 @@ namespace usis.Net.Bits
         /// to calculate the percentage of the job that is complete.
         /// </returns>
 
-        public BackgroundCopyJobProgress RetrieveProgress()
-        {
-            return new BackgroundCopyJobProgress(Job.GetProgress());
-        }
+        public BackgroundCopyJobProgress RetrieveProgress() => new BackgroundCopyJobProgress(Job.GetProgress());
 
         //  ----------------------------
         //  RetrieveReplyProgress method
@@ -584,10 +574,7 @@ namespace usis.Net.Bits
         /// to calculate the percentage of the reply file transfer that is complete.
         /// </returns>
 
-        public BackgroundCopyJobReplyProgress RetrieveReplyProgress()
-        {
-            return new BackgroundCopyJobReplyProgress(Manager.InvokeComMethod(() => Job2.GetReplyProgress()));
-        }
+        public BackgroundCopyJobReplyProgress RetrieveReplyProgress() => new BackgroundCopyJobReplyProgress(Manager.InvokeComMethod(() => Job2.GetReplyProgress()));
 
         //  --------------------
         //  RetrieveTimes method
@@ -600,10 +587,7 @@ namespace usis.Net.Bits
         /// A <c>BackgroundCopyJobTimes</c> structure that contains job-related time stamps.
         /// </returns>
 
-        public BackgroundCopyJobTimes RetrieveTimes()
-        {
-            return new BackgroundCopyJobTimes(Job.GetTimes());
-        }
+        public BackgroundCopyJobTimes RetrieveTimes => new BackgroundCopyJobTimes(Job.GetTimes());
 
         //  --------------
         //  AddFile method
@@ -615,10 +599,7 @@ namespace usis.Net.Bits
         /// <param name="remoteUrl">The URL of the file on the server.</param>
         /// <param name="localName">The name of the file on the client.</param>
 
-        public void AddFile(string remoteUrl, string localName)
-        {
-            AddFile(new Uri(remoteUrl), localName);
-        }
+        public void AddFile(string remoteUrl, string localName) => AddFile(new Uri(remoteUrl), localName);
 
         /// <summary>
         /// Adds a single file to the job.
@@ -626,10 +607,7 @@ namespace usis.Net.Bits
         /// <param name="remoteUrl">The URL of the file on the server.</param>
         /// <param name="localName">The name of the file on the client.</param>
 
-        public void AddFile(Uri remoteUrl, string localName)
-        {
-            Manager.InvokeComMethod(() => Job.AddFile(remoteUrl.ToString(), localName));
-        }
+        public void AddFile(Uri remoteUrl, string localName) => Manager.InvokeComMethod(() => Job.AddFile(remoteUrl.ToString(), localName));
 
         //  ---------------
         //  AddFiles method
@@ -667,10 +645,7 @@ namespace usis.Net.Bits
         /// </code>
         /// </example>
 
-        public void AddFiles(params BackgroundCopyFileInfo[] files)
-        {
-            Manager.InvokeComMethod(() => Job.AddFileSet(files.Length, files.Select(e => e.fileInfo).ToArray()));
-        }
+        public void AddFiles(params BackgroundCopyFileInfo[] files) => Manager.InvokeComMethod(() => Job.AddFileSet(files.Length, files.Select(e => e.fileInfo).ToArray()));
 
         //  --------------------
         //  TakeOwnership method
@@ -680,7 +655,7 @@ namespace usis.Net.Bits
         /// Changes ownership of the job to the current user.
         /// </summary>
 
-        public void TakeOwnership() { Manager.InvokeComMethod(() => Job.TakeOwnership()); }
+        public void TakeOwnership() => Manager.InvokeComMethod(() => Job.TakeOwnership());
 
         //  --------------------
         //  RetrieveError method
@@ -693,7 +668,7 @@ namespace usis.Net.Bits
         /// An object that provides error informations.
         /// </returns>
 
-        public BackgroundCopyError RetrieveError() { return RetrieveError(false); }
+        public BackgroundCopyError RetrieveError() => RetrieveError(false);
 
         //  ------------------------
         //  RetrieveReplyData method
@@ -765,10 +740,7 @@ namespace usis.Net.Bits
         /// <param name="target">Identifies whether to use the credentials for proxy or server authentication.</param>
         /// <param name="scheme">Identifies the authentication scheme to use (basic or one of several challenge-response schemes).</param>
 
-        public void RemoveCredentials(BackgroundCopyAuthenticationTarget target, BackgroundCopyAuthenticationScheme scheme)
-        {
-            Manager.InvokeComMethod(() => Job2.RemoveCredentials(target, scheme));
-        }
+        public void RemoveCredentials(BackgroundCopyAuthenticationTarget target, BackgroundCopyAuthenticationScheme scheme) => Manager.InvokeComMethod(() => Job2.RemoveCredentials(target, scheme));
 
         #endregion public methods
 
@@ -923,10 +895,7 @@ namespace usis.Net.Bits
 
         public override string ToString()
         {
-            return string.Format(
-                CultureInfo.CurrentCulture,
-                "{0}: Id={1}, Name='{2}', Notifications={3}",
-                nameof(BackgroundCopyJob), Id, DisplayName, Notifications);
+            return string.Format(CultureInfo.CurrentCulture, "{0}: Id={1}, Name='{2}', Notifications={3}", nameof(BackgroundCopyJob), Id, DisplayName, Notifications);
         }
 
         #endregion overrides
@@ -956,7 +925,7 @@ namespace usis.Net.Bits
             //  construction
             //  ------------
 
-            internal Callback(BackgroundCopyJob job) { Job = job; }
+            internal Callback(BackgroundCopyJob job) => Job = job;
 
             #endregion construction
 
@@ -966,19 +935,19 @@ namespace usis.Net.Bits
             //  JobTransferred method
             //  ---------------------
 
-            uint IBackgroundCopyCallback.JobTransferred(IBackgroundCopyJob job) { return Job.OnTransferred(); }
+            uint IBackgroundCopyCallback.JobTransferred(IBackgroundCopyJob job) => Job.OnTransferred();
 
             //  ---------------
             //  JobError method
             //  ---------------
 
-            uint IBackgroundCopyCallback.JobError(IBackgroundCopyJob job, IBackgroundCopyError error) { return Job.OnFailed(); }
+            uint IBackgroundCopyCallback.JobError(IBackgroundCopyJob job, IBackgroundCopyError error) => Job.OnFailed();
 
             //  ----------------------
             //  JobModification method
             //  ----------------------
 
-            uint IBackgroundCopyCallback.JobModification(IBackgroundCopyJob job, int reserved) { return Job.OnModified(); }
+            uint IBackgroundCopyCallback.JobModification(IBackgroundCopyJob job, int reserved) => Job.OnModified();
 
             #endregion IBackgroundCopyCallback implementation
         }

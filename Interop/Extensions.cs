@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2017
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017 usis GmbH. All rights reserved.
+//  Copyright (c) 2017,2018 usis GmbH. All rights reserved.
 
 using System;
 using System.Runtime.InteropServices.ComTypes;
@@ -22,10 +22,7 @@ namespace usis.Net.Bits.Interop
         //  ToDateTime method
         //  -----------------
 
-        public static DateTime ToDateTime(this FILETIME fileTime)
-        {
-            return DateTimeFromFileTime(fileTime.dwHighDateTime, fileTime.dwLowDateTime);
-        }
+        public static DateTime ToDateTime(this FILETIME fileTime) => DateTimeFromFileTime(fileTime.dwHighDateTime, fileTime.dwLowDateTime);
 
         #region private methods
 

@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2017
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017 usis GmbH. All rights reserved.
+//  Copyright (c) 2017,2018 usis GmbH. All rights reserved.
 
 using System;
 using System.Runtime.InteropServices;
@@ -35,7 +35,7 @@ namespace usis.Net.Bits
         //  construction
         //  ------------
 
-        internal BackgroundCopyFile(IBackgroundCopyFile file) { this.file = file; }
+        internal BackgroundCopyFile(IBackgroundCopyFile file) => this.file = file;
 
         #endregion construction
 
@@ -71,14 +71,7 @@ namespace usis.Net.Bits
         //  File property
         //  -------------
 
-        private IBackgroundCopyFile File
-        {
-            get
-            {
-                if (file == null) throw new ObjectDisposedException(nameof(BackgroundCopyFile));
-                return file;
-            }
-        }
+        private IBackgroundCopyFile File => file ?? throw new ObjectDisposedException(nameof(BackgroundCopyFile));
 
         #endregion properties
 
@@ -95,10 +88,7 @@ namespace usis.Net.Bits
         /// A <c>BackgroundCopyFileProgress</c> object whose members indicate the progress of the file transfer.
         /// </returns>
 
-        public BackgroundCopyFileProgress RetrieveProgress()
-        {
-            return new BackgroundCopyFileProgress(File.GetProgress());
-        }
+        public BackgroundCopyFileProgress RetrieveProgress() => new BackgroundCopyFileProgress(File.GetProgress());
 
         #endregion methods
 
