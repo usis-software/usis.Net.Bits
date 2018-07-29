@@ -60,14 +60,7 @@ namespace usis.Net.Bits
         /// The version of BITS on the client computer.
         /// </value>
 
-        public Version Version
-        {
-            get
-            {
-                if (version == null) version = DetermineVersion();
-                return version;
-            }
-        }
+        public Version Version => version ?? (version = DetermineVersion());
 
         #endregion properties
 
