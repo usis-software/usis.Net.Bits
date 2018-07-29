@@ -587,7 +587,7 @@ namespace usis.Net.Bits
         /// A <c>BackgroundCopyJobTimes</c> structure that contains job-related time stamps.
         /// </returns>
 
-        public BackgroundCopyJobTimes RetrieveTimes => new BackgroundCopyJobTimes(Job.GetTimes());
+        public BackgroundCopyJobTimes RetrieveTimes() => new BackgroundCopyJobTimes(Job.GetTimes());
 
         //  --------------
         //  AddFile method
