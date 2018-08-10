@@ -86,7 +86,7 @@
     <None Include="usis.Net.Bits.snk" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ReleaseNotes.txt" />
+    <None Include="ReleaseNotes.md" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Strings.resx">
