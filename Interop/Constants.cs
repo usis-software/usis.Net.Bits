@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2017
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017 usis GmbH. All rights reserved.
+//  Copyright (c) 2017,2018 usis GmbH. All rights reserved.
 
 namespace usis.Net.Bits.Interop
 {
@@ -139,6 +139,7 @@ namespace usis.Net.Bits.Interop
         public const string IBackgroundCopyFile = "01b7bd23-fb88-4a77-8490-5891d3e4653a";
         public const string IBackgroundCopyJob = "37668d37-507e-4160-9316-26306d150b12";
         public const string IBackgroundCopyJob2 = "54b50739-686f-45eb-9dff-d6a9a0faa9af";
+        public const string IBackgroundCopyJob3 = "443c8934-90ff-48ed-bcde-26f5c7450042";
         public const string IBackgroundCopyManager = "5ce34c0d-0dc9-4c1f-897c-daa1b78cee7c";
         public const string IEnumBackgroundCopyFiles = "ca51e165-c365-424c-8d41-24aaa4ff3c40";
         public const string IEnumBackgroundCopyJobs = "1af4f612-3b71-466f-8f58-7b6f73ac57ad";

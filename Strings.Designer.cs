@@ -68,5 +68,14 @@ namespace usis.Net.Bits {
                 return ResourceManager.GetString("FailedErrorDescription", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This version of BITS does not support the requested feature..
+        /// </summary>
+        internal static string NotSupported {
+            get {
+                return ResourceManager.GetString("NotSupported", resourceCulture);
+            }
+        }
     }
 }

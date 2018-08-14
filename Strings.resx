@@ -120,4 +120,7 @@
   <data name="FailedErrorDescription" xml:space="preserve">
     <value>Failed to retrieve a description for the specified error code.</value>
   </data>
+  <data name="NotSupported" xml:space="preserve">
+    <value>This version of BITS does not support the requested feature.</value>
+  </data>
 </root>

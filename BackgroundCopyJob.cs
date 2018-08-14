@@ -290,9 +290,9 @@ namespace usis.Net.Bits
             set => SetProxySettings(value);
         }
 
-        //  ------------------------
-        //  NotifyCommandLine method
-        //  ------------------------
+        //  --------------------------
+        //  NotifyCommandLine property
+        //  --------------------------
 
         /// <summary>
         /// Gets or sets the program to execute when the job enters the error or transferred state.
@@ -315,9 +315,9 @@ namespace usis.Net.Bits
             });
         }
 
-        //  --------------------
-        //  ReplyFileName method
-        //  --------------------
+        //  ----------------------
+        //  ReplyFileName property
+        //  ----------------------
 
         /// <summary>
         /// Gets or sets the name of the file to contain the reply data of an upload-reply job.
@@ -334,6 +334,23 @@ namespace usis.Net.Bits
                 return hr == HResult.Ok ? replyFileName : null;
             }
             set => Manager.InvokeComMethod(() => Job2.SetReplyFileName(value));
+        }
+
+        //  ----------------
+        //  FileAcl property
+        //  ----------------
+
+        /// <summary>
+        /// Gets or sets the flags that identify the owner and ACL information to maintain when transferring a file using SMB.
+        /// </summary>
+        /// <value>
+        /// The flags that identify the owner and ACL information to maintain when transferring a file using SMB.
+        /// </value>
+
+        public BackgroundCopyJobFileAclOptions FileAcl
+        {
+            get => (BackgroundCopyJobFileAclOptions)Job3.GetFileACLFlags();
+            set => Job3.SetFileACLFlags(Convert.ToUInt32(value, CultureInfo.InvariantCulture));
         }
 
         #endregion public properties
@@ -357,6 +374,13 @@ namespace usis.Net.Bits
         //  -------------
 
         private IBackgroundCopyJob2 Job2 => GetJob<IBackgroundCopyJob2>();
+
+        //  -------------
+        //  Job3 property
+        //  -------------
+
+        private IBackgroundCopyJob3 Job3 => GetJob<IBackgroundCopyJob3>();
+
 
         #endregion private properties
 
@@ -742,6 +766,18 @@ namespace usis.Net.Bits
 
         public void RemoveCredentials(BackgroundCopyAuthenticationTarget target, BackgroundCopyAuthenticationScheme scheme) => Manager.InvokeComMethod(() => Job2.RemoveCredentials(target, scheme));
 
+        //  --------------------------
+        //  ReplaceRemotePrefix method
+        //  --------------------------
+
+        /// <summary>
+        /// Replaces the beginning text of all remote names in the download job with the specified string.
+        /// </summary>
+        /// <param name="oldPrefix">Identifies the text to replace in the remote name. The text must start at the beginning of the remote name.</param>
+        /// <param name="newPrefix">The replacement text.</param>
+
+        public void ReplaceRemotePrefix(string oldPrefix, string newPrefix) => Manager.InvokeComMethod(() => Job3.ReplaceRemotePrefix(oldPrefix, newPrefix));
+
         #endregion public methods
 
         #region private methods
@@ -818,7 +854,7 @@ namespace usis.Net.Bits
 
         private TInterface GetJob<TInterface>() where TInterface : class
         {
-            if (!(Job is TInterface j)) throw new NotSupportedException();
+            if (!(Job is TInterface j)) throw new NotSupportedException(Strings.NotSupported);
             return j;
         }
 

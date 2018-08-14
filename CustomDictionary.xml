@@ -6,6 +6,9 @@
     </Unrecognized>
     <Recognized>
       <Word>usis</Word>
+      <Word>Acl</Word>
+      <Word>Dacl</Word>
+      <Word>Sacl</Word>
     </Recognized>
     <Deprecated>
       <Term PreferredAlternate=""></Term>
