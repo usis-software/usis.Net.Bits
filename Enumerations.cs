@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2017
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017 usis GmbH. All rights reserved.
+//  Copyright (c) 2017,2018 usis GmbH. All rights reserved.
 
 using System;
 
@@ -469,7 +469,8 @@ namespace usis.Net.Bits
         FileOwner = 1,
 
         /// <summary>
-        /// If set, the file's group information is maintained. Otherwise, BITS uses the job owner's primary group to assign the group information to the file.
+        /// If set, the file's group information is maintained.
+        /// Otherwise, BITS uses the job owner's primary group to assign the group information to the file.
         /// </summary>
 
         FileGroup = 2,
