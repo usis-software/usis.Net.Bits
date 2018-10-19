@@ -4,6 +4,15 @@
 
 ---
 
+## Next Release
+
+- `BackgroundCopyJobFileAclOptions` enumeration added.
+- `BackgroundCopyJob.FileAcl` property added.
+- `BackgroundCopyJob.ReplaceRemotePrefix` method added.
+- Fix for the exception that is thrown when calling `BackgroundCopyJob.SetCredentials` from a 32-bit application.
+
+---
+
 ## Version 1.1.2 - 2018-01-23
 
 - .NET Framework 4.5
