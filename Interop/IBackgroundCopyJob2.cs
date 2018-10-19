@@ -278,7 +278,7 @@ namespace usis.Net.Bits.Interop
         //  SetCredentials method
         //  ---------------------
 
-        void SetCredentials([MarshalAs(UnmanagedType.Struct)] BG_AUTH_CREDENTIALS credentials);
+        void SetCredentials(ref BG_AUTH_CREDENTIALS credentials);
 
         //  ------------------------
         //  RemoveCredentials method
