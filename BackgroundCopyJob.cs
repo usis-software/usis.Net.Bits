@@ -305,7 +305,7 @@ namespace usis.Net.Bits
         {
             get => Manager.InvokeComMethod(() =>
             {
-                Job2.GetNotifyCmdLine(out string program, out string parameters);
+                Job2.GetNotifyCmdLine(out var program, out var parameters);
                 return new BackgroundCopyNotifyCommandLine(program, parameters);
             });
             set => Manager.InvokeComMethod(() =>
@@ -330,7 +330,7 @@ namespace usis.Net.Bits
         {
             get
             {
-                var hr = Job2.GetReplyFileName(out string replyFileName);
+                var hr = Job2.GetReplyFileName(out var replyFileName);
                 return hr == HResult.Ok ? replyFileName : null;
             }
             set => Manager.InvokeComMethod(() => Job2.SetReplyFileName(value));
@@ -563,7 +563,7 @@ namespace usis.Net.Bits
             try
             {
                 files = job.EnumFiles();
-                while (files.Next(1, out IBackgroundCopyFile file, IntPtr.Zero) == HResult.Ok)
+                while (files.Next(1, out var file, IntPtr.Zero) == HResult.Ok)
                 {
                     try { yield return new BackgroundCopyFile(file); }
                     finally { Marshal.ReleaseComObject(file); }
@@ -708,7 +708,7 @@ namespace usis.Net.Bits
 
         public byte[] RetrieveReplyData()
         {
-            var hr = Job2.GetReplyData(out IntPtr buffer, out ulong lenght);
+            var hr = Job2.GetReplyData(out var buffer, out var lenght);
             if (HResult.Succeeded(hr))
             {
                 var data = new byte[lenght];
@@ -740,10 +740,7 @@ namespace usis.Net.Bits
         /// BITS encrypts the password before persisting the job if a network disconnect occurs or the user logs off.
         /// </param>
 
-        public void SetCredentials(
-            BackgroundCopyAuthenticationTarget target,
-            BackgroundCopyAuthenticationScheme scheme,
-            string userName, string password)
+        public void SetCredentials(BackgroundCopyAuthenticationTarget target, BackgroundCopyAuthenticationScheme scheme, string userName, string password)
         {
             Manager.InvokeComMethod(() => Job2.SetCredentials(new BG_AUTH_CREDENTIALS()
             {
@@ -795,7 +792,7 @@ namespace usis.Net.Bits
 
         private BackgroundCopyJobProxySettings RetrieveProxySettings()
         {
-            Job.GetProxySettings(out BackgroundCopyJobProxyUsage usage, out string list, out string bypassList);
+            Job.GetProxySettings(out var usage, out var list, out var bypassList);
             return new BackgroundCopyJobProxySettings(usage, list, bypassList);
         }
 
@@ -823,7 +820,7 @@ namespace usis.Net.Bits
 
         internal BackgroundCopyError RetrieveError(bool throwException)
         {
-            var hr = Job.GetError(out IBackgroundCopyError error);
+            var hr = Job.GetError(out var error);
             if (hr == HResult.Ok) return new BackgroundCopyError(error);
             else if (hr == HResult.BG_E_ERROR_INFORMATION_UNAVAILABLE && !throwException) return null;
             else throw new BackgroundCopyException(Manager, hr);
@@ -838,7 +835,7 @@ namespace usis.Net.Bits
             handler -= value;
             if (handler == null)
             {
-                var hr = Job.GetNotifyFlags(out BackgroundCopyJobNotifications notifyFlags);
+                var hr = Job.GetNotifyFlags(out var notifyFlags);
                 if (hr != HResult.RPC_E_DISCONNECTED &&
                     hr != Win32Error.RPC_S_SERVER_UNAVAILABLE)
                 {
@@ -864,7 +861,7 @@ namespace usis.Net.Bits
 
         private BackgroundCopyJobNotifications GetNotifyFlags()
         {
-            var hr = Job.GetNotifyFlags(out BackgroundCopyJobNotifications notifyFlags);
+            var hr = Job.GetNotifyFlags(out var notifyFlags);
             if (!HResult.Succeeded(hr)) throw new BackgroundCopyException(Manager, hr);
             return notifyFlags;
         }
@@ -901,7 +898,7 @@ namespace usis.Net.Bits
                 handler?.Invoke(this, EventArgs.Empty);
                 if (Job is IBackgroundCopyJob2 job2)
                 {
-                    job2.GetNotifyCmdLine(out string program, out string parameters);
+                    job2.GetNotifyCmdLine(out var program, out var parameters);
                     if (program != null) return HResult.Fail;
                 }
                 return HResult.Ok;
@@ -929,10 +926,7 @@ namespace usis.Net.Bits
         /// A <see cref="string" /> that represents this instance.
         /// </returns>
 
-        public override string ToString()
-        {
-            return string.Format(CultureInfo.CurrentCulture, "{0}: Id={1}, Name='{2}', Notifications={3}", nameof(BackgroundCopyJob), Id, DisplayName, Notifications);
-        }
+        public override string ToString() => string.Format(CultureInfo.CurrentCulture, "{0}: Id={1}, Name='{2}', Notifications={3}", nameof(BackgroundCopyJob), Id, DisplayName, Notifications);
 
         #endregion overrides
 

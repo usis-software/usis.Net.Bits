@@ -18,11 +18,15 @@ namespace usis.Net.Bits.Interop
 
     internal static class Extensions
     {
+        #region FILETIME extension methods
+
         //  -----------------
         //  ToDateTime method
         //  -----------------
 
-        public static DateTime ToDateTime(this FILETIME fileTime) => DateTimeFromFileTime(fileTime.dwHighDateTime, fileTime.dwLowDateTime);
+        internal static DateTime ToDateTime(this FILETIME fileTime) => DateTimeFromFileTime(fileTime.dwHighDateTime, fileTime.dwLowDateTime);
+
+        #endregion FILETIME extension methods
 
         #region private methods
 
@@ -34,7 +38,7 @@ namespace usis.Net.Bits.Interop
         {
             if (high == 0 && low == 0) return DateTime.MinValue;
 
-            long fileTime = ((long)high << 32) + (uint)low;
+            var fileTime = ((long)high << 32) + (uint)low;
             return DateTime.FromFileTime(fileTime);
         }
 

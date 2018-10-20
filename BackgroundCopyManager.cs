@@ -108,7 +108,7 @@ namespace usis.Net.Bits
         {
             if (displayName == null) throw new ArgumentNullException(nameof(displayName));
             if (manager == null) throw new ObjectDisposedException(nameof(BackgroundCopyManager));
-            return InvokeComMethod(() => new BackgroundCopyJob(this, manager.CreateJob(displayName, type, out Guid jobId)));
+            return InvokeComMethod(() => new BackgroundCopyJob(this, manager.CreateJob(displayName, type, out var jobId)));
         }
 
         //  --------------------
@@ -178,7 +178,7 @@ namespace usis.Net.Bits
             try
             {
                 jobs = manager.EnumJobs(forAllUsers ? Constants.BG_JOB_ENUM_ALL_USERS : 0);
-                while (jobs.Next(1, out IBackgroundCopyJob job, IntPtr.Zero) == HResult.Ok)
+                while (jobs.Next(1, out var job, IntPtr.Zero) == HResult.Ok)
                 {
                     yield return new BackgroundCopyJob(this, job);
                 }
@@ -220,7 +220,7 @@ namespace usis.Net.Bits
         {
             if (manager == null) throw new ObjectDisposedException(nameof(BackgroundCopyManager));
 
-            var result = manager.GetJob(jobId, out IBackgroundCopyJob job);
+            var result = manager.GetJob(jobId, out var job);
             if (result == HResult.Ok) return new BackgroundCopyJob(this, job);
             else if (result == HResult.BG_E_NOT_FOUND && !throwNotFoundException) return null;
             else throw new BackgroundCopyException(this, result);
@@ -242,14 +242,7 @@ namespace usis.Net.Bits
         //  GetErrorDescription method
         //  --------------------------
 
-        internal string GetErrorDescription(COMException exception)
-        {
-            if ((exception.ErrorCode & 0xFFFF0000) == 0x80200000)
-            {
-                return GetErrorDescription((uint)exception.ErrorCode);
-            }
-            else return exception.Message;
-        }
+        internal string GetErrorDescription(COMException exception) => (exception.ErrorCode & 0xFFFF0000) == 0x80200000 ? GetErrorDescription((uint)exception.ErrorCode) : exception.Message;
 
         internal string GetErrorDescription(uint hResult) => GetErrorDescription(hResult, Thread.CurrentThread.CurrentCulture.LCID);
 
@@ -313,7 +306,7 @@ namespace usis.Net.Bits
         private string GetErrorDescription(uint hResult, int languageId)
         {
             if (manager == null) throw new ObjectDisposedException(nameof(BackgroundCopyManager));
-            var result = manager.GetErrorDescription(hResult, languageId, out string description);
+            var result = manager.GetErrorDescription(hResult, languageId, out var description);
             if (result == HResult.Ok) return description;
             else if (result == Win32Error.ERROR_MUI_FILE_NOT_LOADED) return GetErrorDescription(hResult, 0x0C00);
             else throw new BackgroundCopyException(Strings.FailedErrorDescription, result);

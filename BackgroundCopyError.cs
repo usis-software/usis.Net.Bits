@@ -100,7 +100,7 @@ namespace usis.Net.Bits
         {
             get
             {
-                error.GetError(out BackgroundCopyErrorContext context, out int code);
+                error.GetError(out var context, out var code);
                 return context;
             }
         }
@@ -120,7 +120,7 @@ namespace usis.Net.Bits
         {
             get
             {
-                error.GetError(out BackgroundCopyErrorContext context, out int code);
+                error.GetError(out var context, out var code);
                 return code;
             }
         }
@@ -191,7 +191,7 @@ namespace usis.Net.Bits
 
         private string GetErrorDescription(int lcid)
         {
-            var result = error.GetErrorDescription(lcid, out string description);
+            var result = error.GetErrorDescription(lcid, out var description);
             if (result == HResult.Ok) return description;
             else if (result == Win32Error.ERROR_MUI_FILE_NOT_LOADED || result == Win32Error.ERROR_MUI_FILE_NOT_FOUND)
             {
@@ -206,7 +206,7 @@ namespace usis.Net.Bits
 
         private string GetErrorContextDescription(int lcid)
         {
-            var result = error.GetErrorContextDescription(lcid, out string description);
+            var result = error.GetErrorContextDescription(lcid, out var description);
             if (result == HResult.Ok) return description;
             else if (result == Win32Error.ERROR_MUI_FILE_NOT_LOADED || result == Win32Error.ERROR_MUI_FILE_NOT_FOUND)
             {
