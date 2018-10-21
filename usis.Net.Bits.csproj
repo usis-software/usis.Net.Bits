@@ -34,7 +34,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
-    <CodeAnalysisRuleSet>usis.AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>bin\Release\usis.Net.Bits.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AllRules.ruleset" />
+    <None Include="README.md" />
     <None Include="usis.Net.Bits.nuspec">
       <SubType>Designer</SubType>
     </None>
