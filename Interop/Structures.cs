@@ -121,6 +121,22 @@ namespace usis.Net.Bits.Interop
     }
 
     #endregion BG_AUTH_CREDENTIALS structure
+
+    #region BG_FILE_RANGE structure
+
+    //  -----------------------
+    //  BG_FILE_RANGE structure
+    //  -----------------------
+
+    [StructLayout(LayoutKind.Sequential)]
+    internal struct BG_FILE_RANGE
+    {
+        internal ulong InitialOffset;
+
+        internal ulong Length;
+    }
+
+    #endregion BG_FILE_RANGE structure
 }
 
 // eof "Structures.cs"

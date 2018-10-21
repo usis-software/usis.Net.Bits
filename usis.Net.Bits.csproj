@@ -49,6 +49,7 @@
     <Compile Include="BackgroundCopyException.cs" />
     <Compile Include="BackgroundCopyFile.cs" />
     <Compile Include="BackgroundCopyFileInfo.cs" />
+    <Compile Include="BackgroundCopyFileRange.cs" />
     <Compile Include="BackgroundCopyJob.cs" />
     <Compile Include="BackgroundCopyJobExtensions.cs" />
     <Compile Include="BackgroundCopyJobProgress.cs" />

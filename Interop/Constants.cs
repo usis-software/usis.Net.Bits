@@ -18,6 +18,8 @@ namespace usis.Net.Bits.Interop
     internal static class Constants
     {
         internal const uint BG_JOB_ENUM_ALL_USERS = 1;
+
+        internal const ulong BG_LENGTH_TO_EOF = ulong.MaxValue;
     }
 
     #endregion Constants class

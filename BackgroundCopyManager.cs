@@ -177,7 +177,7 @@ namespace usis.Net.Bits
             IEnumBackgroundCopyJobs jobs = null;
             try
             {
-                jobs = manager.EnumJobs(forAllUsers ? Constants.BG_JOB_ENUM_ALL_USERS : 0);
+                jobs = manager.EnumJobs(forAllUsers ? Interop.Constants.BG_JOB_ENUM_ALL_USERS : 0);
                 while (jobs.Next(1, out var job, IntPtr.Zero) == HResult.Ok)
                 {
                     yield return new BackgroundCopyJob(this, job);

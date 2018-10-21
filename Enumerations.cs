@@ -1,9 +1,9 @@
-//
+﻿//
 //  @(#) Enumerations.cs
 //
 //  Project:    usis.Net.Bits
 //  System:     Microsoft Visual Studio 2017
-//  Author:     Udo Sch�fer
+//  Author:     Udo Schäfer
 //
 //  Copyright (c) 2017,2018 usis GmbH. All rights reserved.
 
@@ -11,6 +11,27 @@ using System;
 
 namespace usis.Net.Bits
 {
+    #region Constants class
+
+    //  ---------------
+    //  Constants class
+    //  ---------------
+
+    /// <summary>
+    /// Provides constants for the BITS class library.
+    /// </summary>
+
+    public static class Constants
+    {
+        /// <summary>
+        /// Indicates that a range extends to the end of the file.
+        /// </summary>
+
+        public const long LengthToEndOfFile = -1;
+    }
+
+    #endregion Constants class
+
     #region BackgroundCopyJobType enumeration
 
     //  ---------------------------------

@@ -633,6 +633,52 @@ namespace usis.Net.Bits
 
         public void AddFile(Uri remoteUrl, string localName) => Manager.InvokeComMethod(() => Job.AddFile(remoteUrl.ToString(), localName));
 
+        /// <summary>
+        /// Adds a file to a download job and specifies the range of the file you want to download.
+        /// </summary>
+        /// <param name="remoteUrl">The URL of the file on the server.</param>
+        /// <param name="localName">The name of the file on the client.</param>
+        /// <param name="offset">Zero-based offset to the beginning of the range of bytes to download from a file.</param>
+        /// <param name="length">The length of the range, in bytes. Do not specify a zero byte length.
+        /// To indicate that the range extends to the end of the file, specify <see cref="Constants.LengthToEndOfFile" />.</param>
+
+        public void AddFile(string remoteUrl, string localName, long offset, long length) => AddFile(new Uri(remoteUrl), localName, offset, length);
+
+        /// <summary>
+        /// Adds a file to a download job and specifies the range of the file you want to download.
+        /// </summary>
+        /// <param name="remoteUrl">The URL of the file on the server.</param>
+        /// <param name="localName">The name of the file on the client.</param>
+        /// <param name="offset">Zero-based offset to the beginning of the range of bytes to download from a file.</param>
+        /// <param name="length">The length of the range, in bytes. Do not specify a zero byte length.
+        /// To indicate that the range extends to the end of the file, specify <see cref="Constants.LengthToEndOfFile" />.</param>
+
+        public void AddFile(Uri remoteUrl, string localName, long offset, long length) => AddFile(remoteUrl, localName, new BackgroundCopyFileRange(offset, length));
+
+        /// <summary>
+        /// Adds a file to a download job and specifies the ranges of the file you want to download.
+        /// </summary>
+        /// <param name="remoteUrl">The URL of the file on the server.</param>
+        /// <param name="localName">The name of the file on the client.</param>
+        /// <param name="ranges">An array of one or more <see cref="BackgroundCopyFileRange" /> structures that specify the ranges to download.
+        /// Do not specify duplicate or overlapping ranges.</param>
+
+        public void AddFile(string remoteUrl, string localName, params BackgroundCopyFileRange[] ranges) => AddFile(new Uri(remoteUrl), localName, ranges);
+
+        /// <summary>
+        /// Adds a file to a download job and specifies the ranges of the file you want to download.
+        /// </summary>
+        /// <param name="remoteUrl">The URL of the file on the server.</param>
+        /// <param name="localName">The name of the file on the client.</param>
+        /// <param name="ranges">An array of one or more <see cref="BackgroundCopyFileRange" /> structures that specify the ranges to download.
+        /// Do not specify duplicate or overlapping ranges.</param>
+
+        public void AddFile(Uri remoteUrl, string localName, params BackgroundCopyFileRange[] ranges)
+        {
+            var fileRanges = ranges.Select(r => r.ToFileRange()).ToArray();
+            Manager.InvokeComMethod(() => Job3.AddFileWithRanges(remoteUrl.ToString(), localName, Convert.ToUInt32(fileRanges.Length), fileRanges));
+        }
+
         //  ---------------
         //  AddFiles method
         //  ---------------

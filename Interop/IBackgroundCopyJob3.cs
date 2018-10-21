@@ -302,7 +302,7 @@ namespace usis.Net.Bits.Interop
             [MarshalAs(UnmanagedType.LPWStr)] string remoteUrl,
             [MarshalAs(UnmanagedType.LPWStr)] string localName,
             uint count,
-            IntPtr ranges);
+            [MarshalAs(UnmanagedType.LPArray)] BG_FILE_RANGE[] ranges);
 
         //  ----------------------
         //  SetFileACLFlags method

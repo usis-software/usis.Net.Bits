@@ -10,6 +10,8 @@
 - `BackgroundCopyJob.FileAcl` property added.
 - `BackgroundCopyJob.ReplaceRemotePrefix` method added.
 - Fix for the exception that is thrown when calling `BackgroundCopyJob.SetCredentials` from a 32-bit application.
+- `BackgroundCopyFileRange` class added.
+- `BackgroundCopyJob.AddFile` overloads added.
 
 ---
 
