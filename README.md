@@ -12,12 +12,8 @@ All types of the class library are contained in the **usis.Net.Bits** namespace.
 
 ## NuGet
 
-**usis.Net.Bits** is available as NuGet Package: https://www.nuget.org/packages/usis.Net.Bits/
-
-## GitHub
-
-The complete source code of the .NET library written in C# is published on GitHub: https://github.com/usis-software/usis.Net.Bits.
+**usis.Net.Bits** is available as NuGet Package: [https://www.nuget.org/packages/usis.Net.Bits](https://www.nuget.org/packages/usis.Net.Bits)
 
 ## Documentation
 
-The documentation for the class is available online at https://help.usis-software.com/BITS/ or can be download as [Compiled HTML Help](https://help.usis-software.com/BITS/usis.Net.Bits.chm) (.CHM) file.
+The documentation for the class is available online at [https://help.usis-software.com/BITS](https://help.usis-software.com/BITS) or can be download as [Compiled HTML Help](https://help.usis-software.com/BITS/usis.Net.Bits.chm) (.CHM) file.
