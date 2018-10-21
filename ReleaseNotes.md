@@ -4,7 +4,7 @@
 
 ---
 
-## Next Release
+## Version 2.0.0 - 2018-10-21
 
 - `BackgroundCopyJobFileAclOptions` enumeration added.
 - `BackgroundCopyJob.FileAcl` property added.
