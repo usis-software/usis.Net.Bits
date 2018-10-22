@@ -25,7 +25,7 @@ namespace usis.Net.Bits
     {
         #region fields
 
-        private IBackgroundCopyFile file;
+        private IBackgroundCopyFile interop;
 
         #endregion fields
 
@@ -35,7 +35,7 @@ namespace usis.Net.Bits
         //  construction
         //  ------------
 
-        internal BackgroundCopyFile(IBackgroundCopyFile file) => this.file = file;
+        internal BackgroundCopyFile(IBackgroundCopyFile i) => interop = i;
 
         #endregion construction
 
@@ -52,7 +52,7 @@ namespace usis.Net.Bits
         /// The local name of the file.
         /// </value>
 
-        public string LocalName => File.GetLocalName();
+        public string LocalName => Interface.GetLocalName();
 
         //  -------------------
         //  RemoteName property
@@ -65,13 +65,23 @@ namespace usis.Net.Bits
         /// The remote name of the file.
         /// </value>
 
-        public string RemoteName => File.GetRemoteName();
+        public string RemoteName
+        {
+            get => Interface.GetRemoteName();
+            set => Interface2.SetRemoteName(value);
+        }
 
-        //  -------------
-        //  File property
-        //  -------------
+        //  ------------------
+        //  Interface property
+        //  ------------------
 
-        private IBackgroundCopyFile File => file ?? throw new ObjectDisposedException(nameof(BackgroundCopyFile));
+        private IBackgroundCopyFile Interface => interop ?? throw new ObjectDisposedException(nameof(BackgroundCopyFile));
+
+        //  -------------------
+        //  Interface2 property
+        //  -------------------
+
+        private IBackgroundCopyFile2 Interface2 => GetInterface<IBackgroundCopyFile2>();
 
         #endregion properties
 
@@ -88,7 +98,17 @@ namespace usis.Net.Bits
         /// A <c>BackgroundCopyFileProgress</c> object whose members indicate the progress of the file transfer.
         /// </returns>
 
-        public BackgroundCopyFileProgress RetrieveProgress() => new BackgroundCopyFileProgress(File.GetProgress());
+        public BackgroundCopyFileProgress RetrieveProgress() => new BackgroundCopyFileProgress(Interface.GetProgress());
+
+        #region private methods
+
+        //  -------------------
+        //  GetInterface method
+        //  -------------------
+
+        private TInterface GetInterface<TInterface>() where TInterface : class => (Interface as TInterface) ?? throw new NotSupportedException(Strings.NotSupported);
+
+        #endregion private methods
 
         #endregion methods
 
@@ -114,7 +134,7 @@ namespace usis.Net.Bits
 
         private void Release()
         {
-            if (file != null) { Marshal.ReleaseComObject(file); file = null; }
+            if (interop != null) { Marshal.ReleaseComObject(interop); interop = null; }
         }
 
         //  ----------
