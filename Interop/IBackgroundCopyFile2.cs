@@ -7,6 +7,7 @@
 //
 //  Copyright (c) 2017-2018 usis GmbH. All rights reserved.
 
+using System;
 using System.Runtime.InteropServices;
 
 namespace usis.Net.Bits.Interop
@@ -48,7 +49,7 @@ namespace usis.Net.Bits.Interop
         //  GetFileRanges method
         //  --------------------
 
-        void GetFileRanges(out uint rangeCount, out BG_FILE_RANGE[] ranges);
+        void GetFileRanges(out uint rangeCount, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 0)] out BG_FILE_RANGE[] ranges);
 
         //  --------------------
         //  SetRemoteName method

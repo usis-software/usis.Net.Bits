@@ -4,6 +4,13 @@
 
 ---
 
+## Next Release
+
+- `BackgroundCopyFile.RemoteName` property setter added.
+- `BackgroundCopyFile.RetrieveRanges` method added.
+
+---
+
 ## Version 2.0.0 - 2018-10-21
 
 - `BackgroundCopyJobFileAclOptions` enumeration added.

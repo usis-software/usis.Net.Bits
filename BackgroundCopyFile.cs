@@ -8,6 +8,7 @@
 //  Copyright (c) 2017,2018 usis GmbH. All rights reserved.
 
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using usis.Net.Bits.Interop;
 
@@ -99,6 +100,26 @@ namespace usis.Net.Bits
         /// </returns>
 
         public BackgroundCopyFileProgress RetrieveProgress() => new BackgroundCopyFileProgress(Interface.GetProgress());
+
+        //  ---------------------
+        //  RetrieveRanges method
+        //  ---------------------
+
+        /// <summary>
+        /// Retrieves the ranges that you want to download from the remote file.
+        /// </summary>
+        /// <returns>
+        /// An enumerator to iterate the <see cref="BackgroundCopyFileRange"/> objects that specify the ranges to download.
+        /// </returns>
+
+        public IEnumerable<BackgroundCopyFileRange> RetrieveRanges()
+        {
+            Interface2.GetFileRanges(out var count, out var ranges);
+            foreach (var item in ranges)
+            {
+                yield return new BackgroundCopyFileRange(item);
+            }
+        }
 
         #region private methods
 

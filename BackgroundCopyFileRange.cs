@@ -8,6 +8,7 @@
 //  Copyright (c) 2018 usis GmbH. All rights reserved.
 
 using System;
+using System.Globalization;
 using usis.Net.Bits.Interop;
 
 namespace usis.Net.Bits
@@ -36,6 +37,12 @@ namespace usis.Net.Bits
         /// <param name="length">The length of the range, in bytes.</param>
 
         public BackgroundCopyFileRange(long offset, long length) { Offset = offset; Length = length; }
+
+        internal BackgroundCopyFileRange(BG_FILE_RANGE range)
+        {
+            Offset = Convert.ToInt64(range.InitialOffset);
+            Length = range.Length == Interop.Constants.BG_LENGTH_TO_EOF ? Constants.LengthToEndOfFile : Convert.ToInt64(range.Length);
+        }
 
         #endregion construction
 
@@ -83,6 +90,19 @@ namespace usis.Net.Bits
                 Length = Length == Constants.LengthToEndOfFile ? Interop.Constants.BG_LENGTH_TO_EOF : Convert.ToUInt64(Length)
             };
         }
+
+        //  ---------------
+        //  ToString method
+        //  ---------------
+
+        /// <summary>
+        /// Returns a <see cref="string" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="string" /> that represents this instance.
+        /// </returns>
+
+        public override string ToString() => string.Format(CultureInfo.InvariantCulture, "Range: Offset={0}, Length={1}", Offset, Length);
 
         #endregion methods
     }
