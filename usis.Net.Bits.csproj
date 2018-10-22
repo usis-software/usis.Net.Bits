@@ -64,6 +64,7 @@
     <Compile Include="Interop\IBackgroundCopyCallback.cs" />
     <Compile Include="Interop\IBackgroundCopyError.cs" />
     <Compile Include="Interop\IBackgroundCopyFile.cs" />
+    <Compile Include="Interop\IBackgroundCopyFile2.cs" />
     <Compile Include="Interop\IBackgroundCopyJob.cs" />
     <Compile Include="Interop\IBackgroundCopyJob2.cs" />
     <Compile Include="Interop\IBackgroundCopyJob3.cs" />
