@@ -32,7 +32,7 @@ namespace usis.Net.Bits
     {
         #region fields
 
-        private IBackgroundCopyJob job;
+        private IBackgroundCopyJob interop;
         private Callback callback;
 
         #endregion fields
@@ -43,10 +43,10 @@ namespace usis.Net.Bits
         //  construction
         //  ------------
 
-        internal BackgroundCopyJob(BackgroundCopyManager manager, IBackgroundCopyJob job)
+        internal BackgroundCopyJob(BackgroundCopyManager manager, IBackgroundCopyJob i)
         {
             Manager = manager;
-            this.job = job ?? throw new ArgumentNullException(nameof(job));
+            interop = i ?? throw new ArgumentNullException(nameof(i));
         }
 
         #endregion construction
@@ -63,16 +63,16 @@ namespace usis.Net.Bits
 
         public void Dispose()
         {
-            if (job != null)
+            if (interop != null)
             {
                 // free unmanaged resources
                 if (callback != null)
                 {
-                    var hr = job.SetNotifyInterface(null);
+                    var hr = interop.SetNotifyInterface(null);
                     if (HResult.Succeeded(hr) || hr == HResult.RPC_E_DISCONNECTED) callback = null;
                 }
-                Marshal.ReleaseComObject(job);
-                job = null;
+                Marshal.ReleaseComObject(interop);
+                interop = null;
             }
             GC.SuppressFinalize(this);
         }
@@ -104,7 +104,7 @@ namespace usis.Net.Bits
         /// The identifier of the job in the queue.
         /// </value>
 
-        public Guid Id => Manager.InvokeComMethod(Job.GetId);
+        public Guid Id => Manager.InvokeComMethod(Interface.GetId);
 
         //  --------------------
         //  DisplayName property
@@ -119,8 +119,8 @@ namespace usis.Net.Bits
 
         public string DisplayName
         {
-            get => Manager.InvokeComMethod(Job.GetDisplayName);
-            set => Manager.InvokeComMethod(() => Job.SetDisplayName(value));
+            get => Manager.InvokeComMethod(Interface.GetDisplayName);
+            set => Manager.InvokeComMethod(() => Interface.SetDisplayName(value));
         }
 
         //  --------------------
@@ -136,8 +136,8 @@ namespace usis.Net.Bits
 
         public string Description
         {
-            get => Manager.InvokeComMethod(Job.GetDescription);
-            set => Manager.InvokeComMethod(() => Job.SetDescription(value));
+            get => Manager.InvokeComMethod(Interface.GetDescription);
+            set => Manager.InvokeComMethod(() => Interface.SetDescription(value));
         }
 
         //  ----------------
@@ -151,7 +151,7 @@ namespace usis.Net.Bits
         /// The type of transfer being performed, such as a file download or upload.
         /// </value>
 
-        public BackgroundCopyJobType JobType => Manager.InvokeComMethod(Job.GetType);
+        public BackgroundCopyJobType JobType => Manager.InvokeComMethod(Interface.GetType);
 
         //  -----------------
         //  Priority property
@@ -169,8 +169,8 @@ namespace usis.Net.Bits
 
         public BackgroundCopyJobPriority Priority
         {
-            get => Manager.InvokeComMethod(Job.GetPriority);
-            set => Manager.InvokeComMethod(() => Job.SetPriority(value));
+            get => Manager.InvokeComMethod(Interface.GetPriority);
+            set => Manager.InvokeComMethod(() => Interface.SetPriority(value));
         }
 
         //  --------------
@@ -184,7 +184,7 @@ namespace usis.Net.Bits
         /// The state of the job.
         /// </value>
 
-        public BackgroundCopyJobState State => Manager.InvokeComMethod(Job.GetState);
+        public BackgroundCopyJobState State => Manager.InvokeComMethod(Interface.GetState);
 
         //  --------------
         //  Owner property
@@ -197,7 +197,7 @@ namespace usis.Net.Bits
         /// The identity of the job's owner.
         /// </value>
 
-        public string Owner => Manager.InvokeComMethod(Job.GetOwner);
+        public string Owner => Manager.InvokeComMethod(Interface.GetOwner);
 
         //  --------------------------
         //  MinimumRetryDelay property
@@ -221,8 +221,8 @@ namespace usis.Net.Bits
 
         public int MinimumRetryDelay
         {
-            get => Manager.InvokeComMethod(Job.GetMinimumRetryDelay);
-            set => Manager.InvokeComMethod(() => Job.SetMinimumRetryDelay(value));
+            get => Manager.InvokeComMethod(Interface.GetMinimumRetryDelay);
+            set => Manager.InvokeComMethod(() => Interface.SetMinimumRetryDelay(value));
         }
 
         //  --------------------------
@@ -239,8 +239,8 @@ namespace usis.Net.Bits
 
         public int NoProgressTimeout
         {
-            get => Manager.InvokeComMethod(Job.GetNoProgressTimeout);
-            set => Manager.InvokeComMethod(() => Job.SetNoProgressTimeout(value));
+            get => Manager.InvokeComMethod(Interface.GetNoProgressTimeout);
+            set => Manager.InvokeComMethod(() => Interface.SetNoProgressTimeout(value));
         }
 
         //  ----------------------
@@ -257,7 +257,7 @@ namespace usis.Net.Bits
         public BackgroundCopyJobNotifications Notifications
         {
             get => Manager.InvokeComMethod(GetNotifyFlags);
-            private set => Manager.InvokeComMethod(() => Job.SetNotifyFlags(value));
+            private set => Manager.InvokeComMethod(() => Interface.SetNotifyFlags(value));
         }
 
         //  -------------------
@@ -271,7 +271,7 @@ namespace usis.Net.Bits
         /// The number of times BITS tried to transfer the job and an error occurred.
         /// </value>
 
-        public int ErrorCount => Manager.InvokeComMethod(Job.GetErrorCount);
+        public int ErrorCount => Manager.InvokeComMethod(Interface.GetErrorCount);
 
         //  ----------------------
         //  ProxySettings property
@@ -305,13 +305,13 @@ namespace usis.Net.Bits
         {
             get => Manager.InvokeComMethod(() =>
             {
-                Job2.GetNotifyCmdLine(out var program, out var parameters);
+                Interface2.GetNotifyCmdLine(out var program, out var parameters);
                 return new BackgroundCopyNotifyCommandLine(program, parameters);
             });
             set => Manager.InvokeComMethod(() =>
             {
-                if (value == null) Job2.SetNotifyCmdLine(null, null);
-                else Job2.SetNotifyCmdLine(value.Program, value.Parameters);
+                if (value == null) Interface2.SetNotifyCmdLine(null, null);
+                else Interface2.SetNotifyCmdLine(value.Program, value.Parameters);
             });
         }
 
@@ -330,10 +330,10 @@ namespace usis.Net.Bits
         {
             get
             {
-                var hr = Job2.GetReplyFileName(out var replyFileName);
+                var hr = Interface2.GetReplyFileName(out var replyFileName);
                 return hr == HResult.Ok ? replyFileName : null;
             }
-            set => Manager.InvokeComMethod(() => Job2.SetReplyFileName(value));
+            set => Manager.InvokeComMethod(() => Interface2.SetReplyFileName(value));
         }
 
         //  ----------------
@@ -349,8 +349,8 @@ namespace usis.Net.Bits
 
         public BackgroundCopyJobFileAclOptions FileAcl
         {
-            get => (BackgroundCopyJobFileAclOptions)Job3.GetFileACLFlags();
-            set => Job3.SetFileACLFlags(Convert.ToUInt32(value, CultureInfo.InvariantCulture));
+            get => (BackgroundCopyJobFileAclOptions)Interface3.GetFileACLFlags();
+            set => Interface3.SetFileACLFlags(Convert.ToUInt32(value, CultureInfo.InvariantCulture));
         }
 
         #endregion public properties
@@ -367,20 +367,19 @@ namespace usis.Net.Bits
         //  Job property
         //  ------------
 
-        private IBackgroundCopyJob Job => job ?? throw new ObjectDisposedException(nameof(BackgroundCopyJob));
+        private IBackgroundCopyJob Interface => interop ?? throw new ObjectDisposedException(nameof(BackgroundCopyJob));
 
-        //  -------------
-        //  Job2 property
-        //  -------------
+        //  -------------------
+        //  Interface2 property
+        //  -------------------
 
-        private IBackgroundCopyJob2 Job2 => GetJob<IBackgroundCopyJob2>();
+        private IBackgroundCopyJob2 Interface2 => GetInterface<IBackgroundCopyJob2>();
 
-        //  -------------
-        //  Job3 property
-        //  -------------
+        //  -------------------
+        //  Interface3 property
+        //  -------------------
 
-        private IBackgroundCopyJob3 Job3 => GetJob<IBackgroundCopyJob3>();
-
+        private IBackgroundCopyJob3 Interface3 => GetInterface<IBackgroundCopyJob3>();
 
         #endregion private properties
 
@@ -511,7 +510,7 @@ namespace usis.Net.Bits
         /// from the client (downloads) and server (uploads).
         /// </summary>
 
-        public void Cancel() => Manager.InvokeComMethod(Job.Cancel);
+        public void Cancel() => Manager.InvokeComMethod(Interface.Cancel);
 
         //  ---------------
         //  Complete method
@@ -521,7 +520,7 @@ namespace usis.Net.Bits
         /// Ends the job and saves the transferred files on the client.
         /// </summary>
 
-        public void Complete() => Manager.InvokeComMethod(Job.Complete);
+        public void Complete() => Manager.InvokeComMethod(Interface.Complete);
 
         //  --------------
         //  Suspend method
@@ -532,7 +531,7 @@ namespace usis.Net.Bits
         /// and jobs that have finished transferring files are automatically suspended.
         /// </summary>
 
-        public void Suspend() => Manager.InvokeComMethod(Job.Suspend);
+        public void Suspend() => Manager.InvokeComMethod(Interface.Suspend);
 
         //  -------------
         //  Resume method
@@ -542,7 +541,7 @@ namespace usis.Net.Bits
         /// Activates a new job or restarts a job that has been suspended.
         /// </summary>
 
-        public void Resume() => Manager.InvokeComMethod(Job.Resume);
+        public void Resume() => Manager.InvokeComMethod(Interface.Resume);
 
         //  ---------------------
         //  EnumerateFiles method
@@ -558,11 +557,11 @@ namespace usis.Net.Bits
 
         public IEnumerable<BackgroundCopyFile> EnumerateFiles()
         {
-            if (job == null) throw new ObjectDisposedException(nameof(BackgroundCopyJob));
+            if (interop == null) throw new ObjectDisposedException(nameof(BackgroundCopyJob));
             IEnumBackgroundCopyFiles files = null;
             try
             {
-                files = job.EnumFiles();
+                files = interop.EnumFiles();
                 while (files.Next(1, out var file, IntPtr.Zero) == HResult.Ok)
                 {
                     try { yield return new BackgroundCopyFile(file); }
@@ -584,7 +583,7 @@ namespace usis.Net.Bits
         /// to calculate the percentage of the job that is complete.
         /// </returns>
 
-        public BackgroundCopyJobProgress RetrieveProgress() => new BackgroundCopyJobProgress(Job.GetProgress());
+        public BackgroundCopyJobProgress RetrieveProgress() => new BackgroundCopyJobProgress(Interface.GetProgress());
 
         //  ----------------------------
         //  RetrieveReplyProgress method
@@ -598,7 +597,7 @@ namespace usis.Net.Bits
         /// to calculate the percentage of the reply file transfer that is complete.
         /// </returns>
 
-        public BackgroundCopyJobReplyProgress RetrieveReplyProgress() => new BackgroundCopyJobReplyProgress(Manager.InvokeComMethod(() => Job2.GetReplyProgress()));
+        public BackgroundCopyJobReplyProgress RetrieveReplyProgress() => new BackgroundCopyJobReplyProgress(Manager.InvokeComMethod(() => Interface2.GetReplyProgress()));
 
         //  --------------------
         //  RetrieveTimes method
@@ -611,7 +610,7 @@ namespace usis.Net.Bits
         /// A <c>BackgroundCopyJobTimes</c> structure that contains job-related time stamps.
         /// </returns>
 
-        public BackgroundCopyJobTimes RetrieveTimes() => new BackgroundCopyJobTimes(Job.GetTimes());
+        public BackgroundCopyJobTimes RetrieveTimes() => new BackgroundCopyJobTimes(Interface.GetTimes());
 
         //  --------------
         //  AddFile method
@@ -631,7 +630,7 @@ namespace usis.Net.Bits
         /// <param name="remoteUrl">The URL of the file on the server.</param>
         /// <param name="localName">The name of the file on the client.</param>
 
-        public void AddFile(Uri remoteUrl, string localName) => Manager.InvokeComMethod(() => Job.AddFile(remoteUrl.ToString(), localName));
+        public void AddFile(Uri remoteUrl, string localName) => Manager.InvokeComMethod(() => Interface.AddFile(remoteUrl.ToString(), localName));
 
         /// <summary>
         /// Adds a file to a download job and specifies the range of the file you want to download.
@@ -676,7 +675,7 @@ namespace usis.Net.Bits
         public void AddFile(Uri remoteUrl, string localName, params BackgroundCopyFileRange[] ranges)
         {
             var fileRanges = ranges.Select(r => r.ToFileRange()).ToArray();
-            Manager.InvokeComMethod(() => Job3.AddFileWithRanges(remoteUrl.ToString(), localName, Convert.ToUInt32(fileRanges.Length), fileRanges));
+            Manager.InvokeComMethod(() => Interface3.AddFileWithRanges(remoteUrl.ToString(), localName, Convert.ToUInt32(fileRanges.Length), fileRanges));
         }
 
         //  ---------------
@@ -715,7 +714,7 @@ namespace usis.Net.Bits
         /// </code>
         /// </example>
 
-        public void AddFiles(params BackgroundCopyFileInfo[] files) => Manager.InvokeComMethod(() => Job.AddFileSet(files.Length, files.Select(e => e.fileInfo).ToArray()));
+        public void AddFiles(params BackgroundCopyFileInfo[] files) => Manager.InvokeComMethod(() => Interface.AddFileSet(files.Length, files.Select(e => e.fileInfo).ToArray()));
 
         //  --------------------
         //  TakeOwnership method
@@ -725,7 +724,7 @@ namespace usis.Net.Bits
         /// Changes ownership of the job to the current user.
         /// </summary>
 
-        public void TakeOwnership() => Manager.InvokeComMethod(() => Job.TakeOwnership());
+        public void TakeOwnership() => Manager.InvokeComMethod(() => Interface.TakeOwnership());
 
         //  --------------------
         //  RetrieveError method
@@ -754,7 +753,7 @@ namespace usis.Net.Bits
 
         public byte[] RetrieveReplyData()
         {
-            var hr = Job2.GetReplyData(out var buffer, out var lenght);
+            var hr = Interface2.GetReplyData(out var buffer, out var lenght);
             if (HResult.Succeeded(hr))
             {
                 var data = new byte[lenght];
@@ -788,7 +787,7 @@ namespace usis.Net.Bits
 
         public void SetCredentials(BackgroundCopyAuthenticationTarget target, BackgroundCopyAuthenticationScheme scheme, string userName, string password)
         {
-            Manager.InvokeComMethod(() => Job2.SetCredentials(new BG_AUTH_CREDENTIALS()
+            Manager.InvokeComMethod(() => Interface2.SetCredentials(new BG_AUTH_CREDENTIALS()
             {
                 Target = target,
                 Scheme = scheme,
@@ -807,7 +806,7 @@ namespace usis.Net.Bits
         /// <param name="target">Identifies whether to use the credentials for proxy or server authentication.</param>
         /// <param name="scheme">Identifies the authentication scheme to use (basic or one of several challenge-response schemes).</param>
 
-        public void RemoveCredentials(BackgroundCopyAuthenticationTarget target, BackgroundCopyAuthenticationScheme scheme) => Manager.InvokeComMethod(() => Job2.RemoveCredentials(target, scheme));
+        public void RemoveCredentials(BackgroundCopyAuthenticationTarget target, BackgroundCopyAuthenticationScheme scheme) => Manager.InvokeComMethod(() => Interface2.RemoveCredentials(target, scheme));
 
         //  --------------------------
         //  ReplaceRemotePrefix method
@@ -819,7 +818,7 @@ namespace usis.Net.Bits
         /// <param name="oldPrefix">Identifies the text to replace in the remote name. The text must start at the beginning of the remote name.</param>
         /// <param name="newPrefix">The replacement text.</param>
 
-        public void ReplaceRemotePrefix(string oldPrefix, string newPrefix) => Manager.InvokeComMethod(() => Job3.ReplaceRemotePrefix(oldPrefix, newPrefix));
+        public void ReplaceRemotePrefix(string oldPrefix, string newPrefix) => Manager.InvokeComMethod(() => Interface3.ReplaceRemotePrefix(oldPrefix, newPrefix));
 
         #endregion public methods
 
@@ -838,7 +837,7 @@ namespace usis.Net.Bits
 
         private BackgroundCopyJobProxySettings RetrieveProxySettings()
         {
-            Job.GetProxySettings(out var usage, out var list, out var bypassList);
+            Interface.GetProxySettings(out var usage, out var list, out var bypassList);
             return new BackgroundCopyJobProxySettings(usage, list, bypassList);
         }
 
@@ -857,7 +856,7 @@ namespace usis.Net.Bits
         private void SetProxySettings(BackgroundCopyJobProxySettings settings)
         {
             if (settings == null) throw new ArgumentNullException(nameof(settings));
-            Manager.InvokeComMethod(() => Job.SetProxySettings(settings.ProxyUsage, settings.ProxyList, settings.ProxyBypassList));
+            Manager.InvokeComMethod(() => Interface.SetProxySettings(settings.ProxyUsage, settings.ProxyList, settings.ProxyBypassList));
         }
 
         //  --------------------
@@ -866,7 +865,7 @@ namespace usis.Net.Bits
 
         internal BackgroundCopyError RetrieveError(bool throwException)
         {
-            var hr = Job.GetError(out var error);
+            var hr = Interface.GetError(out var error);
             if (hr == HResult.Ok) return new BackgroundCopyError(error);
             else if (hr == HResult.BG_E_ERROR_INFORMATION_UNAVAILABLE && !throwException) return null;
             else throw new BackgroundCopyException(Manager, hr);
@@ -881,7 +880,7 @@ namespace usis.Net.Bits
             handler -= value;
             if (handler == null)
             {
-                var hr = Job.GetNotifyFlags(out var notifyFlags);
+                var hr = Interface.GetNotifyFlags(out var notifyFlags);
                 if (hr != HResult.RPC_E_DISCONNECTED &&
                     hr != Win32Error.RPC_S_SERVER_UNAVAILABLE)
                 {
@@ -891,15 +890,11 @@ namespace usis.Net.Bits
             }
         }
 
-        //  -------------
-        //  GetJob method
-        //  -------------
+        //  -------------------
+        //  GetInterface method
+        //  -------------------
 
-        private TInterface GetJob<TInterface>() where TInterface : class
-        {
-            if (!(Job is TInterface j)) throw new NotSupportedException(Strings.NotSupported);
-            return j;
-        }
+        private TInterface GetInterface<TInterface>() where TInterface : class => (Interface as TInterface) ?? throw new NotSupportedException(Strings.NotSupported);
 
         //  ---------------------
         //  GetNotifyFlags method
@@ -907,7 +902,7 @@ namespace usis.Net.Bits
 
         private BackgroundCopyJobNotifications GetNotifyFlags()
         {
-            var hr = Job.GetNotifyFlags(out var notifyFlags);
+            var hr = Interface.GetNotifyFlags(out var notifyFlags);
             if (!HResult.Succeeded(hr)) throw new BackgroundCopyException(Manager, hr);
             return notifyFlags;
         }
@@ -921,7 +916,7 @@ namespace usis.Net.Bits
             if (callback == null)
             {
                 callback = new Callback(this);
-                var hr = job.SetNotifyInterface(callback);
+                var hr = interop.SetNotifyInterface(callback);
                 if (!HResult.Succeeded(hr))
                 {
                     callback = null;
@@ -942,7 +937,7 @@ namespace usis.Net.Bits
             try
             {
                 handler?.Invoke(this, EventArgs.Empty);
-                if (Job is IBackgroundCopyJob2 job2)
+                if (Interface is IBackgroundCopyJob2 job2)
                 {
                     job2.GetNotifyCmdLine(out var program, out var parameters);
                     if (program != null) return HResult.Fail;
