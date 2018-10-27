@@ -4,7 +4,7 @@
 
 ---
 
-## Next Release
+## Version 2.1.0 - 2018-10-27
 
 - `BackgroundCopyFile.RemoteName` property setter added.
 - `BackgroundCopyFile.RetrieveRanges` method added.

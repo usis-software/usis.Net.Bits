@@ -15,7 +15,7 @@
       The usis Background Intelligent Transfer Service Class Library provides .NET wrapper types for the BITS API which is exposed by Microsoft through the Component Object Model (COM).
     </summary>
     <releaseNotes>
-      Version 2.0.0 contains the following changes: BackgroundCopyJobFileAclOptions enumeration, BackgroundCopyJob.FileAcl property and BackgroundCopyJob.ReplaceRemotePrefix method added; Fix for the exception that is thrown when calling BackgroundCopyJob.SetCredentials from a 32-bit application; BackgroundCopyFileRange class and BackgroundCopyJob.AddFile overloads added.
+      Version 2.1.0 contains the following changes: BackgroundCopyFile.RemoteName property setter added; BackgroundCopyFile.RetrieveRanges method added.
     </releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>usis BITS Interop HTTP Background Transfer upload download</tags>
