@@ -8,6 +8,7 @@
 //  Copyright (c) 2018 usis GmbH. All rights reserved.
 
 using System;
+using usis.Net.Bits.Interop;
 
 namespace usis.Net.Bits
 {
@@ -93,21 +94,29 @@ namespace usis.Net.Bits
         /// An object that specifies the client certificate.
         /// </value>
 
-        public BackgroundCopyJobClientCertificate ClientCertificate => Job.Manager.InvokeComMethod(() =>
+        public BackgroundCopyJobClientCertificate ClientCertificate
         {
-            Job.HttpOptionsInterface.GetClientCertificate(
-                out var storeLocation,
-                out var storeName,
-                out var thumbprint,
-                out var subjectName);
-            return new BackgroundCopyJobClientCertificate()
+            get
             {
-                StoreLocation = storeLocation,
-                StoreName = storeName,
-                Thumbprint = thumbprint,
-                SubjectName = subjectName
-            };
-        });
+                var hr = Job.HttpOptionsInterface.GetClientCertificate(
+                    out var storeLocation,
+                    out var storeName,
+                    out var thumbprint,
+                    out var subjectName);
+                if (HResult.Succeeded(hr))
+                {
+                    return hr != HResult.Ok ? null
+                        : new BackgroundCopyJobClientCertificate()
+                        {
+                            StoreLocation = storeLocation,
+                            StoreName = storeName,
+                            Thumbprint = thumbprint,
+                            SubjectName = subjectName
+                        };
+                }
+                else throw new InvalidOperationException(Job.Manager.GetErrorDescription(hr));
+            }
+        }
 
         #endregion public properties
 
