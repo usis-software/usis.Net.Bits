@@ -15,6 +15,8 @@ using usis.Net.Bits.Interop;
 using System.Linq;
 using System.Globalization;
 using Microsoft.Win32;
+using System.Diagnostics;
+using System.IO;
 
 namespace usis.Net.Bits
 {
@@ -61,6 +63,19 @@ namespace usis.Net.Bits
         /// </value>
 
         public Version Version => version ?? (version = DetermineVersion());
+
+        //  -----------------------
+        //  LibraryVersion property
+        //  -----------------------
+
+        /// <summary>
+        /// Gets the file version of the Windows <c>QMgr.dll</c> file.
+        /// </summary>
+        /// <value>
+        /// The QMgr.dll file version number.
+        /// </value>
+
+        public static Version LibraryVersion => DetermineQMgrVersion();
 
         #endregion properties
 
@@ -310,6 +325,22 @@ namespace usis.Net.Bits
             if (result == HResult.Ok) return description;
             else if (result == Win32Error.ERROR_MUI_FILE_NOT_LOADED) return GetErrorDescription(hResult, 0x0C00);
             else throw new BackgroundCopyException(Strings.FailedErrorDescription, result);
+        }
+
+        //  ---------------------------
+        //  DetermineQMgrVersion method
+        //  ---------------------------
+
+        private static Version DetermineQMgrVersion()
+        {
+            const string QMgrFileName = "QMgr.dll";
+            var path = Path.Combine(Environment.SystemDirectory, QMgrFileName);
+            if (File.Exists(path))
+            {
+                var info = FileVersionInfo.GetVersionInfo(path);
+                return new Version(info.FileMajorPart, info.FileMinorPart);
+            }
+            return null;
         }
 
         //  -----------------------
