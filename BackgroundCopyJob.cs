@@ -47,6 +47,7 @@ namespace usis.Net.Bits
         {
             Manager = manager;
             interop = i ?? throw new ArgumentNullException(nameof(i));
+            HttpOptions = new BackgroundCopyJobHttpOptions(this);
         }
 
         #endregion construction
@@ -353,6 +354,20 @@ namespace usis.Net.Bits
             set => Interface3.SetFileACLFlags(Convert.ToUInt32(value, CultureInfo.InvariantCulture));
         }
 
+        //  --------------------
+        //  HttpOptions property
+        //  --------------------
+
+        /// <summary>
+        /// Gets the HTTP options to specify client certificates for certificate-based client authentication
+        /// and custom headers for HTTP requests.
+        /// </summary>
+        /// <value>
+        /// The HTTP options.
+        /// </value>
+
+        public BackgroundCopyJobHttpOptions HttpOptions { get; }
+
         #endregion public properties
 
         #region private properties
@@ -361,7 +376,7 @@ namespace usis.Net.Bits
         //  Manager property
         //  ----------------
 
-        private BackgroundCopyManager Manager { get; }
+        internal BackgroundCopyManager Manager { get; }
 
         //  ------------
         //  Job property
@@ -380,6 +395,12 @@ namespace usis.Net.Bits
         //  -------------------
 
         private IBackgroundCopyJob3 Interface3 => GetInterface<IBackgroundCopyJob3>();
+
+        //  -----------------------------
+        //  HttpOptionsInterface property
+        //  -----------------------------
+
+        internal IBackgroundCopyJobHttpOptions HttpOptionsInterface => GetInterface<IBackgroundCopyJobHttpOptions>();
 
         #endregion private properties
 

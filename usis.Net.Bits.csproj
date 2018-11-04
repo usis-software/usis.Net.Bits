@@ -51,7 +51,9 @@
     <Compile Include="BackgroundCopyFileInfo.cs" />
     <Compile Include="BackgroundCopyFileRange.cs" />
     <Compile Include="BackgroundCopyJob.cs" />
+    <Compile Include="BackgroundCopyJobClientCertificate.cs" />
     <Compile Include="BackgroundCopyJobExtensions.cs" />
+    <Compile Include="BackgroundCopyJobHttpOptions.cs" />
     <Compile Include="BackgroundCopyJobProgress.cs" />
     <Compile Include="BackgroundCopyJobProxySettings.cs" />
     <Compile Include="BackgroundCopyJobTimes.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="Interop\IBackgroundCopyJob.cs" />
     <Compile Include="Interop\IBackgroundCopyJob2.cs" />
     <Compile Include="Interop\IBackgroundCopyJob3.cs" />
+    <Compile Include="Interop\IBackgroundCopyJobHttpOptions.cs" />
     <Compile Include="Interop\IBackgroundCopyManager.cs" />
     <Compile Include="Interop\IEnumBackgroundCopyFiles.cs" />
     <Compile Include="Interop\IEnumBackgroundCopyJobs.cs" />

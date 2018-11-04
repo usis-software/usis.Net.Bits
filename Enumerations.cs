@@ -8,6 +8,7 @@
 //  Copyright (c) 2017,2018 usis GmbH. All rights reserved.
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace usis.Net.Bits
 {
@@ -519,6 +520,153 @@ namespace usis.Net.Bits
     }
 
     #endregion BackgroundCopyJobFileAclOptions enumeration
+
+    #region BackgroundCopyCertificateStoreLocation enumeration
+
+    //  --------------------------------------------------
+    //  BackgroundCopyCertificateStoreLocation enumeration
+    //  --------------------------------------------------
+    //  BG_CERT_STORE_LOCATION
+
+    /// <summary>
+    /// Defines the location of the certificate store.
+    /// </summary>
+
+    public enum BackgroundCopyCertificateStoreLocation
+    {
+        /// <summary>
+        /// Use the current user's certificate store.
+        /// </summary>
+
+        CurrentUser,
+
+        /// <summary>
+        /// Use the local computer's certificate store.
+        /// </summary>
+
+        LocalMachine,
+
+        /// <summary>
+        /// Use the current service's certificate store.
+        /// </summary>
+
+        CurrentService,
+
+        /// <summary>
+        /// Use a specific service's certificate store.
+        /// </summary>
+
+        Services,
+
+        /// <summary>
+        /// Use a specific user's certificate store.
+        /// </summary>
+
+        Users,
+
+        /// <summary>
+        /// Use the current user's group policy certificate store.
+        /// In a network setting, stores in this location are downloaded to the client computer
+        /// from the Group Policy Template (GPT) during computer startup or user logon.
+        /// </summary>
+
+        CurrentUserGroupPolicy,
+
+        /// <summary>
+        /// Use the local computer's certificate store.
+        /// In a network setting, stores in this location are downloaded to the client computer
+        /// from the Group Policy Template (GPT) during computer startup or user logon.
+        /// </summary>
+
+        LocalMachineGroupPolicy,
+
+        /// <summary>
+        /// Use the enterprise certificate store.
+        /// The enterprise store is shared across domains in the enterprise and downloaded
+        /// from the global enterprise directory.
+        /// </summary>
+
+        LocalMachineEnterprise
+    }
+
+    #endregion BackgroundCopyCertificateStoreLocation enumeration
+
+    //  ----------------------------------------------
+    //  BackgroundCopyJobHttpSecurityFlags enumeration
+    //  ----------------------------------------------
+
+    /// <summary>
+    /// HTTP security flags that indicate which errors to ignore when connecting to the server.
+    /// </summary>
+
+    [SuppressMessage("Microsoft.Usage", "CA2217:DoNotMarkEnumsWithFlags")]
+    [Flags]
+    public enum BackgroundCopyJobHttpSecurityOptions
+    {
+        /// <summary>
+        /// Allows the server to redirect your request to another server. This is the default.
+        /// </summary>
+
+        None = 0x000,
+
+        /// <summary>
+        /// Check the certificate revocation list (CRL) to verify that the server certificate has not been revoked.
+        /// </summary>
+
+        EnableCertificateRevocationListCheck = 0x0001,
+
+        /// <summary>
+        /// Ignores errors caused when the certificate host name of the server does not match the host name in the request.
+        /// </summary>
+
+        IgnoreCertificateHostNameInvalid = 0x0002,
+
+        /// <summary>
+        /// Ignores errors caused by an expired certificate.
+        /// </summary>
+
+        IgnoreCertificateDateInvalid = 0x0004,
+
+        /// <summary>
+        /// Ignore errors associated with an unknown certification authority (CA).
+        /// </summary>
+
+        IgnoreUnknownCertificationAuthority = 0x0008,
+
+        /// <summary>
+        /// Ignore errors associated with the use of a certificate.
+        /// </summary>
+
+        IgnoreCertificateWrongUsage = 0x0010,
+
+        /// <summary>
+        /// Allows the server to redirect your request to another server.
+        /// BITS updates the remote name with the final URL.
+        /// </summary>
+
+        HttpRedirectPolicyAllowReport = 0x0100,
+
+        /// <summary>
+        /// Places the job in the fatal error state when the server redirects your request to another server.
+        /// BITS updates the remote name with the redirected URL.
+        /// </summary>
+
+        HttpRedirectPolicyDisallow = 0x0200,
+
+        /// <summary>
+        /// Bitmask that you can use with the security flag value to determine which redirect policy is in effect.
+        /// It does not include the flag <see cref="HttpRedirectPolicyAllowHttpsToHttp"/>.
+        /// </summary>
+
+        HttpRedirectPolicyMask = 0x0700,
+
+        /// <summary>
+        /// Allows the server to redirect an HTTPS request to an HTTP URL.
+        /// You can combine this flag with <see cref="HttpRedirectPolicyAllowReport"/>.
+        /// </summary>
+
+        HttpRedirectPolicyAllowHttpsToHttp = 0x0800,
+    }
 }
 
 // eof "Enumerations.cs"
