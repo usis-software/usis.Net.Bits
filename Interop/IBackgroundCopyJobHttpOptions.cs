@@ -48,7 +48,8 @@ namespace usis.Net.Bits.Interop
         //  GetClientCertificate method
         //  ---------------------------
 
-        void GetClientCertificate(
+        [PreserveSig]
+        uint GetClientCertificate(
             out BackgroundCopyCertificateStoreLocation storeLocation,
             [MarshalAs(UnmanagedType.LPWStr)] out string storeName,
             [MarshalAs(UnmanagedType.LPArray, SizeConst = 20)] out byte[] certHashBlob,
