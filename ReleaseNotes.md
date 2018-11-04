@@ -4,6 +4,13 @@
 
 ---
 
+## Next Release
+
+- `BackgroundCopyManager.LibraryVersion` property added.
+- BITS 2.5 API implemented: see `BackgroundCopyJob.HttpOptions` property.
+
+---
+
 ## Version 2.1.0 - 2018-10-27
 
 - `BackgroundCopyFile.RemoteName` property setter added.
