@@ -4,7 +4,7 @@
 
 ---
 
-## Next Release
+## Version 2.5.0 - 2018-11-18
 
 - `BackgroundCopyManager.LibraryVersion` property added.
 - BITS 2.5 API implemented: see `BackgroundCopyJob.HttpOptions` property.
