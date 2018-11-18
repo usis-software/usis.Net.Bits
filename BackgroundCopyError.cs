@@ -32,7 +32,7 @@ namespace usis.Net.Bits
 
         #region fields
 
-        private IBackgroundCopyError error;
+        private IBackgroundCopyError interop;
 
         #endregion fields
 
@@ -42,7 +42,11 @@ namespace usis.Net.Bits
         //  construction
         //  ------------
 
-        internal BackgroundCopyError(IBackgroundCopyError error) => this.error = error;
+        internal BackgroundCopyError(BackgroundCopyManager manager, IBackgroundCopyError i)
+        {
+            Manager = manager;
+            interop = i ?? throw new ArgumentNullException(nameof(i));
+        }
 
         #endregion construction
 
@@ -62,7 +66,7 @@ namespace usis.Net.Bits
         {
             if (!disposed)
             {
-                if (error != null) { Marshal.ReleaseComObject(error); error = null; }
+                if (interop != null) { Marshal.ReleaseComObject(interop); interop = null; }
                 disposed = true;
             }
             GC.SuppressFinalize(this);
@@ -85,6 +89,8 @@ namespace usis.Net.Bits
 
         #region properties
 
+        #region public properties
+
         //  ----------------
         //  Context property
         //  ----------------
@@ -96,14 +102,11 @@ namespace usis.Net.Bits
         /// The context in which the error occurred.
         /// </value>
 
-        public BackgroundCopyErrorContext Context
+        public BackgroundCopyErrorContext Context => Manager.InvokeComMethod(() =>
         {
-            get
-            {
-                error.GetError(out var context, out var code);
-                return context;
-            }
-        }
+            Interface.GetError(out var context, out var code);
+            return context;
+        });
 
         //  -------------
         //  Code property
@@ -116,14 +119,11 @@ namespace usis.Net.Bits
         /// The error code of the error that occurred.
         /// </value>
 
-        public int Code
+        public int Code => Manager.InvokeComMethod(() =>
         {
-            get
-            {
-                error.GetError(out var context, out var code);
-                return code;
-            }
-        }
+            Interface.GetError(out var context, out var code);
+            return code;
+        });
 
         //  --------------------
         //  Description property
@@ -162,7 +162,25 @@ namespace usis.Net.Bits
         /// The protocol used to transfer the file.
         /// </value>
 
-        public string Protocol => error.GetProtocol();
+        public string Protocol => Manager.InvokeComMethod(Interface.GetProtocol);
+
+        #endregion public properties
+
+        #region private properties
+
+        //  ----------------
+        //  Manager property
+        //  ----------------
+
+        private BackgroundCopyManager Manager { get; }
+
+        //  ------------------
+        //  Interface property
+        //  ------------------
+
+        private IBackgroundCopyError Interface => interop ?? throw new ObjectDisposedException(nameof(BackgroundCopyError));
+
+        #endregion private properties
 
         #endregion properties
 
@@ -179,7 +197,7 @@ namespace usis.Net.Bits
         /// The file object associated with the error.
         /// </returns>
 
-        public BackgroundCopyFile RetrieveFile() => new BackgroundCopyFile(error.GetFile());
+        public BackgroundCopyFile RetrieveFile() => new BackgroundCopyFile(Manager, Manager.InvokeComMethod(Interface.GetFile));
 
         #endregion methods
 
@@ -191,7 +209,8 @@ namespace usis.Net.Bits
 
         private string GetErrorDescription(int lcid)
         {
-            var result = error.GetErrorDescription(lcid, out var description);
+            string description = null;
+            var result = Manager.InvokeComMethod(() => Interface.GetErrorDescription(lcid, out description));
             if (result == HResult.Ok) return description;
             else if (result == Win32Error.ERROR_MUI_FILE_NOT_LOADED || result == Win32Error.ERROR_MUI_FILE_NOT_FOUND)
             {
@@ -206,7 +225,8 @@ namespace usis.Net.Bits
 
         private string GetErrorContextDescription(int lcid)
         {
-            var result = error.GetErrorContextDescription(lcid, out var description);
+            string description = null;
+            var result = Manager.InvokeComMethod(() => Interface.GetErrorContextDescription(lcid, out description));
             if (result == HResult.Ok) return description;
             else if (result == Win32Error.ERROR_MUI_FILE_NOT_LOADED || result == Win32Error.ERROR_MUI_FILE_NOT_FOUND)
             {

@@ -36,102 +36,13 @@ namespace usis.Net.Bits
         //  construction
         //  ------------
 
-        internal BackgroundCopyFile(IBackgroundCopyFile i) => interop = i;
+        internal BackgroundCopyFile(BackgroundCopyManager manager, IBackgroundCopyFile i)
+        {
+            Manager = manager;
+            interop = i ?? throw new ArgumentNullException(nameof(i));
+        }
 
         #endregion construction
-
-        #region properties
-
-        //  ------------------
-        //  LocalName property
-        //  ------------------
-
-        /// <summary>
-        /// Gets the local name of the file.
-        /// </summary>
-        /// <value>
-        /// The local name of the file.
-        /// </value>
-
-        public string LocalName => Interface.GetLocalName();
-
-        //  -------------------
-        //  RemoteName property
-        //  -------------------
-
-        /// <summary>
-        /// Gets the remote name of the file.
-        /// </summary>
-        /// <value>
-        /// The remote name of the file.
-        /// </value>
-
-        public string RemoteName
-        {
-            get => Interface.GetRemoteName();
-            set => Interface2.SetRemoteName(value);
-        }
-
-        //  ------------------
-        //  Interface property
-        //  ------------------
-
-        private IBackgroundCopyFile Interface => interop ?? throw new ObjectDisposedException(nameof(BackgroundCopyFile));
-
-        //  -------------------
-        //  Interface2 property
-        //  -------------------
-
-        private IBackgroundCopyFile2 Interface2 => GetInterface<IBackgroundCopyFile2>();
-
-        #endregion properties
-
-        #region methods
-
-        //  -----------------------
-        //  RetrieveProgress method
-        //  -----------------------
-
-        /// <summary>
-        /// Retrieves information on the progress of the file transfer.
-        /// </summary>
-        /// <returns>
-        /// A <c>BackgroundCopyFileProgress</c> object whose members indicate the progress of the file transfer.
-        /// </returns>
-
-        public BackgroundCopyFileProgress RetrieveProgress() => new BackgroundCopyFileProgress(Interface.GetProgress());
-
-        //  ---------------------
-        //  RetrieveRanges method
-        //  ---------------------
-
-        /// <summary>
-        /// Retrieves the ranges that you want to download from the remote file.
-        /// </summary>
-        /// <returns>
-        /// An enumerator to iterate the <see cref="BackgroundCopyFileRange"/> objects that specify the ranges to download.
-        /// </returns>
-
-        public IEnumerable<BackgroundCopyFileRange> RetrieveRanges()
-        {
-            Interface2.GetFileRanges(out var count, out var ranges);
-            foreach (var item in ranges)
-            {
-                yield return new BackgroundCopyFileRange(item);
-            }
-        }
-
-        #region private methods
-
-        //  -------------------
-        //  GetInterface method
-        //  -------------------
-
-        private TInterface GetInterface<TInterface>() where TInterface : class => (Interface as TInterface) ?? throw new NotSupportedException(Strings.NotSupported);
-
-        #endregion private methods
-
-        #endregion methods
 
         #region IDisposable implementation
 
@@ -169,6 +80,153 @@ namespace usis.Net.Bits
         ~BackgroundCopyFile() { Release(); }
 
         #endregion IDisposable implementation
+
+        #region properties
+
+        #region public properties
+
+        //  ------------------
+        //  LocalName property
+        //  ------------------
+
+        /// <summary>
+        /// Gets the local name of the file.
+        /// </summary>
+        /// <value>
+        /// The local name of the file.
+        /// </value>
+
+        public string LocalName => Manager.InvokeComMethod(Interface.GetLocalName);
+
+        //  -------------------
+        //  RemoteName property
+        //  -------------------
+
+        /// <summary>
+        /// Gets the remote name of the file.
+        /// </summary>
+        /// <value>
+        /// The remote name of the file.
+        /// </value>
+
+        public string RemoteName
+        {
+            get => Manager.InvokeComMethod(Interface.GetRemoteName);
+            set => Manager.InvokeComMethod(() => Interface2.SetRemoteName(value));
+        }
+
+        //  ----------------------
+        //  TemporaryName property
+        //  ----------------------
+
+        /// <summary>
+        /// Gets the full path of the temporary file that contains the content of the download.
+        /// </summary>
+        /// <value>
+        /// The full path of the temporary file that contains the content of the download.
+        /// </value>
+
+        public string TemporaryName => Manager.InvokeComMethod(Interface3.GetTemporaryName);
+
+        //  ------------------------
+        //  ValidationState property
+        //  ------------------------
+
+        /// <summary>
+        /// Gets or sets the current validation state of this file.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if the contents of the file is valid; otherwise, <c>false</c>.
+        /// </value>
+
+        public bool ValidationState
+        {
+            get => Manager.InvokeComMethod(Interface3.GetValidationState);
+            set => Manager.InvokeComMethod(() => Interface3.SetValidationState(value));
+        }
+
+        //  -----------------------------
+        //  IsDownloadedFromPeer property
+        //  -----------------------------
+
+        /// <summary>
+        /// Gets a value that determines if any part of the file was downloaded from a peer.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if any part of the file is downloaded from peer; otherwise, <c>false</c>.
+        /// </value>
+
+        public bool IsDownloadedFromPeer => Manager.InvokeComMethod(Interface3.IsDownloadedFromPeer);
+
+        #endregion public properties
+
+        #region private properties
+
+        //  ----------------
+        //  Manager property
+        //  ----------------
+
+        private BackgroundCopyManager Manager { get; }
+
+        //  ------------------
+        //  Interface property
+        //  ------------------
+
+        private IBackgroundCopyFile Interface => interop ?? throw new ObjectDisposedException(nameof(BackgroundCopyFile));
+
+        //  -------------------
+        //  Interface2 property
+        //  -------------------
+
+        private IBackgroundCopyFile2 Interface2 => Extensions.QueryInterface<IBackgroundCopyFile2>(Interface);
+
+        //  -------------------
+        //  Interface3 property
+        //  -------------------
+
+        private IBackgroundCopyFile3 Interface3 => Extensions.QueryInterface<IBackgroundCopyFile3>(Interface);
+
+        #endregion private properties
+
+        #endregion properties
+
+        #region methods
+
+        //  -----------------------
+        //  RetrieveProgress method
+        //  -----------------------
+
+        /// <summary>
+        /// Retrieves information on the progress of the file transfer.
+        /// </summary>
+        /// <returns>
+        /// A <c>BackgroundCopyFileProgress</c> object whose members indicate the progress of the file transfer.
+        /// </returns>
+
+        public BackgroundCopyFileProgress RetrieveProgress() => new BackgroundCopyFileProgress(Manager.InvokeComMethod(Interface.GetProgress));
+
+        //  ---------------------
+        //  RetrieveRanges method
+        //  ---------------------
+
+        /// <summary>
+        /// Retrieves the ranges that you want to download from the remote file.
+        /// </summary>
+        /// <returns>
+        /// An enumerator to iterate the <see cref="BackgroundCopyFileRange"/> objects that specify the ranges to download.
+        /// </returns>
+
+        public IEnumerable<BackgroundCopyFileRange> RetrieveRanges()
+        {
+            BG_FILE_RANGE[] ranges = null;
+            Manager.InvokeComMethod(() => Interface2.GetFileRanges(out var count, out ranges));
+            foreach (var item in ranges)
+            {
+                yield return new BackgroundCopyFileRange(item);
+            }
+        }
+
+        #endregion methods
     }
 }
 

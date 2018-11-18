@@ -141,6 +141,7 @@ namespace usis.Net.Bits.Interop
         internal const string IBackgroundCopyError = "19c613a0-fcb8-4f28-81ae-897c3d078f81";
         internal const string IBackgroundCopyFile = "01b7bd23-fb88-4a77-8490-5891d3e4653a";
         internal const string IBackgroundCopyFile2 = "83e81b93-0873-474d-8a8c-f2018b1a939c";
+        internal const string IBackgroundCopyFile3 = "659cdeaa-489e-11d9-a9cd-000d56965251";
         internal const string IBackgroundCopyJob = "37668d37-507e-4160-9316-26306d150b12";
         internal const string IBackgroundCopyJob2 = "54b50739-686f-45eb-9dff-d6a9a0faa9af";
         internal const string IBackgroundCopyJob3 = "443c8934-90ff-48ed-bcde-26f5c7450042";

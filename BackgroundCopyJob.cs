@@ -82,11 +82,7 @@ namespace usis.Net.Bits
         /// Finalizes an instance of the <see cref="BackgroundCopyJob"/> class.
         /// </summary>
 
-        ~BackgroundCopyJob()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose();
-        }
+        ~BackgroundCopyJob() { Dispose(); } // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
 
         #endregion IDisposable implementation
 
@@ -378,9 +374,9 @@ namespace usis.Net.Bits
 
         internal BackgroundCopyManager Manager { get; }
 
-        //  ------------
-        //  Job property
-        //  ------------
+        //  ------------------
+        //  Interface property
+        //  ------------------
 
         private IBackgroundCopyJob Interface => interop ?? throw new ObjectDisposedException(nameof(BackgroundCopyJob));
 
@@ -388,19 +384,19 @@ namespace usis.Net.Bits
         //  Interface2 property
         //  -------------------
 
-        private IBackgroundCopyJob2 Interface2 => GetInterface<IBackgroundCopyJob2>();
+        private IBackgroundCopyJob2 Interface2 => Extensions.QueryInterface<IBackgroundCopyJob2>(Interface);
 
         //  -------------------
         //  Interface3 property
         //  -------------------
 
-        private IBackgroundCopyJob3 Interface3 => GetInterface<IBackgroundCopyJob3>();
+        private IBackgroundCopyJob3 Interface3 => Extensions.QueryInterface<IBackgroundCopyJob3>(Interface);
 
         //  -----------------------------
         //  HttpOptionsInterface property
         //  -----------------------------
 
-        internal IBackgroundCopyJobHttpOptions HttpOptionsInterface => GetInterface<IBackgroundCopyJobHttpOptions>();
+        internal IBackgroundCopyJobHttpOptions HttpOptionsInterface => Extensions.QueryInterface<IBackgroundCopyJobHttpOptions>(Interface);
 
         #endregion private properties
 
@@ -585,7 +581,7 @@ namespace usis.Net.Bits
                 files = interop.EnumFiles();
                 while (files.Next(1, out var file, IntPtr.Zero) == HResult.Ok)
                 {
-                    try { yield return new BackgroundCopyFile(file); }
+                    try { yield return new BackgroundCopyFile(Manager, file); }
                     finally { Marshal.ReleaseComObject(file); }
                 }
             }
@@ -887,7 +883,7 @@ namespace usis.Net.Bits
         internal BackgroundCopyError RetrieveError(bool throwException)
         {
             var hr = Interface.GetError(out var error);
-            if (hr == HResult.Ok) return new BackgroundCopyError(error);
+            if (hr == HResult.Ok) return new BackgroundCopyError(Manager, error);
             else if (hr == HResult.BG_E_ERROR_INFORMATION_UNAVAILABLE && !throwException) return null;
             else throw new BackgroundCopyException(Manager, hr);
         }
@@ -910,12 +906,6 @@ namespace usis.Net.Bits
                 }
             }
         }
-
-        //  -------------------
-        //  GetInterface method
-        //  -------------------
-
-        private TInterface GetInterface<TInterface>() where TInterface : class => (Interface as TInterface) ?? throw new NotSupportedException(Strings.NotSupported);
 
         //  ---------------------
         //  GetNotifyFlags method

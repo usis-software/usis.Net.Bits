@@ -4,6 +4,14 @@
 
 ---
 
+## Next Release
+
+- `BackgroundCopyFile.TemporaryName` property added.
+- `BackgroundCopyFile.ValidationState` property added.
+- `BackgroundCopyFile.IsDownloadedFromPeer` property added.
+
+---
+
 ## Version 2.5.0 - 2018-11-18
 
 - `BackgroundCopyManager.LibraryVersion` property added.

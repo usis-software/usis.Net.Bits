@@ -9,14 +9,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
-using usis.Net.Bits.Interop;
-using System.Linq;
-using System.Globalization;
 using Microsoft.Win32;
-using System.Diagnostics;
-using System.IO;
+using usis.Net.Bits.Interop;
 
 namespace usis.Net.Bits
 {
@@ -48,6 +48,39 @@ namespace usis.Net.Bits
         private BackgroundCopyManager() => manager = CreateComObject<IBackgroundCopyManager>(new Guid(CLSID.BackgroundCopyManager));
 
         #endregion construction
+
+        #region IDisposable implementation
+
+        //  --------------
+        //  Dispose method
+        //  --------------
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+
+        public void Dispose()
+        {
+            if (manager != null)
+            {
+                // free unmanaged resources
+                Marshal.ReleaseComObject(manager);
+                manager = null;
+            }
+            GC.SuppressFinalize(this);
+        }
+
+        //  ---------
+        //  finalizer
+        //  ---------
+
+        /// <summary>
+        /// Finalizes an instance of the <see cref="BackgroundCopyManager"/> class.
+        /// </summary>
+
+        ~BackgroundCopyManager() { Dispose(); }
+
+        #endregion IDisposable implementation
 
         #region properties
 
@@ -278,39 +311,6 @@ namespace usis.Net.Bits
         }
 
         #endregion methods
-
-        #region IDisposable implementation
-
-        //  --------------
-        //  Dispose method
-        //  --------------
-
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-
-        public void Dispose()
-        {
-            if (manager != null)
-            {
-                // free unmanaged resources
-                Marshal.ReleaseComObject(manager);
-                manager = null;
-            }
-            GC.SuppressFinalize(this);
-        }
-
-        //  ---------
-        //  finalizer
-        //  ---------
-
-        /// <summary>
-        /// Finalizes an instance of the <see cref="BackgroundCopyManager"/> class.
-        /// </summary>
-
-        ~BackgroundCopyManager() { Dispose(); }
-
-        #endregion IDisposable implementation
 
         #region private methods
 

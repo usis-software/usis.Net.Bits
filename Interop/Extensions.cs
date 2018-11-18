@@ -43,6 +43,16 @@ namespace usis.Net.Bits.Interop
         }
 
         #endregion private methods
+
+        #region QueryInterface method
+
+        //  ---------------------
+        //  QueryInterface method
+        //  ---------------------
+
+        internal static TInterface QueryInterface<TInterface>(object i) where TInterface : class => (i as TInterface) ?? throw new NotSupportedException(Strings.NotSupported);
+
+        #endregion QueryInterface method
     }
 }
 
