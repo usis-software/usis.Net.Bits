@@ -60,22 +60,29 @@ namespace usis.Net.Bits.Interop
 
         #endregion IBackgroundCopyFile2 methods
 
-        //virtual HRESULT STDMETHODCALLTYPE SetValidationState(
-        //    /* [in] */ BOOL state) = 0;
-
-        //virtual HRESULT STDMETHODCALLTYPE GetValidationState(
-        //    /* [out] */ __RPC__out BOOL *pState) = 0;
-
-        //virtual HRESULT STDMETHODCALLTYPE IsDownloadedFromPeer(
-        //    /* [out] */ __RPC__out BOOL *pVal) = 0;
+        //  -----------------------
+        //  GetTemporaryName method
+        //  -----------------------
 
         [return: MarshalAs(UnmanagedType.LPWStr)]
         string GetTemporaryName();
 
+        //  -------------------------
+        //  SetValidationState method
+        //  -------------------------
+
         void SetValidationState([MarshalAs(UnmanagedType.Bool)] bool state);
+
+        //  -------------------------
+        //  GetValidationState method
+        //  -------------------------
 
         [return: MarshalAs(UnmanagedType.Bool)]
         bool GetValidationState();
+
+        //  ---------------------------
+        //  IsDownloadedFromPeer method
+        //  ---------------------------
 
         [return: MarshalAs(UnmanagedType.Bool)]
         bool IsDownloadedFromPeer();
