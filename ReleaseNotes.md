@@ -9,6 +9,10 @@
 - `BackgroundCopyFile.TemporaryName` property added.
 - `BackgroundCopyFile.ValidationState` property added.
 - `BackgroundCopyFile.IsDownloadedFromPeer` property added.
+- `BackgroundCopyJob.PeerCachingOptions` property added.
+- `BackgroundCopyJob.MaximumDownloadTime` property added.
+- `BackgroundCopyJob.OwnerElevationState` property added.
+- `BackgroundCopyJob.OwnerIntegrityLevel` property added.
 
 ---
 

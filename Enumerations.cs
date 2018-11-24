@@ -591,6 +591,8 @@ namespace usis.Net.Bits
 
     #endregion BackgroundCopyCertificateStoreLocation enumeration
 
+    #region BackgroundCopyJobHttpSecurityFlags enumeration
+
     //  ----------------------------------------------
     //  BackgroundCopyJobHttpSecurityFlags enumeration
     //  ----------------------------------------------
@@ -667,6 +669,37 @@ namespace usis.Net.Bits
 
         HttpRedirectPolicyAllowHttpsToHttp = 0x0800,
     }
+
+    #endregion BackgroundCopyJobHttpSecurityFlags enumeration
+
+    #region BackgroundCopyJobPeerCachingOptions enumeration
+
+    //  -----------------------------------------------
+    //  BackgroundCopyJobPeerCachingOptions enumeration
+    //  -----------------------------------------------
+
+    /// <summary>
+    /// Flags that indicate determine if the files of the job can be cached and served to peers
+    /// and if BITS can download content for the job from peers
+    /// </summary>
+
+    [Flags]
+    public enum BackgroundCopyJobPeerCachingOptions
+    {
+        /// <summary>
+        /// The job can download content from peers.
+        /// </summary>
+
+        EnableClient = 0x0001,
+
+        /// <summary>
+        /// The files of the job can be cached and served to peers.
+        /// </summary>
+
+        EnableServer = 0x0002
+    }
+
+    #endregion BackgroundCopyJobPeerCachingOptions enumeration
 }
 
 // eof "Enumerations.cs"

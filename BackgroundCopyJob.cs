@@ -364,6 +364,68 @@ namespace usis.Net.Bits
 
         public BackgroundCopyJobHttpOptions HttpOptions { get; }
 
+        //  -----------------------------
+        //  PeerCachingOptions properties
+        //  -----------------------------
+
+        /// <summary>
+        ///   Gets or sets options that determine if the files of the job can be cached
+        ///   and served to peers and if BITS can download content for the job from peers.
+        /// </summary>
+        /// <value>
+        ///   Options that determine if the files of the job can be cached and served to peers
+        ///   and if BITS can download content for the job from peers.
+        /// </value>
+
+        public BackgroundCopyJobPeerCachingOptions PeerCachingOptions
+        {
+            get => Manager.InvokeComMethod(() => Interface4.GetPeerCachingFlags());
+            set => Manager.InvokeComMethod(() => Interface4.SetPeerCachingFlags(value));
+        }
+
+        //  ----------------------------
+        //  MaximumDownloadTime property
+        //  ----------------------------
+
+        /// <summary>
+        /// Gets or sets the maximum time that BITS will spend transferring the files in the job.
+        /// </summary>
+        /// <value>
+        /// The maximum time that BITS will spend transferring the files in the job.
+        /// </value>
+
+        public int MaximumDownloadTime
+        {
+            get => Manager.InvokeComMethod(() => Convert.ToInt32(Interface4.GetMaximumDownloadTime()));
+            set => Manager.InvokeComMethod(() => Interface4.SetMaximumDownloadTime(Convert.ToUInt32(value)));
+        }
+
+        //  ----------------------------
+        //  OwnerElevationState property
+        //  ----------------------------
+
+        /// <summary>
+        /// Gets a value that determines if the token of the owner was elevated at the time they created or took ownership of the job.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if the token of the owner was elevated at the time they created or took ownership of the job; otherwise, <c>false</c>.
+        /// </value>
+
+        public bool OwnerElevationState => Manager.InvokeComMethod(Interface4.GetOwnerElevationState);
+
+        //  ----------------------------
+        //  OwnerIntegrityLevel property
+        //  ----------------------------
+
+        /// <summary>
+        /// Gets the integrity level of the token of the owner that created or took ownership of the job.
+        /// </summary>
+        /// <value>
+        /// The integrity level of the token of the owner that created or took ownership of the job.
+        /// </value>
+
+        public int OwnerIntegrityLevel => Convert.ToInt32(Manager.InvokeComMethod(Interface4.GetOwnerIntegrityLevel));
+
         #endregion public properties
 
         #region private properties
@@ -391,6 +453,12 @@ namespace usis.Net.Bits
         //  -------------------
 
         private IBackgroundCopyJob3 Interface3 => Extensions.QueryInterface<IBackgroundCopyJob3>(Interface);
+
+        //  -------------------
+        //  Interface4 property
+        //  -------------------
+
+        private IBackgroundCopyJob4 Interface4 => Extensions.QueryInterface<IBackgroundCopyJob4>(Interface);
 
         //  -----------------------------
         //  HttpOptionsInterface property

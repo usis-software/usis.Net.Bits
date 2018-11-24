@@ -71,6 +71,7 @@
     <Compile Include="Interop\IBackgroundCopyJob.cs" />
     <Compile Include="Interop\IBackgroundCopyJob2.cs" />
     <Compile Include="Interop\IBackgroundCopyJob3.cs" />
+    <Compile Include="Interop\IBackgroundCopyJob4.cs" />
     <Compile Include="Interop\IBackgroundCopyJobHttpOptions.cs" />
     <Compile Include="Interop\IBackgroundCopyManager.cs" />
     <Compile Include="Interop\IEnumBackgroundCopyFiles.cs" />
