@@ -8,7 +8,7 @@
     <owners>$author$</owners>
     <projectUrl>https://github.com/usis-software/usis.Net.Bits</projectUrl>
     <iconUrl>https://www.usis-software.com/images/usis.icon.64x64.png</iconUrl>
-    <licenseUrl>https://help.usis-software.com/BITS/media/MIT-License.md</licenseUrl>
+    <license type="file">LICENSE.md</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <summary>
@@ -20,4 +20,7 @@
     <copyright>$copyright$</copyright>
     <tags>usis BITS Interop HTTP Background Transfer upload download</tags>
   </metadata>
+  <files>
+    <file src="LICENSE.md" target="" />
+  </files>
 </package>
