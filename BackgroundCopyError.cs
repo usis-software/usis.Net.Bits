@@ -2,10 +2,10 @@
 //  @(#) BackgroundCopyError.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2017
+//  System:     Microsoft Visual Studio 2019
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017,2018 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2019 usis GmbH. All rights reserved.
 
 using System;
 using System.Runtime.InteropServices;
@@ -66,7 +66,7 @@ namespace usis.Net.Bits
         {
             if (!disposed)
             {
-                if (interop != null) { Marshal.ReleaseComObject(interop); interop = null; }
+                if (interop != null) { _ = Marshal.ReleaseComObject(interop); interop = null; }
                 disposed = true;
             }
             GC.SuppressFinalize(this);

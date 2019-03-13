@@ -2,10 +2,10 @@
 //  @(#) BackgroundCopyJob.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2017
+//  System:     Microsoft Visual Studio 2019
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017,2018 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2019 usis GmbH. All rights reserved.
 
 using System;
 using System.Collections.Generic;
@@ -72,7 +72,7 @@ namespace usis.Net.Bits
                     var hr = interop.SetNotifyInterface(null);
                     if (HResult.Succeeded(hr) || hr == HResult.RPC_E_DISCONNECTED) callback = null;
                 }
-                Marshal.ReleaseComObject(interop);
+                _ = Marshal.ReleaseComObject(interop);
                 interop = null;
             }
             GC.SuppressFinalize(this);
@@ -650,10 +650,10 @@ namespace usis.Net.Bits
                 while (files.Next(1, out var file, IntPtr.Zero) == HResult.Ok)
                 {
                     try { yield return new BackgroundCopyFile(Manager, file); }
-                    finally { Marshal.ReleaseComObject(file); }
+                    finally { _ = Marshal.ReleaseComObject(file); }
                 }
             }
-            finally { if (files != null) Marshal.ReleaseComObject(files); }
+            finally { if (files != null) _ = Marshal.ReleaseComObject(files); }
         }
 
         //  -----------------------

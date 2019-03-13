@@ -2,10 +2,10 @@
 //  @(#) BackgroundCopyManager.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2017
+//  System:     Microsoft Visual Studio 2019
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017,2018 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2019 usis GmbH. All rights reserved.
 
 using System;
 using System.Collections.Generic;
@@ -64,7 +64,7 @@ namespace usis.Net.Bits
             if (manager != null)
             {
                 // free unmanaged resources
-                Marshal.ReleaseComObject(manager);
+                _ = Marshal.ReleaseComObject(manager);
                 manager = null;
             }
             GC.SuppressFinalize(this);
@@ -231,7 +231,7 @@ namespace usis.Net.Bits
                     yield return new BackgroundCopyJob(this, job);
                 }
             }
-            finally { if (jobs != null) Marshal.ReleaseComObject(jobs); }
+            finally { if (jobs != null) _ = Marshal.ReleaseComObject(jobs); }
         }
 
         /// <summary>
@@ -370,7 +370,7 @@ namespace usis.Net.Bits
 
         private static bool IsCLSIDRegistered(Guid clsid)
         {
-            var name = string.Format(CultureInfo.InvariantCulture, @"CLSID\{0}", clsid.ToString("B"));
+            var name = string.Format(CultureInfo.InvariantCulture, @"CLSID\{0}", clsid.ToString("B", CultureInfo.InvariantCulture));
             using (var registryKey = Registry.ClassesRoot.OpenSubKey(name))
             {
                 return registryKey != null;
@@ -386,7 +386,7 @@ namespace usis.Net.Bits
             var o = CreateComObject(clsid);
             if (!(o is TInterface i))
             {
-                Marshal.FinalReleaseComObject(o);
+                _ = Marshal.FinalReleaseComObject(o);
                 throw new InvalidCastException();
             }
             else return i;
@@ -403,7 +403,7 @@ namespace usis.Net.Bits
             }
             catch (Exception)
             {
-                if (o != null) Marshal.FinalReleaseComObject(o);
+                if (o != null) _ = Marshal.FinalReleaseComObject(o);
                 throw;
             }
             return o;

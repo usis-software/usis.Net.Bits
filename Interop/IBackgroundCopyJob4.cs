@@ -2,16 +2,20 @@
 //  @(#) IBackgroundCopyJob4.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2017
+//  System:     Microsoft Visual Studio 2019
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2018 usis GmbH. All rights reserved.
+//  Copyright (c) 2018,2019 usis GmbH. All rights reserved.
 
 using System;
 using System.Runtime.InteropServices;
 
 namespace usis.Net.Bits.Interop
 {
+    //  -----------------------------
+    //  IBackgroundCopyJob4 interface
+    //  -----------------------------
+
     [ComImport]
     [Guid(IID.IBackgroundCopyJob4)]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
