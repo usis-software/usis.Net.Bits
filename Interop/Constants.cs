@@ -2,10 +2,10 @@
 //  @(#) Constants.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2017
+//  System:     Microsoft Visual Studio 2019
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017,2018 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2010 usis GmbH. All rights reserved.
 
 namespace usis.Net.Bits.Interop
 {
@@ -138,6 +138,7 @@ namespace usis.Net.Bits.Interop
     internal static class IID
     {
         internal const string IBackgroundCopyCallback = "97ea99c7-0186-4ad4-8df9-c5b4e0ed6b22";
+        internal const string IBackgroundCopyCallback2 = "659cdeac-489e-11d9-a9cd-000d56965251";
         internal const string IBackgroundCopyError = "19c613a0-fcb8-4f28-81ae-897c3d078f81";
         internal const string IBackgroundCopyFile = "01b7bd23-fb88-4a77-8490-5891d3e4653a";
         internal const string IBackgroundCopyFile2 = "83e81b93-0873-474d-8a8c-f2018b1a939c";
