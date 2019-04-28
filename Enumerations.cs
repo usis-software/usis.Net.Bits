@@ -2,10 +2,10 @@
 //  @(#) Enumerations.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2017
+//  System:     Microsoft Visual Studio 2019
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017,2018 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2019 usis GmbH. All rights reserved.
 
 using System;
 using System.Diagnostics.CodeAnalysis;
@@ -314,6 +314,13 @@ namespace usis.Net.Bits
         /// </summary>
 
         Modification = 8,
+
+        /// <summary>
+        /// A file in the job has been transferred. This flag is ignored in
+        /// command-line callbacks if command line notification is specified.
+        /// </summary>
+
+        FileTransferred = 0x10,
     }
 
     #endregion BackgroundCopyJobNotifications enumeration
