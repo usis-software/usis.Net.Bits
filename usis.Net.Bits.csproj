@@ -72,6 +72,7 @@
     <Compile Include="Enumerations.cs" />
     <Compile Include="Interop\Extensions.cs" />
     <Compile Include="Interop\IBackgroundCopyCallback.cs" />
+    <Compile Include="Interop\IBackgroundCopyCallback2.cs" />
     <Compile Include="Interop\IBackgroundCopyError.cs" />
     <Compile Include="Interop\IBackgroundCopyFile.cs" />
     <Compile Include="Interop\IBackgroundCopyFile2.cs" />

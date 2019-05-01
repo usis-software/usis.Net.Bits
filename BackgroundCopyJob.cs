@@ -580,6 +580,35 @@ namespace usis.Net.Bits
 
         #endregion Transferred event
 
+        #region FileTransferred event
+
+        //  ---------------------
+        //  FileTransferred event
+        //  ---------------------
+
+        private EventHandler fileTransferredHandler;
+
+        /// <summary>
+        /// Occurs when BITS successfully finishes transferring a file.
+        /// </summary>
+
+        public event EventHandler FileTransferred
+        {
+            add
+            {
+                if (CheckCallback()) Notifications |= BackgroundCopyJobNotifications.FileTransferred;
+                fileTransferredHandler += value;
+            }
+            remove
+            {
+                RemoveEvent(fileTransferredHandler, BackgroundCopyJobNotifications.FileTransferred, value);
+            }
+        }
+
+        private uint OnFileTransferred() => InvokeHandler(fileTransferredHandler);
+
+        #endregion FileTransferred event
+
         #endregion events
 
         #region methods
@@ -1057,7 +1086,7 @@ namespace usis.Net.Bits
         //  --------------
 
         [ComVisible(true)]
-        private class Callback : IBackgroundCopyCallback
+        private class Callback : IBackgroundCopyCallback, IBackgroundCopyCallback2
         {
             #region properties
 
@@ -1100,6 +1129,34 @@ namespace usis.Net.Bits
             uint IBackgroundCopyCallback.JobModification(IBackgroundCopyJob job, int reserved) => Job.OnModified();
 
             #endregion IBackgroundCopyCallback implementation
+
+            #region IBackgroundCopyCallback2 implementation
+
+            //  ---------------------
+            //  JobTransferred method
+            //  ---------------------
+
+            uint IBackgroundCopyCallback2.JobTransferred(IBackgroundCopyJob job) => Job.OnTransferred();
+
+            //  ---------------
+            //  JobError method
+            //  ---------------
+
+            uint IBackgroundCopyCallback2.JobError(IBackgroundCopyJob job, IBackgroundCopyError error) => Job.OnFailed();
+
+            //  ----------------------
+            //  JobModification method
+            //  ----------------------
+
+            uint IBackgroundCopyCallback2.JobModification(IBackgroundCopyJob job, int reserved) => Job.OnModified();
+
+            //  ----------------------
+            //  FileTransferred method
+            //  ----------------------
+
+            uint IBackgroundCopyCallback2.FileTransferred(IBackgroundCopyJob job, IBackgroundCopyFile file) => Job.OnFileTransferred();
+
+            #endregion IBackgroundCopyCallback2 implementation
         }
 
         #endregion Callback class

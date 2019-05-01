@@ -13,6 +13,8 @@
 - `BackgroundCopyJob.MaximumDownloadTime` property added.
 - `BackgroundCopyJob.OwnerElevationState` property added.
 - `BackgroundCopyJob.OwnerIntegrityLevel` property added.
+- `BackgroundCopyJobNotifications.FileTransferred` constant added.
+- `BackgroundCopyJob.FileTransferred` event added.
 
 ---
 
