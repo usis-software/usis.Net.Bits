@@ -478,7 +478,7 @@ namespace usis.Net.Bits
         //  Failed event
         //  ------------
 
-        private EventHandler failedHandler;
+        private EventHandler<EventArgs> failedHandler;
 
         /// <summary>
         /// Occurs when the state of the job changes to <see cref="BackgroundCopyJobState.Error"/>.
@@ -491,7 +491,7 @@ namespace usis.Net.Bits
         /// Use the <see cref="Notifications"/> property to check what notifications you receive.
         /// </remarks>
 
-        public event EventHandler Failed
+        public event EventHandler<EventArgs> Failed
         {
             add
             {
@@ -504,7 +504,7 @@ namespace usis.Net.Bits
             }
         }
 
-        private uint OnFailed() => InvokeHandler(failedHandler);
+        private uint OnFailed() => InvokeHandler(failedHandler, EventArgs.Empty);
 
         #endregion Failed event
 
@@ -514,7 +514,7 @@ namespace usis.Net.Bits
         //  Modified event
         //  --------------
 
-        private EventHandler modifiedHandler;
+        private EventHandler<EventArgs> modifiedHandler;
 
         /// <summary>
         /// Occurs when a job is modified.
@@ -527,7 +527,7 @@ namespace usis.Net.Bits
         /// Use the <see cref="Notifications"/> property to check what notifications you receive.
         /// </remarks>
 
-        public event EventHandler Modified
+        public event EventHandler<EventArgs> Modified
         {
             add
             {
@@ -540,7 +540,7 @@ namespace usis.Net.Bits
             }
         }
 
-        private uint OnModified() => InvokeHandler(modifiedHandler);
+        private uint OnModified() => InvokeHandler(modifiedHandler, EventArgs.Empty);
 
         #endregion Modified event
 
@@ -550,7 +550,7 @@ namespace usis.Net.Bits
         //  Transferred event
         //  -----------------
 
-        private EventHandler transferredHandler;
+        private EventHandler<EventArgs> transferredHandler;
 
         /// <summary>
         /// Occurs when all of the files in the job have successfully transferred.
@@ -563,7 +563,7 @@ namespace usis.Net.Bits
         /// Use the <see cref="Notifications"/> property to check what notifications you receive.
         /// </remarks>
 
-        public event EventHandler Transferred
+        public event EventHandler<EventArgs> Transferred
         {
             add
             {
@@ -576,7 +576,7 @@ namespace usis.Net.Bits
             }
         }
 
-        private uint OnTransferred() => InvokeHandler(transferredHandler);
+        private uint OnTransferred() => InvokeHandler(transferredHandler, EventArgs.Empty);
 
         #endregion Transferred event
 
@@ -586,13 +586,13 @@ namespace usis.Net.Bits
         //  FileTransferred event
         //  ---------------------
 
-        private EventHandler fileTransferredHandler;
+        private EventHandler<EventArgs> fileTransferredHandler;
 
         /// <summary>
         /// Occurs when BITS successfully finishes transferring a file.
         /// </summary>
 
-        public event EventHandler FileTransferred
+        public event EventHandler<EventArgs> FileTransferred
         {
             add
             {
@@ -605,7 +605,7 @@ namespace usis.Net.Bits
             }
         }
 
-        private uint OnFileTransferred() => InvokeHandler(fileTransferredHandler);
+        private uint OnFileTransferred() => InvokeHandler(fileTransferredHandler, EventArgs.Empty);
 
         #endregion FileTransferred event
 
@@ -989,7 +989,7 @@ namespace usis.Net.Bits
         //  RemoveEvent method
         //  ------------------
 
-        private void RemoveEvent(EventHandler handler, BackgroundCopyJobNotifications flags, EventHandler value)
+        private void RemoveEvent<TEventArgs>(EventHandler<TEventArgs> handler, BackgroundCopyJobNotifications flags, EventHandler<TEventArgs> value)
         {
             handler -= value;
             if (handler == null)
@@ -1040,11 +1040,11 @@ namespace usis.Net.Bits
         //  --------------------
 
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
-        private uint InvokeHandler(EventHandler handler)
+        private uint InvokeHandler<TEventArgs>(EventHandler<TEventArgs> handler, TEventArgs e)
         {
             try
             {
-                handler?.Invoke(this, EventArgs.Empty);
+                handler?.Invoke(this, e);
                 if (Interface is IBackgroundCopyJob2 job2)
                 {
                     job2.GetNotifyCmdLine(out var program, out var parameters);
