@@ -19,7 +19,8 @@ namespace usis.Net.Bits
     //  -------------------------
 
     /// <summary>
-    /// Provides informations about the cause of an error and if the transfer process can proceed.
+    /// Provides informations about the cause of an error and if the transfer
+    /// process can proceed.
     /// </summary>
 
     public sealed class BackgroundCopyError : IDisposable
@@ -59,7 +60,8 @@ namespace usis.Net.Bits
         private bool disposed = false; // To detect redundant calls
 
         /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// Performs application-defined tasks associated with freeing,
+        /// releasing, or resetting unmanaged resources.
         /// </summary>
 
         public void Dispose()
@@ -77,7 +79,8 @@ namespace usis.Net.Bits
         //  ---------
 
         /// <summary>
-        /// Finalizes an instance of the <see cref="BackgroundCopyError"/> class.
+        /// Finalizes an instance of the <see cref="BackgroundCopyError"/>
+        /// class.
         /// </summary>
 
         ~BackgroundCopyError()
@@ -193,9 +196,7 @@ namespace usis.Net.Bits
         /// <summary>
         /// Retrieves the file object associated with the error.
         /// </summary>
-        /// <returns>
-        /// The file object associated with the error.
-        /// </returns>
+        /// <returns>The file object associated with the error.</returns>
 
         public BackgroundCopyFile RetrieveFile() => new BackgroundCopyFile(Manager, Manager.InvokeComMethod(Interface.GetFile));
 
@@ -292,6 +293,52 @@ namespace usis.Net.Bits
     }
 
     #endregion BackgroundCopyErrorInfo class
+
+    #region BackgroundCopyErrorEventArgs class
+
+    //  ----------------------------------
+    //  BackgroundCopyErrorEventArgs class
+    //  ----------------------------------
+
+    /// <summary>
+    /// Provides arguments for the <see cref="BackgroundCopyJob.Failed"/> event.
+    /// event.
+    /// </summary>
+    /// <seealso cref="EventArgs" />
+
+    public class BackgroundCopyErrorEventArgs : EventArgs
+    {
+        #region construction
+
+        //  ------------
+        //  construction
+        //  ------------
+
+        internal BackgroundCopyErrorEventArgs(BackgroundCopyError error) => Error = error;
+
+        #endregion construction
+
+        #region properties
+
+        //  --------------
+        //  Error property
+        //  --------------
+
+        /// <summary>
+        /// Gets the error that caused the
+        /// <see cref="BackgroundCopyJob.Failed"/> event.
+        /// </summary>
+        /// <value>
+        /// The error that caused the <see cref="BackgroundCopyJob.Failed"/>
+        /// event.
+        /// </value>
+
+        public BackgroundCopyError Error { get; }
+
+        #endregion properties
+    }
+
+    #endregion BackgroundCopyErrorEventArgs class
 }
 
 // eof "BackgroundCopyError.cs"

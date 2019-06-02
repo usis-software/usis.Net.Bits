@@ -13,7 +13,10 @@
 - `BackgroundCopyJob.MaximumDownloadTime` property added.
 - `BackgroundCopyJob.OwnerElevationState` property added.
 - `BackgroundCopyJob.OwnerIntegrityLevel` property added.
+- `BackgroundCopyErrorEventArgs` class added.
+- The `BackgroundCopyJob.Failed` event now provides `BackgroundCopyErrorEventArgs` event arguments (*Breaking Change*).
 - `BackgroundCopyJobNotifications.FileTransferred` constant added.
+- `BackgroundCopyFileEventArgs` class added.
 - `BackgroundCopyJob.FileTransferred` event added.
 
 ---

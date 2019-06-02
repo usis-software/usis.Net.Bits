@@ -51,7 +51,8 @@ namespace usis.Net.Bits
         //  --------------
 
         /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// Performs application-defined tasks associated with freeing,
+        /// releasing, or resetting unmanaged resources.
         /// </summary>
 
         public void Dispose()
@@ -120,10 +121,12 @@ namespace usis.Net.Bits
         //  ----------------------
 
         /// <summary>
-        /// Gets the full path of the temporary file that contains the content of the download.
+        /// Gets the full path of the temporary file that contains the content
+        /// of the download.
         /// </summary>
         /// <value>
-        /// The full path of the temporary file that contains the content of the download.
+        /// The full path of the temporary file that contains the content of the
+        /// download.
         /// </value>
 
         public string TemporaryName => Manager.InvokeComMethod(Interface3.GetTemporaryName);
@@ -136,7 +139,8 @@ namespace usis.Net.Bits
         /// Gets or sets the current validation state of this file.
         /// </summary>
         /// <value>
-        /// <c>true</c> if the contents of the file is valid; otherwise, <c>false</c>.
+        /// <c>true</c> if the contents of the file is valid; otherwise,
+        /// <c>false</c>.
         /// </value>
 
         public bool ValidationState
@@ -150,10 +154,12 @@ namespace usis.Net.Bits
         //  -----------------------------
 
         /// <summary>
-        /// Gets a value that determines if any part of the file was downloaded from a peer.
+        /// Gets a value that determines if any part of the file was downloaded
+        /// from a peer.
         /// </summary>
         /// <value>
-        /// <c>true</c> if any part of the file is downloaded from peer; otherwise, <c>false</c>.
+        /// <c>true</c> if any part of the file is downloaded from peer;
+        /// otherwise, <c>false</c>.
         /// </value>
 
         public bool IsDownloadedFromPeer => Manager.InvokeComMethod(Interface3.IsDownloadedFromPeer);
@@ -199,9 +205,8 @@ namespace usis.Net.Bits
         /// <summary>
         /// Retrieves information on the progress of the file transfer.
         /// </summary>
-        /// <returns>
-        /// A <c>BackgroundCopyFileProgress</c> object whose members indicate the progress of the file transfer.
-        /// </returns>
+        /// <returns>A <c>BackgroundCopyFileProgress</c> object whose members
+        ///     indicate the progress of the file transfer.</returns>
 
         public BackgroundCopyFileProgress RetrieveProgress() => new BackgroundCopyFileProgress(Manager.InvokeComMethod(Interface.GetProgress));
 
@@ -212,9 +217,9 @@ namespace usis.Net.Bits
         /// <summary>
         /// Retrieves the ranges that you want to download from the remote file.
         /// </summary>
-        /// <returns>
-        /// An enumerator to iterate the <see cref="BackgroundCopyFileRange"/> objects that specify the ranges to download.
-        /// </returns>
+        /// <returns>An enumerator to iterate the
+        ///     <see cref="BackgroundCopyFileRange"/> objects that specify the
+        ///     ranges to download.</returns>
 
         public IEnumerable<BackgroundCopyFileRange> RetrieveRanges()
         {
@@ -228,6 +233,50 @@ namespace usis.Net.Bits
 
         #endregion methods
     }
+
+    #region BackgroundCopyFileEventArgs class
+
+    //  ---------------------------------
+    //  BackgroundCopyFileEventArgs class
+    //  ---------------------------------
+
+    /// <summary>
+    /// Provides arguments for the
+    /// <see cref="BackgroundCopyJob.FileTransferred"/> event.
+    /// </summary>
+    /// <seealso cref="EventArgs"/>
+
+    public class BackgroundCopyFileEventArgs : EventArgs
+    {
+        #region construction
+
+        //  ------------
+        //  construction
+        //  ------------
+
+        internal BackgroundCopyFileEventArgs(BackgroundCopyFile file) => File = file;
+
+        #endregion construction
+
+        #region properties
+
+        //  -------------
+        //  File property
+        //  -------------
+
+        /// <summary>
+        /// Gets the file.
+        /// </summary>
+        /// <value>
+        /// The file.
+        /// </value>
+
+        public BackgroundCopyFile File { get; }
+
+        #endregion properties
+    }
+
+    #endregion BackgroundCopyFileEventArgs class
 }
 
 // eof "BackgroundCopyFile.cs"
