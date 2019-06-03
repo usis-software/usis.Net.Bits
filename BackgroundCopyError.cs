@@ -302,9 +302,8 @@ namespace usis.Net.Bits
 
     /// <summary>
     /// Provides arguments for the <see cref="BackgroundCopyJob.Failed"/> event.
-    /// event.
     /// </summary>
-    /// <seealso cref="EventArgs" />
+    /// <seealso cref="EventArgs"/>
 
     public class BackgroundCopyErrorEventArgs : EventArgs
     {

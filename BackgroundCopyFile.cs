@@ -265,10 +265,10 @@ namespace usis.Net.Bits
         //  -------------
 
         /// <summary>
-        /// Gets the file.
+        /// Gets an object that provides informations about the file.
         /// </summary>
         /// <value>
-        /// The file.
+        /// An object that provides informations about the file.
         /// </value>
 
         public BackgroundCopyFile File { get; }
