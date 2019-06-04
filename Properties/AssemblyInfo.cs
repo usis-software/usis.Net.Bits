@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 #endif
 [assembly: AssemblyCompany("usis GmbH")]
 [assembly: AssemblyProduct("usis Background Intelligent Transfer Service (BITS) Class Library")]
-[assembly: AssemblyCopyright("Copyright © 2017,2018 usis GmbH")]
+[assembly: AssemblyCopyright("Copyright © 2017-2019 usis GmbH")]
 
 // The assembly is not visible to COM components.
 [assembly: ComVisible(false)]
