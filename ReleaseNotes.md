@@ -10,7 +10,7 @@
 
 ---
 
-## Version 3.0 - 2019-06-xx
+## Version 3.0 - 2019-06-04
 
 - `BackgroundCopyFile.TemporaryName` property added.
 - `BackgroundCopyFile.ValidationState` property added.
