@@ -6,6 +6,12 @@
 
 ## Next Release
 
+- ...
+
+---
+
+## Version 3.0 - 2019-06-xx
+
 - `BackgroundCopyFile.TemporaryName` property added.
 - `BackgroundCopyFile.ValidationState` property added.
 - `BackgroundCopyFile.IsDownloadedFromPeer` property added.
@@ -18,6 +24,7 @@
 - `BackgroundCopyJobNotifications.FileTransferred` constant added.
 - `BackgroundCopyFileEventArgs` class added.
 - `BackgroundCopyJob.FileTransferred` event added.
+- **usis.Net.Bits** now supports all features of BITS 3.0 except of peer caching. Starting with Windows 7, the BITS 3.0 peer caching model is deprecated.
 
 ---
 

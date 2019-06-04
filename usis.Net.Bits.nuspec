@@ -15,7 +15,7 @@
       The usis Background Intelligent Transfer Service Class Library provides .NET wrapper types for the BITS API which is exposed by Microsoft through the Component Object Model (COM).
     </summary>
     <releaseNotes>
-      Version 2.5.0 contains the following changes: BackgroundCopyManager.LibraryVersion property added; BITS 2.5 API implemented: see BackgroundCopyJob.HttpOptions property.
+      Version 3.0.0 now supports all features of BITS 3.0 except of peer caching. Starting with Windows 7, the BITS 3.0 peer caching model is deprecated.
     </releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>usis BITS Interop HTTP Background Transfer upload download</tags>
