@@ -12,6 +12,7 @@
   <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.EditorFeatures" RuleNamespace="Microsoft.CodeAnalysis.CSharp.EditorFeatures">
     <Rule Id="IDE0032" Action="Warning" />
     <Rule Id="IDE0032WithoutSuggestion" Action="Warning" />
+    <Rule Id="IDE0065" Action="Warning" />
   </Rules>
   <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Features" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Features">
     <Rule Id="IDE0001" Action="Warning" />
@@ -104,6 +105,11 @@
     <Rule Id="IDE0059" Action="Warning" />
     <Rule Id="IDE0060" Action="Warning" />
     <Rule Id="IDE0061" Action="Warning" />
+    <Rule Id="IDE0062" Action="Warning" />
+    <Rule Id="IDE0062WithoutSuggestion" Action="Warning" />
+    <Rule Id="IDE0063" Action="Warning" />
+    <Rule Id="IDE0063WithoutSuggestion" Action="Warning" />
+    <Rule Id="IDE0064" Action="Warning" />
     <Rule Id="IDE1005" Action="Warning" />
     <Rule Id="IDE1005WithoutSuggestion" Action="Warning" />
     <Rule Id="IDE1006" Action="Warning" />
