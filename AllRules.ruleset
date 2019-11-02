@@ -184,6 +184,8 @@
     <Rule Id="CA2326" Action="Warning" />
     <Rule Id="CA2327" Action="Warning" />
     <Rule Id="CA2328" Action="Warning" />
+    <Rule Id="CA2329" Action="Warning" />
+    <Rule Id="CA2330" Action="Warning" />
     <Rule Id="CA3001" Action="Warning" />
     <Rule Id="CA3002" Action="Warning" />
     <Rule Id="CA3003" Action="Warning" />
@@ -208,6 +210,20 @@
     <Rule Id="CA5386" Action="Warning" />
     <Rule Id="CA5387" Action="Warning" />
     <Rule Id="CA5388" Action="Warning" />
+    <Rule Id="CA5389" Action="Warning" />
+    <Rule Id="CA5390" Action="Warning" />
+    <Rule Id="CA5391" Action="Warning" />
+    <Rule Id="CA5392" Action="Warning" />
+    <Rule Id="CA5393" Action="Warning" />
+    <Rule Id="CA5394" Action="Warning" />
+    <Rule Id="CA5395" Action="Warning" />
+    <Rule Id="CA5396" Action="Warning" />
+    <Rule Id="CA5398" Action="Warning" />
+    <Rule Id="CA5399" Action="Warning" />
+    <Rule Id="CA5400" Action="Warning" />
+    <Rule Id="CA5401" Action="Warning" />
+    <Rule Id="CA5402" Action="Warning" />
+    <Rule Id="CA5403" Action="Warning" />
   </Rules>
   <Rules AnalyzerId="Microsoft.NetCore.CSharp.Analyzers" RuleNamespace="Microsoft.NetCore.CSharp.Analyzers">
     <Rule Id="CA1309" Action="Warning" />
