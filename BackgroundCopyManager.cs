@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2019
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017-2019 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2020 usis GmbH. All rights reserved.
 
 using System;
 using System.Collections.Generic;
@@ -154,9 +154,11 @@ namespace usis.Net.Bits
 
         public BackgroundCopyJob CreateJob(string displayName, BackgroundCopyJobType type)
         {
-            if (displayName == null) throw new ArgumentNullException(nameof(displayName));
-            if (manager == null) throw new ObjectDisposedException(nameof(BackgroundCopyManager));
-            return InvokeComMethod(() => new BackgroundCopyJob(this, manager.CreateJob(displayName, type, out var jobId)));
+            return displayName == null
+                ? throw new ArgumentNullException(nameof(displayName))
+                : manager == null
+                    ? throw new ObjectDisposedException(nameof(BackgroundCopyManager))
+                    : InvokeComMethod(() => new BackgroundCopyJob(this, manager.CreateJob(displayName, type, out var jobId)));
         }
 
         //  --------------------
@@ -269,9 +271,11 @@ namespace usis.Net.Bits
             if (manager == null) throw new ObjectDisposedException(nameof(BackgroundCopyManager));
 
             var result = manager.GetJob(jobId, out var job);
-            if (result == HResult.Ok) return new BackgroundCopyJob(this, job);
-            else if (result == HResult.BG_E_NOT_FOUND && !throwNotFoundException) return null;
-            else throw new BackgroundCopyException(this, result);
+            return result == HResult.Ok
+                ? new BackgroundCopyJob(this, job)
+                : result == HResult.BG_E_NOT_FOUND && !throwNotFoundException
+                    ? (BackgroundCopyJob)null
+                    : throw new BackgroundCopyException(this, result);
         }
 
         /// <summary>
@@ -322,9 +326,11 @@ namespace usis.Net.Bits
         {
             if (manager == null) throw new ObjectDisposedException(nameof(BackgroundCopyManager));
             var result = manager.GetErrorDescription(hResult, languageId, out var description);
-            if (result == HResult.Ok) return description;
-            else if (result == Win32Error.ERROR_MUI_FILE_NOT_LOADED) return GetErrorDescription(hResult, 0x0C00);
-            else throw new BackgroundCopyException(Strings.FailedErrorDescription, result);
+            return result == HResult.Ok
+                ? description
+                : result == Win32Error.ERROR_MUI_FILE_NOT_LOADED
+                    ? GetErrorDescription(hResult, 0x0C00)
+                    : throw new BackgroundCopyException(Strings.FailedErrorDescription, result);
         }
 
         //  ---------------------------
@@ -381,6 +387,8 @@ namespace usis.Net.Bits
         //  CreateComObject method
         //  ----------------------
 
+#pragma warning disable CA1508 // Avoid dead conditional code
+
         private static TInterface CreateComObject<TInterface>(Guid clsid) where TInterface : class
         {
             var o = CreateComObject(clsid);
@@ -391,6 +399,8 @@ namespace usis.Net.Bits
             }
             else return i;
         }
+
+#pragma warning restore CA1508 // Avoid dead conditional code
 
         private static object CreateComObject(Guid clsid) => CreateComObject(Type.GetTypeFromCLSID(clsid));
 

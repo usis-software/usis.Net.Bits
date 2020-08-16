@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2019
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017-2019 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2020 usis GmbH. All rights reserved.
 
 using System;
 using System.Runtime.InteropServices;
@@ -57,7 +57,7 @@ namespace usis.Net.Bits
         //  Dispose method
         //  --------------
 
-        private bool disposed = false; // To detect redundant calls
+        private bool disposed; // To detect redundant calls
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing,
@@ -212,12 +212,11 @@ namespace usis.Net.Bits
         {
             string description = null;
             var result = Manager.InvokeComMethod(() => Interface.GetErrorDescription(lcid, out description));
-            if (result == HResult.Ok) return description;
-            else if (result == Win32Error.ERROR_MUI_FILE_NOT_LOADED || result == Win32Error.ERROR_MUI_FILE_NOT_FOUND)
-            {
-                return GetErrorDescription(FallbackLanguageCodeId);
-            }
-            else throw new BackgroundCopyException(Strings.FailedErrorDescription, result);
+            return result == HResult.Ok
+                ? description
+                : result == Win32Error.ERROR_MUI_FILE_NOT_LOADED || result == Win32Error.ERROR_MUI_FILE_NOT_FOUND
+                    ? GetErrorDescription(FallbackLanguageCodeId)
+                    : throw new BackgroundCopyException(Strings.FailedErrorDescription, result);
         }
 
         //  ---------------------------------
@@ -228,12 +227,11 @@ namespace usis.Net.Bits
         {
             string description = null;
             var result = Manager.InvokeComMethod(() => Interface.GetErrorContextDescription(lcid, out description));
-            if (result == HResult.Ok) return description;
-            else if (result == Win32Error.ERROR_MUI_FILE_NOT_LOADED || result == Win32Error.ERROR_MUI_FILE_NOT_FOUND)
-            {
-                return GetErrorContextDescription(FallbackLanguageCodeId);
-            }
-            else throw new BackgroundCopyException(Strings.FailedErrorDescription, result);
+            return result == HResult.Ok
+                ? description
+                : result == Win32Error.ERROR_MUI_FILE_NOT_LOADED || result == Win32Error.ERROR_MUI_FILE_NOT_FOUND
+                    ? GetErrorContextDescription(FallbackLanguageCodeId)
+                    : throw new BackgroundCopyException(Strings.FailedErrorDescription, result);
         }
 
         #endregion private methods

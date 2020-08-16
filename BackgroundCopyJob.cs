@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2019
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017-2019 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2020 usis GmbH. All rights reserved.
 
 using System;
 using System.Collections.Generic;
@@ -1000,9 +1000,11 @@ namespace usis.Net.Bits
         internal BackgroundCopyError RetrieveError(bool throwException)
         {
             var hr = Interface.GetError(out var error);
-            if (hr == HResult.Ok) return new BackgroundCopyError(Manager, error);
-            else if (hr == HResult.BG_E_ERROR_INFORMATION_UNAVAILABLE && !throwException) return null;
-            else throw new BackgroundCopyException(Manager, hr);
+            return hr == HResult.Ok
+                ? new BackgroundCopyError(Manager, error)
+                : hr == HResult.BG_E_ERROR_INFORMATION_UNAVAILABLE && !throwException
+                    ? (BackgroundCopyError)null
+                    : throw new BackgroundCopyException(Manager, hr);
         }
 
         //  ------------------
@@ -1018,8 +1020,7 @@ namespace usis.Net.Bits
                 if (hr != HResult.RPC_E_DISCONNECTED &&
                     hr != Win32Error.RPC_S_SERVER_UNAVAILABLE)
                 {
-                    if (HResult.Succeeded(hr)) Notifications = notifyFlags & ~flags;
-                    else throw new BackgroundCopyException(Manager, hr);
+                    Notifications = HResult.Succeeded(hr) ? notifyFlags & ~flags : throw new BackgroundCopyException(Manager, hr);
                 }
             }
         }
@@ -1031,8 +1032,7 @@ namespace usis.Net.Bits
         private BackgroundCopyJobNotifications GetNotifyFlags()
         {
             var hr = Interface.GetNotifyFlags(out var notifyFlags);
-            if (!HResult.Succeeded(hr)) throw new BackgroundCopyException(Manager, hr);
-            return notifyFlags;
+            return !HResult.Succeeded(hr) ? throw new BackgroundCopyException(Manager, hr) : notifyFlags;
         }
 
         //  --------------------
@@ -1048,8 +1048,7 @@ namespace usis.Net.Bits
                 if (!HResult.Succeeded(hr))
                 {
                     callback = null;
-                    if (hr != HResult.E_ACCESSDENIED) throw new BackgroundCopyException(Manager, hr);
-                    else return false;
+                    return hr != HResult.E_ACCESSDENIED ? throw new BackgroundCopyException(Manager, hr) : false;
                 }
             }
             return true;

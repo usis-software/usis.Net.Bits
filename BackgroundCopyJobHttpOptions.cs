@@ -2,10 +2,10 @@
 //  @(#) BackgroundCopyJobHttpOptions.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2017
+//  System:     Microsoft Visual Studio 2019
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2018 usis GmbH. All rights reserved.
+//  Copyright (c) 2018-2020 usis GmbH. All rights reserved.
 
 using System;
 using usis.Net.Bits.Interop;
@@ -103,18 +103,17 @@ namespace usis.Net.Bits
                     out var storeName,
                     out var thumbprint,
                     out var subjectName);
-                if (HResult.Succeeded(hr))
-                {
-                    return hr != HResult.Ok ? null
+                return HResult.Succeeded(hr)
+                    ? hr != HResult.Ok
+                        ? null
                         : new BackgroundCopyJobClientCertificate()
                         {
                             StoreLocation = storeLocation,
                             StoreName = storeName,
                             Thumbprint = thumbprint,
                             SubjectName = subjectName
-                        };
-                }
-                else throw new InvalidOperationException(Job.Manager.GetErrorDescription(hr));
+                        }
+                    : throw new InvalidOperationException(Job.Manager.GetErrorDescription(hr));
             }
         }
 
