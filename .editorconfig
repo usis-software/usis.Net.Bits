@@ -1,0 +1,16 @@
+# top-most EditorConfig file
+root = true
+
+# Code files
+[*.{cs,vb}]
+
+# Default severity for analyzer diagnostics - Requires **VS2019 16.5** or later
+dotnet_analyzer_diagnostic.severity = warning
+dotnet_analyzer_diagnostic.category-Style.severity = suggestion
+
+csharp_style_var_for_built_in_types = true
+csharp_style_var_when_type_is_apparent = true
+csharp_style_var_elsewhere = true
+csharp_prefer_braces = false
+csharp_style_expression_bodied_constructors = when_on_single_line
+csharp_style_expression_bodied_methods = when_on_single_line

@@ -2,13 +2,12 @@
 //  @(#) Enumerations.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2019
+//  System:     Microsoft Visual Studio 2022
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017-2019 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2022 usis GmbH. All rights reserved.
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace usis.Net.Bits
 {
@@ -608,7 +607,6 @@ namespace usis.Net.Bits
     /// HTTP security flags that indicate which errors to ignore when connecting to the server.
     /// </summary>
 
-    [SuppressMessage("Microsoft.Usage", "CA2217:DoNotMarkEnumsWithFlags")]
     [Flags]
     public enum BackgroundCopyJobHttpSecurityOptions
     {
