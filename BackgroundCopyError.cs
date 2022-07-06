@@ -2,10 +2,10 @@
 //  @(#) BackgroundCopyError.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2019
+//  System:     Microsoft Visual Studio 2022
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017-2020 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2022 usis GmbH. All rights reserved.
 
 using System;
 using System.Runtime.InteropServices;
@@ -29,13 +29,13 @@ namespace usis.Net.Bits
 
         private const int FallbackLanguageCodeId = 0x0c00;
 
-        #endregion constants
+        #endregion
 
         #region fields
 
         private IBackgroundCopyError interop;
 
-        #endregion fields
+        #endregion
 
         #region construction
 
@@ -49,7 +49,7 @@ namespace usis.Net.Bits
             interop = i ?? throw new ArgumentNullException(nameof(i));
         }
 
-        #endregion construction
+        #endregion
 
         #region IDisposable implementation
 
@@ -88,7 +88,7 @@ namespace usis.Net.Bits
             Dispose();
         }
 
-        #endregion IDisposable implementation
+        #endregion
 
         #region properties
 
@@ -167,7 +167,7 @@ namespace usis.Net.Bits
 
         public string Protocol => Manager.InvokeComMethod(Interface.GetProtocol);
 
-        #endregion public properties
+        #endregion
 
         #region private properties
 
@@ -183,9 +183,9 @@ namespace usis.Net.Bits
 
         private IBackgroundCopyError Interface => interop ?? throw new ObjectDisposedException(nameof(BackgroundCopyError));
 
-        #endregion private properties
+        #endregion
 
-        #endregion properties
+        #endregion
 
         #region methods
 
@@ -198,9 +198,9 @@ namespace usis.Net.Bits
         /// </summary>
         /// <returns>The file object associated with the error.</returns>
 
-        public BackgroundCopyFile RetrieveFile() => new BackgroundCopyFile(Manager, Manager.InvokeComMethod(Interface.GetFile));
+        public BackgroundCopyFile RetrieveFile() => new(Manager, Manager.InvokeComMethod(Interface.GetFile));
 
-        #endregion methods
+        #endregion
 
         #region private methods
 
@@ -214,7 +214,7 @@ namespace usis.Net.Bits
             var result = Manager.InvokeComMethod(() => Interface.GetErrorDescription(lcid, out description));
             return result == HResult.Ok
                 ? description
-                : result == Win32Error.ERROR_MUI_FILE_NOT_LOADED || result == Win32Error.ERROR_MUI_FILE_NOT_FOUND
+                : result is Win32Error.ERROR_MUI_FILE_NOT_LOADED or Win32Error.ERROR_MUI_FILE_NOT_FOUND
                     ? GetErrorDescription(FallbackLanguageCodeId)
                     : throw new BackgroundCopyException(Strings.FailedErrorDescription, result);
         }
@@ -229,12 +229,12 @@ namespace usis.Net.Bits
             var result = Manager.InvokeComMethod(() => Interface.GetErrorContextDescription(lcid, out description));
             return result == HResult.Ok
                 ? description
-                : result == Win32Error.ERROR_MUI_FILE_NOT_LOADED || result == Win32Error.ERROR_MUI_FILE_NOT_FOUND
+                : result is Win32Error.ERROR_MUI_FILE_NOT_LOADED or Win32Error.ERROR_MUI_FILE_NOT_FOUND
                     ? GetErrorContextDescription(FallbackLanguageCodeId)
                     : throw new BackgroundCopyException(Strings.FailedErrorDescription, result);
         }
 
-        #endregion private methods
+        #endregion
     }
 
     #region BackgroundCopyErrorInfo class
@@ -261,7 +261,7 @@ namespace usis.Net.Bits
             Description = error.Description;
         }
 
-        #endregion construction
+        #endregion
 
         //  -------------
         //  Code property
@@ -290,7 +290,7 @@ namespace usis.Net.Bits
         public string Description { get; }
     }
 
-    #endregion BackgroundCopyErrorInfo class
+    #endregion
 
     #region BackgroundCopyErrorEventArgs class
 
@@ -313,7 +313,7 @@ namespace usis.Net.Bits
 
         internal BackgroundCopyErrorEventArgs(BackgroundCopyError error) => Error = error;
 
-        #endregion construction
+        #endregion
 
         #region properties
 
@@ -332,10 +332,10 @@ namespace usis.Net.Bits
 
         public BackgroundCopyError Error { get; }
 
-        #endregion properties
+        #endregion
     }
 
-    #endregion BackgroundCopyErrorEventArgs class
+    #endregion
 }
 
 // eof "BackgroundCopyError.cs"

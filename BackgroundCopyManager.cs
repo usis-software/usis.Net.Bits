@@ -2,11 +2,12 @@
 //  @(#) BackgroundCopyManager.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2019
+//  System:     Microsoft Visual Studio 2022
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017-2020 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2022 usis GmbH. All rights reserved.
 
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,7 +16,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Microsoft.Win32;
 using usis.Net.Bits.Interop;
 
 namespace usis.Net.Bits
@@ -37,7 +37,7 @@ namespace usis.Net.Bits
         private IBackgroundCopyManager manager;
         private Version version;
 
-        #endregion fields
+        #endregion
 
         #region construction
 
@@ -47,7 +47,7 @@ namespace usis.Net.Bits
 
         private BackgroundCopyManager() => manager = CreateComObject<IBackgroundCopyManager>(new Guid(CLSID.BackgroundCopyManager));
 
-        #endregion construction
+        #endregion
 
         #region IDisposable implementation
 
@@ -80,7 +80,7 @@ namespace usis.Net.Bits
 
         ~BackgroundCopyManager() { Dispose(); }
 
-        #endregion IDisposable implementation
+        #endregion
 
         #region properties
 
@@ -95,7 +95,7 @@ namespace usis.Net.Bits
         /// The version of BITS on the client computer.
         /// </value>
 
-        public Version Version => version ?? (version = DetermineVersion());
+        public Version Version => version ??= DetermineVersion();
 
         //  -----------------------
         //  LibraryVersion property
@@ -110,7 +110,7 @@ namespace usis.Net.Bits
 
         public static Version LibraryVersion => DetermineQMgrVersion();
 
-        #endregion properties
+        #endregion
 
         #region methods
 
@@ -130,7 +130,7 @@ namespace usis.Net.Bits
         /// Therefore you have to call <see cref="IDisposable.Dispose"/> to disconnect from the BITS service and to free all resources.
         /// </remarks>
 
-        public static BackgroundCopyManager Connect() => new BackgroundCopyManager();
+        public static BackgroundCopyManager Connect() => new();
 
         //  ----------------
         //  CreateJob method
@@ -274,7 +274,7 @@ namespace usis.Net.Bits
             return result == HResult.Ok
                 ? new BackgroundCopyJob(this, job)
                 : result == HResult.BG_E_NOT_FOUND && !throwNotFoundException
-                    ? (BackgroundCopyJob)null
+                    ? null
                     : throw new BackgroundCopyException(this, result);
         }
 
@@ -314,7 +314,7 @@ namespace usis.Net.Bits
             catch (COMException exception) { throw new BackgroundCopyException(this, exception); }
         }
 
-        #endregion methods
+        #endregion
 
         #region private methods
 
@@ -367,7 +367,7 @@ namespace usis.Net.Bits
                 [new Version(1, 5)] = new Guid(CLSID.BackgroundCopyManager1_5),
                 [new Version(1, 0)] = new Guid(CLSID.BackgroundCopyManager),
             };
-            return dictionary.Keys.Reverse().Where(v => IsCLSIDRegistered(dictionary[v])).FirstOrDefault();
+            return dictionary.Keys.Reverse().FirstOrDefault(v => IsCLSIDRegistered(dictionary[v]));
         }
 
         //  ------------------------
@@ -377,30 +377,24 @@ namespace usis.Net.Bits
         private static bool IsCLSIDRegistered(Guid clsid)
         {
             var name = string.Format(CultureInfo.InvariantCulture, @"CLSID\{0}", clsid.ToString("B", CultureInfo.InvariantCulture));
-            using (var registryKey = Registry.ClassesRoot.OpenSubKey(name))
-            {
-                return registryKey != null;
-            }
+            using var registryKey = Registry.ClassesRoot.OpenSubKey(name);
+            return registryKey != null;
         }
 
         //  ----------------------
         //  CreateComObject method
         //  ----------------------
 
-#pragma warning disable CA1508 // Avoid dead conditional code
-
         private static TInterface CreateComObject<TInterface>(Guid clsid) where TInterface : class
         {
             var o = CreateComObject(clsid);
-            if (!(o is TInterface i))
+            if (o is not TInterface i)
             {
                 _ = Marshal.FinalReleaseComObject(o);
                 throw new InvalidCastException();
             }
             else return i;
         }
-
-#pragma warning restore CA1508 // Avoid dead conditional code
 
         private static object CreateComObject(Guid clsid) => CreateComObject(Type.GetTypeFromCLSID(clsid));
 
@@ -419,7 +413,7 @@ namespace usis.Net.Bits
             return o;
         }
 
-        #endregion private methods
+        #endregion
     }
 }
 

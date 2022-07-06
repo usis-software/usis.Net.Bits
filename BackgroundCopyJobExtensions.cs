@@ -2,10 +2,10 @@
 //  @(#) BackgroundCopyJobExtensions.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2017
+//  System:     Microsoft Visual Studio 2022
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2022 usis GmbH. All rights reserved.
 
 using System;
 
@@ -59,10 +59,8 @@ namespace usis.Net.Bits
         {
             if (job == null) throw new ArgumentNullException(nameof(job));
 
-            using (var error = job.RetrieveError(false))
-            {
-                return error == null ? null : new BackgroundCopyErrorInfo(error);
-            }
+            using var error = job.RetrieveError(false);
+            return error == null ? null : new BackgroundCopyErrorInfo(error);
         }
     }
 }

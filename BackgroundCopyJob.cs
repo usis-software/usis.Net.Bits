@@ -2,14 +2,13 @@
 //  @(#) BackgroundCopyJob.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2019
+//  System:     Microsoft Visual Studio 2022
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017-2020 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2022 usis GmbH. All rights reserved.
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -35,7 +34,7 @@ namespace usis.Net.Bits
         private IBackgroundCopyJob interop;
         private Callback callback;
 
-        #endregion fields
+        #endregion
 
         #region construction
 
@@ -50,7 +49,7 @@ namespace usis.Net.Bits
             HttpOptions = new BackgroundCopyJobHttpOptions(this);
         }
 
-        #endregion construction
+        #endregion
 
         #region IDisposable implementation
 
@@ -84,7 +83,7 @@ namespace usis.Net.Bits
 
         ~BackgroundCopyJob() { Dispose(); } // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
 
-        #endregion IDisposable implementation
+        #endregion
 
         #region properties
 
@@ -426,7 +425,7 @@ namespace usis.Net.Bits
 
         public int OwnerIntegrityLevel => Convert.ToInt32(Manager.InvokeComMethod(Interface4.GetOwnerIntegrityLevel));
 
-        #endregion public properties
+        #endregion
 
         #region private properties
 
@@ -466,9 +465,9 @@ namespace usis.Net.Bits
 
         internal IBackgroundCopyJobHttpOptions HttpOptionsInterface => Extensions.QueryInterface<IBackgroundCopyJobHttpOptions>(Interface);
 
-        #endregion private properties
+        #endregion
 
-        #endregion properties
+        #endregion
 
         #region events
 
@@ -498,10 +497,7 @@ namespace usis.Net.Bits
                 if (CheckCallback()) Notifications |= BackgroundCopyJobNotifications.Error;
                 failedHandler += value;
             }
-            remove
-            {
-                RemoveEvent(failedHandler, BackgroundCopyJobNotifications.Error, value);
-            }
+            remove => RemoveEvent(failedHandler, BackgroundCopyJobNotifications.Error, value);
         }
 
         //  ---------------
@@ -510,13 +506,11 @@ namespace usis.Net.Bits
 
         private uint OnFailed(IBackgroundCopyError error)
         {
-            using (var e = new BackgroundCopyError(Manager, error))
-            {
-                return InvokeHandler(failedHandler, new BackgroundCopyErrorEventArgs(e));
-            }
+            using var e = new BackgroundCopyError(Manager, error);
+            return InvokeHandler(failedHandler, new BackgroundCopyErrorEventArgs(e));
         }
 
-        #endregion Failed event
+        #endregion
 
         #region Modified event
 
@@ -544,15 +538,12 @@ namespace usis.Net.Bits
                 if (CheckCallback()) Notifications |= BackgroundCopyJobNotifications.Modification;
                 modifiedHandler += value;
             }
-            remove
-            {
-                RemoveEvent(modifiedHandler, BackgroundCopyJobNotifications.Modification, value);
-            }
+            remove => RemoveEvent(modifiedHandler, BackgroundCopyJobNotifications.Modification, value);
         }
 
-        private uint OnModified(/*int reserved*/) => InvokeHandler(modifiedHandler, EventArgs.Empty);
+        private uint OnModified() => InvokeHandler(modifiedHandler, EventArgs.Empty);
 
-        #endregion Modified event
+        #endregion
 
         #region Transferred event
 
@@ -580,15 +571,12 @@ namespace usis.Net.Bits
                 if (CheckCallback()) Notifications |= BackgroundCopyJobNotifications.Transferred;
                 transferredHandler += value;
             }
-            remove
-            {
-                RemoveEvent(transferredHandler, BackgroundCopyJobNotifications.Transferred, value);
-            }
+            remove => RemoveEvent(transferredHandler, BackgroundCopyJobNotifications.Transferred, value);
         }
 
         private uint OnTransferred() => InvokeHandler(transferredHandler, EventArgs.Empty);
 
-        #endregion Transferred event
+        #endregion
 
         #region FileTransferred event
 
@@ -609,10 +597,7 @@ namespace usis.Net.Bits
                 if (CheckCallback()) Notifications |= BackgroundCopyJobNotifications.FileTransferred;
                 fileTransferredHandler += value;
             }
-            remove
-            {
-                RemoveEvent(fileTransferredHandler, BackgroundCopyJobNotifications.FileTransferred, value);
-            }
+            remove => RemoveEvent(fileTransferredHandler, BackgroundCopyJobNotifications.FileTransferred, value);
         }
 
         //  ------------------------
@@ -621,15 +606,13 @@ namespace usis.Net.Bits
 
         private uint OnFileTransferred(IBackgroundCopyFile file)
         {
-            using (var f = new BackgroundCopyFile(Manager, file))
-            {
-                return InvokeHandler(fileTransferredHandler, new BackgroundCopyFileEventArgs(f));
-            }
+            using var f = new BackgroundCopyFile(Manager, file);
+            return InvokeHandler(fileTransferredHandler, new BackgroundCopyFileEventArgs(f));
         }
 
-        #endregion FileTransferred event
+        #endregion
 
-        #endregion events
+        #endregion
 
         #region methods
 
@@ -717,7 +700,7 @@ namespace usis.Net.Bits
         /// to calculate the percentage of the job that is complete.
         /// </returns>
 
-        public BackgroundCopyJobProgress RetrieveProgress() => new BackgroundCopyJobProgress(Interface.GetProgress());
+        public BackgroundCopyJobProgress RetrieveProgress() => new(Interface.GetProgress());
 
         //  ----------------------------
         //  RetrieveReplyProgress method
@@ -731,7 +714,7 @@ namespace usis.Net.Bits
         /// to calculate the percentage of the reply file transfer that is complete.
         /// </returns>
 
-        public BackgroundCopyJobReplyProgress RetrieveReplyProgress() => new BackgroundCopyJobReplyProgress(Manager.InvokeComMethod(() => Interface2.GetReplyProgress()));
+        public BackgroundCopyJobReplyProgress RetrieveReplyProgress() => new(Manager.InvokeComMethod(() => Interface2.GetReplyProgress()));
 
         //  --------------------
         //  RetrieveTimes method
@@ -744,7 +727,7 @@ namespace usis.Net.Bits
         /// A <c>BackgroundCopyJobTimes</c> structure that contains job-related time stamps.
         /// </returns>
 
-        public BackgroundCopyJobTimes RetrieveTimes() => new BackgroundCopyJobTimes(Interface.GetTimes());
+        public BackgroundCopyJobTimes RetrieveTimes() => new(Interface.GetTimes());
 
         //  --------------
         //  AddFile method
@@ -954,7 +937,7 @@ namespace usis.Net.Bits
 
         public void ReplaceRemotePrefix(string oldPrefix, string newPrefix) => Manager.InvokeComMethod(() => Interface3.ReplaceRemotePrefix(oldPrefix, newPrefix));
 
-        #endregion public methods
+        #endregion
 
         #region private methods
 
@@ -1003,7 +986,7 @@ namespace usis.Net.Bits
             return hr == HResult.Ok
                 ? new BackgroundCopyError(Manager, error)
                 : hr == HResult.BG_E_ERROR_INFORMATION_UNAVAILABLE && !throwException
-                    ? (BackgroundCopyError)null
+                    ? null
                     : throw new BackgroundCopyException(Manager, hr);
         }
 
@@ -1017,8 +1000,7 @@ namespace usis.Net.Bits
             if (handler == null)
             {
                 var hr = Interface.GetNotifyFlags(out var notifyFlags);
-                if (hr != HResult.RPC_E_DISCONNECTED &&
-                    hr != Win32Error.RPC_S_SERVER_UNAVAILABLE)
+                if (hr is not HResult.RPC_E_DISCONNECTED and not Win32Error.RPC_S_SERVER_UNAVAILABLE)
                 {
                     Notifications = HResult.Succeeded(hr) ? notifyFlags & ~flags : throw new BackgroundCopyException(Manager, hr);
                 }
@@ -1058,7 +1040,6 @@ namespace usis.Net.Bits
         //  InvokeHandler method
         //  --------------------
 
-        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         private uint InvokeHandler<TEventArgs>(EventHandler<TEventArgs> handler, TEventArgs e)
         {
             try
@@ -1077,9 +1058,9 @@ namespace usis.Net.Bits
             }
         }
 
-        #endregion private methods
+        #endregion
 
-        #endregion methods
+        #endregion
 
         #region overrides
 
@@ -1096,7 +1077,7 @@ namespace usis.Net.Bits
 
         public override string ToString() => string.Format(CultureInfo.CurrentCulture, "{0}: Id={1}, Name='{2}', Notifications={3}", nameof(BackgroundCopyJob), Id, DisplayName, Notifications);
 
-        #endregion overrides
+        #endregion
 
         #region Callback class
 
@@ -1115,7 +1096,7 @@ namespace usis.Net.Bits
 
             private BackgroundCopyJob Job { get; }
 
-            #endregion properties
+            #endregion
 
             #region construction
 
@@ -1125,7 +1106,7 @@ namespace usis.Net.Bits
 
             internal Callback(BackgroundCopyJob job) => Job = job;
 
-            #endregion construction
+            #endregion
 
             #region IBackgroundCopyCallback implementation
 
@@ -1147,7 +1128,7 @@ namespace usis.Net.Bits
 
             uint IBackgroundCopyCallback.JobModification(IBackgroundCopyJob job, int reserved) => Job.OnModified(/*reserved*/);
 
-            #endregion IBackgroundCopyCallback implementation
+            #endregion
 
             #region IBackgroundCopyCallback2 implementation
 
@@ -1175,10 +1156,10 @@ namespace usis.Net.Bits
 
             uint IBackgroundCopyCallback2.FileTransferred(IBackgroundCopyJob job, IBackgroundCopyFile file) => Job.OnFileTransferred(file);
 
-            #endregion IBackgroundCopyCallback2 implementation
+            #endregion
         }
 
-        #endregion Callback class
+        #endregion
     }
 }
 

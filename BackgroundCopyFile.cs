@@ -2,10 +2,10 @@
 //  @(#) BackgroundCopyFile.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2019
+//  System:     Microsoft Visual Studio 2022
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017-2019 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2022 usis GmbH. All rights reserved.
 
 using System;
 using System.Collections.Generic;
@@ -28,7 +28,7 @@ namespace usis.Net.Bits
 
         private IBackgroundCopyFile interop;
 
-        #endregion fields
+        #endregion
 
         #region construction
 
@@ -42,7 +42,7 @@ namespace usis.Net.Bits
             interop = i ?? throw new ArgumentNullException(nameof(i));
         }
 
-        #endregion construction
+        #endregion
 
         #region IDisposable implementation
 
@@ -80,7 +80,7 @@ namespace usis.Net.Bits
 
         ~BackgroundCopyFile() { Release(); }
 
-        #endregion IDisposable implementation
+        #endregion
 
         #region properties
 
@@ -164,7 +164,7 @@ namespace usis.Net.Bits
 
         public bool IsDownloadedFromPeer => Manager.InvokeComMethod(Interface3.IsDownloadedFromPeer);
 
-        #endregion public properties
+        #endregion
 
         #region private properties
 
@@ -192,9 +192,9 @@ namespace usis.Net.Bits
 
         private IBackgroundCopyFile3 Interface3 => Extensions.QueryInterface<IBackgroundCopyFile3>(Interface);
 
-        #endregion private properties
+        #endregion
 
-        #endregion properties
+        #endregion
 
         #region methods
 
@@ -208,7 +208,7 @@ namespace usis.Net.Bits
         /// <returns>A <c>BackgroundCopyFileProgress</c> object whose members
         ///     indicate the progress of the file transfer.</returns>
 
-        public BackgroundCopyFileProgress RetrieveProgress() => new BackgroundCopyFileProgress(Manager.InvokeComMethod(Interface.GetProgress));
+        public BackgroundCopyFileProgress RetrieveProgress() => new(Manager.InvokeComMethod(Interface.GetProgress));
 
         //  ---------------------
         //  RetrieveRanges method
@@ -231,7 +231,7 @@ namespace usis.Net.Bits
             }
         }
 
-        #endregion methods
+        #endregion
     }
 
     #region BackgroundCopyFileEventArgs class
@@ -256,7 +256,7 @@ namespace usis.Net.Bits
 
         internal BackgroundCopyFileEventArgs(BackgroundCopyFile file) => File = file;
 
-        #endregion construction
+        #endregion
 
         #region properties
 
@@ -273,10 +273,10 @@ namespace usis.Net.Bits
 
         public BackgroundCopyFile File { get; }
 
-        #endregion properties
+        #endregion
     }
 
-    #endregion BackgroundCopyFileEventArgs class
+    #endregion
 }
 
 // eof "BackgroundCopyFile.cs"
