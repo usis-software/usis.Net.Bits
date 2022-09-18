@@ -378,7 +378,7 @@ namespace usis.Net.Bits
 
         public BackgroundCopyJobPeerCachingOptions PeerCachingOptions
         {
-            get => Manager.InvokeComMethod(() => Interface4.GetPeerCachingFlags());
+            get => Manager.InvokeComMethod(Interface4.GetPeerCachingFlags);
             set => Manager.InvokeComMethod(() => Interface4.SetPeerCachingFlags(value));
         }
 
@@ -714,7 +714,7 @@ namespace usis.Net.Bits
         /// to calculate the percentage of the reply file transfer that is complete.
         /// </returns>
 
-        public BackgroundCopyJobReplyProgress RetrieveReplyProgress() => new(Manager.InvokeComMethod(() => Interface2.GetReplyProgress()));
+        public BackgroundCopyJobReplyProgress RetrieveReplyProgress() => new(Manager.InvokeComMethod(Interface2.GetReplyProgress));
 
         //  --------------------
         //  RetrieveTimes method
@@ -841,7 +841,7 @@ namespace usis.Net.Bits
         /// Changes ownership of the job to the current user.
         /// </summary>
 
-        public void TakeOwnership() => Manager.InvokeComMethod(() => Interface.TakeOwnership());
+        public void TakeOwnership() => Manager.InvokeComMethod(Interface.TakeOwnership);
 
         //  --------------------
         //  RetrieveError method

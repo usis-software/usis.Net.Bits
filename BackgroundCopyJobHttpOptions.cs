@@ -2,10 +2,10 @@
 //  @(#) BackgroundCopyJobHttpOptions.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2019
+//  System:     Microsoft Visual Studio 2022
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2018-2020 usis GmbH. All rights reserved.
+//  Copyright (c) 2018-2022 usis GmbH. All rights reserved.
 
 using System;
 using usis.Net.Bits.Interop;
@@ -31,7 +31,7 @@ namespace usis.Net.Bits
 
         internal BackgroundCopyJobHttpOptions(BackgroundCopyJob job) => Job = job;
 
-        #endregion construction
+        #endregion
 
         #region properties
 
@@ -43,7 +43,7 @@ namespace usis.Net.Bits
 
         private BackgroundCopyJob Job { get; set; }
 
-        #endregion private properties
+        #endregion
 
         #region public properties
 
@@ -117,9 +117,9 @@ namespace usis.Net.Bits
             }
         }
 
-        #endregion public properties
+        #endregion
 
-        #endregion properties
+        #endregion
 
         #region methods
 
@@ -170,9 +170,9 @@ namespace usis.Net.Bits
         /// Removes the client certificate from the job.
         /// </summary>
 
-        public void RemoveClientCertificate() => Job.Manager.InvokeComMethod(() => Job.HttpOptionsInterface.RemoveClientCertificate());
+        public void RemoveClientCertificate() => Job.Manager.InvokeComMethod(Job.HttpOptionsInterface.RemoveClientCertificate);
 
-        #endregion methods
+        #endregion
     }
 }
 
