@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2022
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017-2022 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2023 usis GmbH. All rights reserved.
 
 using System;
 
@@ -55,7 +55,7 @@ namespace usis.Net.Bits
         /// </returns>
         /// <exception cref="ArgumentNullException"><paramref name="job"/> is a <c>null</c> reference.</exception>
 
-        public static BackgroundCopyErrorInfo GetErrorInfo(this BackgroundCopyJob job)
+        public static BackgroundCopyErrorInfo? GetErrorInfo(this BackgroundCopyJob job)
         {
             if (job == null) throw new ArgumentNullException(nameof(job));
 

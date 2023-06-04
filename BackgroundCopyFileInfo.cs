@@ -2,10 +2,10 @@
 //  @(#) BackgroundCopyFileInfo.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2017
+//  System:     Microsoft Visual Studio 2022
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2023 usis GmbH. All rights reserved.
 
 using usis.Net.Bits.Interop;
 
@@ -25,7 +25,7 @@ namespace usis.Net.Bits
 
         internal BG_FILE_INFO fileInfo;
 
-        #endregion fields
+        #endregion
 
         #region properties
 
@@ -55,7 +55,7 @@ namespace usis.Net.Bits
 
         public string RemoteName { get => fileInfo.RemoteName; set => fileInfo.RemoteName = value; }
 
-        #endregion properties
+        #endregion
     }
 }
 

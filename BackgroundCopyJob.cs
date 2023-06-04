@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2022
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017-2022 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2023 usis GmbH. All rights reserved.
 
 using System;
 using System.Collections.Generic;
@@ -31,8 +31,8 @@ namespace usis.Net.Bits
     {
         #region fields
 
-        private IBackgroundCopyJob interop;
-        private Callback callback;
+        private IBackgroundCopyJob? interop;
+        private Callback? callback;
 
         #endregion
 
@@ -322,7 +322,7 @@ namespace usis.Net.Bits
         /// The name of the file to contain the reply data of an upload-reply job.
         /// </value>
 
-        public string ReplyFileName
+        public string? ReplyFileName
         {
             get
             {
@@ -477,7 +477,7 @@ namespace usis.Net.Bits
         //  Failed event
         //  ------------
 
-        private EventHandler<BackgroundCopyErrorEventArgs> failedHandler;
+        private EventHandler<BackgroundCopyErrorEventArgs>? failedHandler;
 
         /// <summary>
         /// Occurs when the state of the job changes to <see cref="BackgroundCopyJobState.Error"/>.
@@ -518,7 +518,7 @@ namespace usis.Net.Bits
         //  Modified event
         //  --------------
 
-        private EventHandler<EventArgs> modifiedHandler;
+        private EventHandler<EventArgs>? modifiedHandler;
 
         /// <summary>
         /// Occurs when a job is modified.
@@ -551,7 +551,7 @@ namespace usis.Net.Bits
         //  Transferred event
         //  -----------------
 
-        private EventHandler<EventArgs> transferredHandler;
+        private EventHandler<EventArgs>? transferredHandler;
 
         /// <summary>
         /// Occurs when all of the files in the job have successfully transferred.
@@ -584,7 +584,7 @@ namespace usis.Net.Bits
         //  FileTransferred event
         //  ---------------------
 
-        private EventHandler<BackgroundCopyFileEventArgs> fileTransferredHandler;
+        private EventHandler<BackgroundCopyFileEventArgs>? fileTransferredHandler;
 
         /// <summary>
         /// Occurs when BITS successfully finishes transferring a file.
@@ -675,7 +675,7 @@ namespace usis.Net.Bits
         public IEnumerable<BackgroundCopyFile> EnumerateFiles()
         {
             if (interop == null) throw new ObjectDisposedException(nameof(BackgroundCopyJob));
-            IEnumBackgroundCopyFiles files = null;
+            IEnumBackgroundCopyFiles? files = null;
             try
             {
                 files = interop.EnumFiles();
@@ -854,7 +854,7 @@ namespace usis.Net.Bits
         /// An object that provides error informations.
         /// </returns>
 
-        public BackgroundCopyError RetrieveError() => RetrieveError(false);
+        public BackgroundCopyError? RetrieveError() => RetrieveError(false);
 
         //  ------------------------
         //  RetrieveReplyData method
@@ -980,7 +980,7 @@ namespace usis.Net.Bits
         //  RetrieveError method
         //  --------------------
 
-        internal BackgroundCopyError RetrieveError(bool throwException)
+        internal BackgroundCopyError? RetrieveError(bool throwException)
         {
             var hr = Interface.GetError(out var error);
             return hr == HResult.Ok
@@ -994,7 +994,7 @@ namespace usis.Net.Bits
         //  RemoveEvent method
         //  ------------------
 
-        private void RemoveEvent<TEventArgs>(EventHandler<TEventArgs> handler, BackgroundCopyJobNotifications flags, EventHandler<TEventArgs> value)
+        private void RemoveEvent<TEventArgs>(EventHandler<TEventArgs>? handler, BackgroundCopyJobNotifications flags, EventHandler<TEventArgs> value)
         {
             handler -= value;
             if (handler == null)
@@ -1023,6 +1023,7 @@ namespace usis.Net.Bits
 
         private bool CheckCallback()
         {
+            if (interop is null) throw new ObjectDisposedException(nameof(BackgroundCopyJob));
             if (callback == null)
             {
                 callback = new Callback(this);
@@ -1040,7 +1041,7 @@ namespace usis.Net.Bits
         //  InvokeHandler method
         //  --------------------
 
-        private uint InvokeHandler<TEventArgs>(EventHandler<TEventArgs> handler, TEventArgs e)
+        private uint InvokeHandler<TEventArgs>(EventHandler<TEventArgs>? handler, TEventArgs e)
         {
             try
             {
@@ -1086,7 +1087,7 @@ namespace usis.Net.Bits
         //  --------------
 
         [ComVisible(true)]
-        private class Callback : IBackgroundCopyCallback, IBackgroundCopyCallback2
+        private sealed class Callback : IBackgroundCopyCallback, IBackgroundCopyCallback2
         {
             #region properties
 

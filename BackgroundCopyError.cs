@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2022
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017-2022 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2023 usis GmbH. All rights reserved.
 
 using System;
 using System.Runtime.InteropServices;
@@ -33,7 +33,7 @@ namespace usis.Net.Bits
 
         #region fields
 
-        private IBackgroundCopyError interop;
+        private IBackgroundCopyError? interop;
 
         #endregion
 
@@ -139,7 +139,7 @@ namespace usis.Net.Bits
         /// The error text associated with the error.
         /// </value>
 
-        public string Description => GetErrorDescription(Thread.CurrentThread.CurrentCulture.LCID);
+        public string? Description => GetErrorDescription(Thread.CurrentThread.CurrentCulture.LCID);
 
         //  ---------------------------
         //  ContextDescription property
@@ -152,7 +152,7 @@ namespace usis.Net.Bits
         /// A description of the context in which the error occurred.
         /// </value>
 
-        public string ContextDescription => GetErrorContextDescription(Thread.CurrentThread.CurrentCulture.LCID);
+        public string? ContextDescription => GetErrorContextDescription(Thread.CurrentThread.CurrentCulture.LCID);
 
         //  -----------------
         //  Protocol property
@@ -208,9 +208,9 @@ namespace usis.Net.Bits
         //  GetErrorDescription method
         //  --------------------------
 
-        private string GetErrorDescription(int lcid)
+        private string? GetErrorDescription(int lcid)
         {
-            string description = null;
+            string? description = null;
             var result = Manager.InvokeComMethod(() => Interface.GetErrorDescription(lcid, out description));
             return result == HResult.Ok
                 ? description
@@ -223,9 +223,9 @@ namespace usis.Net.Bits
         //  GetErrorContextDescription method
         //  ---------------------------------
 
-        private string GetErrorContextDescription(int lcid)
+        private string? GetErrorContextDescription(int lcid)
         {
-            string description = null;
+            string? description = null;
             var result = Manager.InvokeComMethod(() => Interface.GetErrorContextDescription(lcid, out description));
             return result == HResult.Ok
                 ? description
@@ -287,7 +287,7 @@ namespace usis.Net.Bits
         /// The error text associated with the error.
         /// </value>
 
-        public string Description { get; }
+        public string? Description { get; }
     }
 
     #endregion

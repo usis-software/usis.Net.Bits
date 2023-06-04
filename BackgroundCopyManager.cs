@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2022
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017-2022 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2023 usis GmbH. All rights reserved.
 
 using Microsoft.Win32;
 using System;
@@ -34,8 +34,8 @@ namespace usis.Net.Bits
     {
         #region fields
 
-        private IBackgroundCopyManager manager;
-        private Version version;
+        private IBackgroundCopyManager? manager;
+        private Version? version;
 
         #endregion
 
@@ -95,7 +95,7 @@ namespace usis.Net.Bits
         /// The version of BITS on the client computer.
         /// </value>
 
-        public Version Version => version ??= DetermineVersion();
+        public Version? Version => version ??= DetermineVersion();
 
         //  -----------------------
         //  LibraryVersion property
@@ -108,7 +108,7 @@ namespace usis.Net.Bits
         /// The QMgr.dll file version number.
         /// </value>
 
-        public static Version LibraryVersion => DetermineQMgrVersion();
+        public static Version? LibraryVersion => DetermineQMgrVersion();
 
         #endregion
 
@@ -224,7 +224,7 @@ namespace usis.Net.Bits
         public IEnumerable<BackgroundCopyJob> EnumerateJobs(bool forAllUsers)
         {
             if (manager == null) throw new ObjectDisposedException(nameof(BackgroundCopyManager));
-            IEnumBackgroundCopyJobs jobs = null;
+            IEnumBackgroundCopyJobs? jobs = null;
             try
             {
                 jobs = manager.EnumJobs(forAllUsers ? Interop.Constants.BG_JOB_ENUM_ALL_USERS : 0);
@@ -266,7 +266,7 @@ namespace usis.Net.Bits
         /// so you can later retrieve the job from the queue.
         /// </remarks>
 
-        public BackgroundCopyJob GetJob(Guid jobId, bool throwNotFoundException)
+        public BackgroundCopyJob? GetJob(Guid jobId, bool throwNotFoundException)
         {
             if (manager == null) throw new ObjectDisposedException(nameof(BackgroundCopyManager));
 
@@ -288,7 +288,7 @@ namespace usis.Net.Bits
         /// <exception cref="ObjectDisposedException">The method was called after the object was disposed.</exception>
         /// <exception cref="BackgroundCopyException">An error occured during a BITS method call.</exception>
 
-        public BackgroundCopyJob GetJob(Guid jobId) => GetJob(jobId, true);
+        public BackgroundCopyJob? GetJob(Guid jobId) => GetJob(jobId, true);
 
         //  --------------------------
         //  GetErrorDescription method
@@ -337,7 +337,7 @@ namespace usis.Net.Bits
         //  DetermineQMgrVersion method
         //  ---------------------------
 
-        private static Version DetermineQMgrVersion()
+        private static Version? DetermineQMgrVersion()
         {
             const string QMgrFileName = "QMgr.dll";
             var path = Path.Combine(Environment.SystemDirectory, QMgrFileName);
@@ -353,7 +353,7 @@ namespace usis.Net.Bits
         //  DetermineVersion method
         //  -----------------------
 
-        private static Version DetermineVersion()
+        private static Version? DetermineVersion()
         {
             var dictionary = new SortedDictionary<Version, Guid>
             {
@@ -390,27 +390,27 @@ namespace usis.Net.Bits
             var o = CreateComObject(clsid);
             if (o is not TInterface i)
             {
-                _ = Marshal.FinalReleaseComObject(o);
+                if (o is not null) _ = Marshal.FinalReleaseComObject(o);
                 throw new InvalidCastException();
             }
             else return i;
         }
 
-        private static object CreateComObject(Guid clsid) => CreateComObject(Type.GetTypeFromCLSID(clsid));
+        private static object? CreateComObject(Guid clsid) => CreateComObject(Type.GetTypeFromCLSID(clsid));
 
-        private static object CreateComObject(Type type)
+        private static object? CreateComObject(Type? type)
         {
-            object o = null;
+            object? @object = null;
             try
             {
-                o = Activator.CreateInstance(type);
+                if (type is not null) @object = Activator.CreateInstance(type);
             }
             catch (Exception)
             {
-                if (o != null) _ = Marshal.FinalReleaseComObject(o);
+                if (@object != null) _ = Marshal.FinalReleaseComObject(@object);
                 throw;
             }
-            return o;
+            return @object;
         }
 
         #endregion

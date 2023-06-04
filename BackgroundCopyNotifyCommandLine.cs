@@ -2,10 +2,10 @@
 //  @(#) BackgroundCopyNotifyCommandLine.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2017
+//  System:     Microsoft Visual Studio 2022
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2023 usis GmbH. All rights reserved.
 
 namespace usis.Net.Bits
 {
@@ -32,7 +32,7 @@ namespace usis.Net.Bits
         /// The program to execute.
         /// </value>
 
-        public string Program { get; }
+        public string? Program { get; }
 
         //  -------------------
         //  Parameters property
@@ -45,9 +45,9 @@ namespace usis.Net.Bits
         /// The parameters of the program.
         /// </value>
 
-        public string Parameters { get; }
+        public string? Parameters { get; }
 
-        #endregion properties
+        #endregion
 
         #region construction
 
@@ -69,13 +69,13 @@ namespace usis.Net.Bits
         /// <param name="program">The program to execute.</param>
         /// <param name="parameters">The parameters of the program.</param>
 
-        public BackgroundCopyNotifyCommandLine(string program, string parameters)
+        public BackgroundCopyNotifyCommandLine(string program, string? parameters)
         {
             Program = program;
             Parameters = parameters;
         }
 
-        #endregion construction
+        #endregion
     }
 }
 

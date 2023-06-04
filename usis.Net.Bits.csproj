@@ -1,30 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net48</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows;net48</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <Version>3.1.0</Version>
     <Authors>Udo</Authors>
     <Company>usis GmbH</Company>
     <Product>usis .NET Class Libraries</Product>
     <Description>usis Background Intelligent Transfer Service (BITS) Class Library</Description>
-    <Copyright>Copyright © 2017-2022 usis GmbH</Copyright>
-    <PackageProjectUrl>https://github.com/usis-software/usis.Net.Bits</PackageProjectUrl>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Copyright>Copyright © 2017-2023 usis GmbH</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageOutputPath>..\..\..\NuGet</PackageOutputPath>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/usis-software/usis.Net.Bits</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageIcon>usis.icon.64x64.png</PackageIcon>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>The usis Background Intelligent Transfer Service Class Library provides .NET wrapper types for the BITS API which is exposed by Microsoft through the Component Object Model (COM).</PackageReleaseNotes>
+    <PackageTags>usis BITS Interop HTTP Background Transfer upload download</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="GlobalSuppressions.cs" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="LICENSE.md" Pack="true" PackagePath="\" />
+    <None Include="usis.icon.64x64.png" Pack="true" PackagePath="\" />
   </ItemGroup>
-
+  
   <ItemGroup>
-    <None Remove="packages.config" />
-    <None Remove="usis.Net.Bits.nuspec" />
   </ItemGroup>
 
   <ItemGroup>

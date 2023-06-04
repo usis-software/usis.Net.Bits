@@ -2,10 +2,10 @@
 //  @(#) IBackgroundCopyJob.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2017
+//  System:     Microsoft Visual Studio 2022
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2023 usis GmbH. All rights reserved.
 
 using System;
 using System.Runtime.InteropServices;
@@ -165,7 +165,7 @@ namespace usis.Net.Bits.Interop
         //  -------------------------
 
         [PreserveSig]
-        uint SetNotifyInterface([MarshalAs(UnmanagedType.Interface)] IBackgroundCopyCallback callback);
+        uint SetNotifyInterface([MarshalAs(UnmanagedType.Interface)] IBackgroundCopyCallback? callback);
 
         //  -------------------------
         //  GetNotifyInterface method

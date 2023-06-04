@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2022
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017-2022 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2023 usis GmbH. All rights reserved.
 
 using System;
 using System.Collections.Generic;
@@ -26,7 +26,7 @@ namespace usis.Net.Bits
     {
         #region fields
 
-        private IBackgroundCopyFile interop;
+        private IBackgroundCopyFile? interop;
 
         #endregion
 
@@ -223,9 +223,9 @@ namespace usis.Net.Bits
 
         public IEnumerable<BackgroundCopyFileRange> RetrieveRanges()
         {
-            BG_FILE_RANGE[] ranges = null;
+            BG_FILE_RANGE[]? ranges = null;
             Manager.InvokeComMethod(() => Interface2.GetFileRanges(out var count, out ranges));
-            foreach (var item in ranges)
+            foreach (var item in ranges!)
             {
                 yield return new BackgroundCopyFileRange(item);
             }
