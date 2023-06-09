@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -27,7 +28,7 @@ namespace usis.Net.Bits
     /// </summary>
     /// <seealso cref="IDisposable" />
 
-    public sealed class BackgroundCopyJob : IDisposable
+    public sealed class BackgroundCopyJob : IDisposable, INotifyPropertyChanged
     {
         #region fields
 
@@ -609,6 +610,38 @@ namespace usis.Net.Bits
             using var f = new BackgroundCopyFile(Manager, file);
             return InvokeHandler(fileTransferredHandler, new BackgroundCopyFileEventArgs(f));
         }
+
+        #endregion
+
+        #region PropertyChanged event
+
+        //  ---------------------
+        //  PropertyChanged event
+        //  ---------------------
+
+        private PropertyChangedEventHandler? propertyChangedHandler;
+
+        event PropertyChangedEventHandler? INotifyPropertyChanged.PropertyChanged
+        {
+            add
+            {
+                propertyChangedHandler += value;
+                Modified += OnPropertyChanged;
+            }
+
+            remove
+            {
+                Modified -= OnPropertyChanged;
+                propertyChangedHandler -= value;
+            }
+        }
+
+        //  ------------------------
+        //  OnPropertyChanged method
+        //  ------------------------
+
+        private void OnPropertyChanged(object? sender, EventArgs e)
+            => propertyChangedHandler?.Invoke(sender, new PropertyChangedEventArgs(string.Empty));
 
         #endregion
 
