@@ -22,6 +22,8 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>The usis Background Intelligent Transfer Service Class Library provides .NET wrapper types for the BITS API which is exposed by Microsoft through the Component Object Model (COM).</PackageReleaseNotes>
     <PackageTags>usis BITS Interop HTTP Background Transfer upload download</PackageTags>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>usis.Net.Bits.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
