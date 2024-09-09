@@ -2,10 +2,10 @@
 //  @(#) BackgroundCopyJobProxySettings.cs
 //
 //  Project:    usis.Net.Bits
-//  System:     Microsoft Visual Studio 2017
+//  System:     Microsoft Visual Studio 2022
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2024 usis GmbH. All rights reserved.
 
 namespace usis.Net.Bits
 {
@@ -16,33 +16,17 @@ namespace usis.Net.Bits
     /// <summary>
     /// Provides the proxy information that the job uses to transfer the files.
     /// </summary>
+    /// <remarks>
+    /// Initializes a new instance of the <see cref="BackgroundCopyJobProxySettings"/> class.
+    /// </remarks>
+    /// <param name="proxyUsage">The proxy to use for file transfer.</param>
+    /// <param name="proxyList">A list of one or more proxies to use to transfer files.</param>
+    /// <param name="proxyBypassList">
+    /// An optional list of host names or IP addresses, or both, that were not routed through the proxy.
+    /// </param>
 
-    public sealed class BackgroundCopyJobProxySettings
+    public sealed class BackgroundCopyJobProxySettings(BackgroundCopyJobProxyUsage proxyUsage, string proxyList, string proxyBypassList)
     {
-        #region construction
-
-        //  ------------
-        //  construction
-        //  ------------
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BackgroundCopyJobProxySettings"/> class.
-        /// </summary>
-        /// <param name="proxyUsage">The proxy to use for file transfer.</param>
-        /// <param name="proxyList">A list of one or more proxies to use to transfer files.</param>
-        /// <param name="proxyBypassList">
-        /// An optional list of host names or IP addresses, or both, that were not routed through the proxy.
-        /// </param>
-
-        public BackgroundCopyJobProxySettings(BackgroundCopyJobProxyUsage proxyUsage, string proxyList, string proxyBypassList)
-        {
-            ProxyUsage = proxyUsage;
-            ProxyList = proxyList;
-            ProxyBypassList = proxyBypassList;
-        }
-
-        #endregion construction
-
         #region properties
 
         //  -------------------
@@ -56,7 +40,7 @@ namespace usis.Net.Bits
         /// The proxy to use for file transfer.
         /// </value>
 
-        public BackgroundCopyJobProxyUsage ProxyUsage { get; }
+        public BackgroundCopyJobProxyUsage ProxyUsage { get; } = proxyUsage;
 
         //  ------------------
         //  ProxyList property
@@ -69,7 +53,7 @@ namespace usis.Net.Bits
         /// A string that contains one or more proxies to use to transfer files. The list is space-delimited. 
         /// </value>
 
-        public string ProxyList { get; }
+        public string ProxyList { get; } = proxyList;
 
         //  ------------------------
         //  ProxyBypassList property
@@ -83,7 +67,7 @@ namespace usis.Net.Bits
         /// that were not routed through the proxy. The list is space-delimited. 
         /// </value>
 
-        public string ProxyBypassList { get; }
+        public string ProxyBypassList { get; } = proxyBypassList;
 
         #endregion properties
     }

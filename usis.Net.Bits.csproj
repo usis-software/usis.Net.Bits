@@ -6,12 +6,12 @@
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <Version>3.1.0</Version>
+    <Version>3.1.1</Version>
     <Authors>Udo</Authors>
     <Company>usis GmbH</Company>
     <Product>usis .NET Class Libraries</Product>
     <Description>usis Background Intelligent Transfer Service (BITS) Class Library</Description>
-    <Copyright>Copyright © 2017-2023 usis GmbH</Copyright>
+    <Copyright>Copyright © 2017-2024 usis GmbH</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -32,9 +32,6 @@
     <None Include="usis.icon.64x64.png" Pack="true" PackagePath="\" />
   </ItemGroup>
   
-  <ItemGroup>
-  </ItemGroup>
-
   <ItemGroup>
     <Folder Include="Interop\" />
   </ItemGroup>

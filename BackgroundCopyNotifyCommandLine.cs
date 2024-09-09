@@ -5,7 +5,7 @@
 //  System:     Microsoft Visual Studio 2022
 //  Author:     Udo Schäfer
 //
-//  Copyright (c) 2017-2023 usis GmbH. All rights reserved.
+//  Copyright (c) 2017-2024 usis GmbH. All rights reserved.
 
 namespace usis.Net.Bits
 {
@@ -16,8 +16,13 @@ namespace usis.Net.Bits
     /// <summary>
     /// Specifies a program to execute when the job enters the error or transferred state.
     /// </summary>
+    /// <remarks>
+    /// Initializes a new instance of the <see cref="BackgroundCopyNotifyCommandLine"/> class.
+    /// </remarks>
+    /// <param name="program">The program to execute.</param>
+    /// <param name="parameters">The parameters of the program.</param>
 
-    public sealed class BackgroundCopyNotifyCommandLine
+    public sealed class BackgroundCopyNotifyCommandLine(string program, string? parameters)
     {
         #region properties
 
@@ -32,7 +37,7 @@ namespace usis.Net.Bits
         /// The program to execute.
         /// </value>
 
-        public string? Program { get; }
+        public string? Program { get; } = program;
 
         //  -------------------
         //  Parameters property
@@ -45,7 +50,7 @@ namespace usis.Net.Bits
         /// The parameters of the program.
         /// </value>
 
-        public string? Parameters { get; }
+        public string? Parameters { get; } = parameters;
 
         #endregion
 
@@ -62,18 +67,6 @@ namespace usis.Net.Bits
         /// <param name="program">The program to execute.</param>
 
         public BackgroundCopyNotifyCommandLine(string program) : this(program, null) { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BackgroundCopyNotifyCommandLine"/> class.
-        /// </summary>
-        /// <param name="program">The program to execute.</param>
-        /// <param name="parameters">The parameters of the program.</param>
-
-        public BackgroundCopyNotifyCommandLine(string program, string? parameters)
-        {
-            Program = program;
-            Parameters = parameters;
-        }
 
         #endregion
     }
