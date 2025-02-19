@@ -864,7 +864,7 @@ namespace usis.Net.Bits
         /// </code>
         /// </example>
 
-        public void AddFiles(params BackgroundCopyFileInfo[] files) => Manager.InvokeComMethod(() => Interface.AddFileSet(files.Length, files.Select(e => e.fileInfo).ToArray()));
+        public void AddFiles(params BackgroundCopyFileInfo[] files) => Manager.InvokeComMethod(() => Interface.AddFileSet(files.Length, [.. files.Select(e => e.fileInfo)]));
 
         //  --------------------
         //  TakeOwnership method
